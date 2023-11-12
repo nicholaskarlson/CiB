@@ -2,14 +2,53 @@
 \usepackage{graphicx} % For graphics
 \usepackage{hyperref} % For hyperlinks
 % \usepackage{makeidx} % For making an index
+\usepackage{float}
 \usepackage{tikz}
+\usepackage{tkz-euclide} % Add this line to include the tkz-euclide package
+\usetikzlibrary{calc}
 \usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween} 
 
 \newcommand{\inputtoc}[1]{\input{#1}}
 
 % ... (rest of your preamble)
 
 % \makeindex % Command to make the index
+
+\pgfmathdeclarefunction{csc}{1}{%
+  \pgfmathparse{1/sin(#1)}%
+}
+
+\newenvironment{exercise}[1][]
+  {\par\medskip\noindent\textbf{Exercise #1} \rmfamily}
+  {\medskip}
+
+% Define the problem environment
+\newcounter{problem}
+\newenvironment{problem}[1][\theproblem]
+{\refstepcounter{problem}\par\medskip\noindent\textbf{Problem~#1:} \rmfamily}{\medskip}
+
+% Define the solution environment
+\newenvironment{solution}[1][]
+{\par\noindent\textit{Solution:} \rmfamily}{\medskip}
+
+% Define the example environment
+\newcounter{example}
+\newenvironment{example}[1][\theexample]
+  {\refstepcounter{example}\par\medskip\noindent\textbf{Example~#1:} \rmfamily}
+  {\medskip}
+  
+% Define theorem, application, definition, method, and discussion environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{application}{Application}
+\newtheorem{definition}{Definition}
+\newtheorem{method}{Method}
+\newtheorem{discussion}{Discussion} 
+  
 
 \begin{document}
 
@@ -28,7 +67,7 @@
         
         % Title and additional info
         \node at (current page.center) [font=\Huge, text width=0.8\textwidth, align=center] 
-            {\textbf{Calculus in Brief with GitHub and \LaTeX  \\ CiB - Version 0.1}};
+            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.2}};
             
         \node[align=center, font=\large] at (current page.center) 
             [yshift=-2.5cm] {\today}; % <- This is the compilation date
@@ -359,43 +398,319 @@ GitHub often hosts and sponsors events:
 \subsection*{A Project of Collective Wisdom}
 Math, in many ways, is a collective endeavor. GitHub can provide a dynamic Community. By engaging with this Community you can become an active participant in the creation of mathematical texts.
 
-\chapter{Foundational Topics in Calculus}
-\subsection*{Introduction}
-In this chapter, we start talking about fundamental calculus topics. Here we will introduce functions, limits, and the derivative.
-
 \chapter{Functions}
-\subsection*{Understanding Functions}
+\section{What is a Function?}
+\subsection{Definition and Examples}
+\begin{definition}
+A function is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output.
+\end{definition}
+\begin{example}
+Consider the function \( f(x) = x^2 \), which maps each real number to its square.
+\end{example}
 
-\section*{Introduction}
-\paragraph{}
-Functions are important in the study of calculus.
+\subsection{Domain and Range}
+\begin{definition}
+The domain of a function is the set of all possible inputs, while the range is the set of all possible outputs.
+\end{definition}
+\begin{example}
+For \( f(x) = \sqrt{x} \), the domain is \( x \geq 0 \) and the range is \( y \geq 0 \).
+\end{example}
 
-\section*{Conclusion}
-\paragraph{}
-This chapter introduces the important idea of a function. Please fork the LaTeX source code for CiB (available on GitHub) and create your own book that chooses the facts and exercises most relevant to you! Also, starring the CiB project on GitHub would be greatly appreciated! Thanks for reading CiB!
+\subsection{Types of Functions}
+\subsubsection{Linear Functions}
+\begin{definition}
+A linear function has the form \( f(x) = mx + b \), where \( m \) and \( b \) are constants.
+\end{definition}
 
-\chapter{Limits}
-\subsection*{Basic Concepts Regarding Limits}
+\subsubsection{Polynomial Functions}
+\begin{definition}
+A polynomial function is of the form \( f(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_0 \), where \( n \) is a non-negative integer.
+\end{definition}
 
-\section*{Introduction}
-\paragraph{}
-Limits are very important in the study of calculus.
+\subsubsection{Rational Functions}
+\begin{definition}
+A rational function is the ratio of two polynomial functions.
+\end{definition}
 
-\section*{Conclusion}
-\paragraph{}
-This chapter introduces the important idea of a limit. The idea of a limit is used in the definition of a derivative. Please fork the LaTeX source code for CiB (available on GitHub) and create your own book that chooses the facts and exercises most relevant to you! Also, starring the CiB project on GitHub would be greatly appreciated! Thanks for reading CiB!
+\subsubsection{Trigonometric Functions}
+\begin{definition}
+Trigonometric functions include \( \sin(x) \), \( \cos(x) \), and \( \tan(x) \), relating angles to ratios of sides in right triangles.
+\end{definition}
+
+\subsubsection{Exponential and Logarithmic Functions}
+\begin{definition}
+Exponential functions have the form \( f(x) = a^x \) and logarithmic functions are their inverses.
+\end{definition}
+
+\section{Function Properties}
+\subsection{Continuity}
+\begin{definition}
+A function is continuous at a point if the limit of the function as it approaches the point is equal to the function value at that point.
+\end{definition}
+
+\subsection{Differentiability}
+\begin{definition}
+A function is differentiable at a point if it has a defined derivative at that point.
+\end{definition}
+
+\subsection{Asymptotic Behavior}
+\begin{definition}
+Asymptotic behavior refers to the behavior of a function as it approaches infinity or a particular value.
+\end{definition}
+
+\subsection{Periodicity and Symmetry}
+\begin{definition}
+A function is periodic if it repeats its values at regular intervals, and it is symmetric if it exhibits mirror symmetry about an axis or point.
+\end{definition}
+
+\section{Function Transformations}
+\subsection{Translation and Scaling}
+\begin{definition}
+Translation shifts a function horizontally or vertically, while scaling changes its size.
+\end{definition}
+
+\subsection{Reflection and Rotation}
+\begin{definition}
+Reflection inverts a function across a line, and rotation turns it around a point.
+\end{definition}
+
+\chapter{Limits and Continuity}
+\section{Introduction to Limits}
+\subsection{Definition of a Limit}
+\begin{definition}
+The limit of \( f(x) \) as \( x \) approaches \( a \) is \( L \) if for every \( \epsilon > 0 \), there exists a \( \delta > 0 \) such that \( |f(x) - L| < \epsilon \) whenever \( 0 < |x - a| < \delta \).
+\end{definition}
+
+\subsection{One-sided Limits}
+\begin{definition}
+The one-sided limits of \( f(x) \) as \( x \) approaches \( a \) from the left (or right) are the values the function approaches as \( x \) approaches \( a \) from the left (or right).
+\end{definition}
+
+\subsection{Limits Involving Infinity}
+\begin{definition}
+A limit involving infinity is the value that \( f(x) \) approaches as \( x \) approaches infinity, or as \( f(x) \) approaches infinity for some finite \( x \).
+\end{definition}
+
+\section{Properties of Limits}
+\subsection{Limit Laws}
+\begin{theorem}
+Standard limit laws include the sum law, product law, quotient law, and power law.
+\end{theorem}
+
+\subsection{Squeeze Theorem}
+\begin{theorem}
+If \( f(x) \leq g(x) \leq h(x) \) for all \( x \) near \( a \) and the limits of \( f(x) \) and \( h(x) \) as \( x \) approaches \( a \) are equal, then the limit of \( g(x) \) as \( x \) approaches \( a \) is the same.
+\end{theorem}
+
+\subsection{Limits of Trigonometric Functions}
+\begin{theorem}
+Includes limits such as \( \lim_{x \to 0} \frac{\sin x}{x} = 1 \).
+\end{theorem}
+
+\section{Continuity}
+\subsection{Definition and Examples}
+\begin{definition}
+A function is continuous at a point if it is defined at that point, its limit exists at that point, and the limit equals the function value.
+\end{definition}
+
+\subsection{Types of Discontinuities}
+\begin{definition}
+Discontinuities can be classified as removable, jump, or infinite.
+\end{definition}
+
+\subsection{Intermediate Value Theorem}
+\begin{theorem}
+If a function is continuous on a closed interval \([a, b]\) and \( N \) is any number between \( f(a) \) and \( f(b) \), then there exists a number \( c \) in the interval such that \( f(c) = N \).
+\end{theorem}
 
 \chapter{The Derivative}
-\subsection*{Understanding Derivative Basics}
+\section{Understanding Derivatives}
+\subsection{Definition and Notation}
+\begin{definition}
+The derivative of a function \( f \) at a point \( a \) is defined as \(\lim_{h \to 0} \frac{f(a+h) - f(a)}{h}\), if this limit exists.
+\end{definition}
 
-\section*{Introduction}
+\subsection{Interpreting Derivatives}
+\begin{discussion}
+The derivative at a point gives the slope of the tangent line to the function at that point. It represents the rate of change of the function with respect to its variable.
+\end{discussion}
+
+\subsection{Derivative as a Function}
+\begin{definition}
+The derivative of a function \( f \) is itself a function that assigns to each point \( x \) the slope of the tangent to \( f \) at \( x \).
+\end{definition}
+
+\section{Techniques of Differentiation}
+\subsection{Product Rule and Quotient Rule}
+\begin{theorem}
+The product rule states that \( (fg)' = f'g + fg' \) and the quotient rule states that \( \left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2} \), where \( f \) and \( g \) are functions of \( x \).
+\end{theorem}
+
+\subsection{Chain Rule}
+\begin{theorem}
+If a function \( y \) is a function of \( u \) which is a function of \( x \), then the derivative of \( y \) with respect to \( x \) is given by \( \frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx} \).
+\end{theorem}
+
+\subsection{Higher-Order Derivatives}
+\begin{definition}
+The \( n \)-th order derivative of \( f \), denoted \( f^{(n)} \), is the derivative of \( f^{(n-1)} \).
+\end{definition}
+
+\subsection{Implicit Differentiation}
+\begin{method}
+Implicit differentiation is used when a function is given in an implicit form \( F(x, y) = 0 \) rather than the explicit form \( y = f(x) \).
+\end{method}
+
+\section{Applications of Derivatives}
+\subsection{Tangent Lines and Normal Lines}
+\begin{application}
+The equation of the tangent line to a curve \( y = f(x) \) at a point \( (a, f(a)) \) is \( y - f(a) = f'(a)(x - a) \).
+\end{application}
+
+\subsection{Increasing and Decreasing Functions}
+\begin{theorem}
+A function \( f \) is increasing (decreasing) on an interval if its derivative \( f' \) is positive (negative) on that interval.
+\end{theorem}
+
+\subsection{Maxima and Minima}
+\begin{method}
+Critical points, where \( f'(x) = 0 \) or \( f'(x) \) does not exist, are potential locations of local maxima or minima.
+\end{method}
+
+\subsection{Concavity and Inflection Points}
+\begin{discussion}
+A function is concave up (down) where its second derivative \( f'' \) is positive (negative). Points where \( f'' \) changes sign are inflection points.
+\end{discussion}
+
+\subsection{Optimization Problems}
+\begin{application}
+Optimization involves finding the maximum or minimum values of a function subject to certain constraints, often using derivatives.
+\end{application}
+
+\subsection{Related Rates}
+\begin{method}
+Related rates problems involve finding the rate at which one quantity changes with respect to another using the chain rule.
+\end{method}
+
+\chapter{Integration}
+\section{Antiderivatives}
+\subsection{Definition and Basic Techniques}
+\begin{definition}
+An antiderivative of a function \( f(x) \) is a function \( F(x) \) such that \( F'(x) = f(x) \).
+\end{definition}
+\begin{example}
+An antiderivative of \( f(x) = 2x \) is \( F(x) = x^2 + C \), where \( C \) is a constant.
+\end{example}
+
+\subsection{Indefinite Integrals}
+\begin{definition}
+The indefinite integral of \( f(x) \), denoted \( \int f(x) \, dx \), represents the collection of all its antiderivatives.
+\end{definition}
+
+\subsection{Initial Value Problems}
+\begin{problem}
+Given a differential equation \( f'(x) = g(x) \) and an initial condition \( f(x_0) = y_0 \), find the function \( f(x) \).
+\end{problem}
+
+\section{Definite Integrals}
+\subsection{Definition and Interpretation}
+\begin{definition}
+The definite integral of \( f(x) \) from \( a \) to \( b \), denoted \( \int_a^b f(x) \, dx \), is the limit of the sum of areas of rectangles under the curve of \( f(x) \) as the width of the rectangles approaches zero.
+\end{definition}
+
+\subsection{Properties of Definite Integrals}
+\begin{theorem}
+Properties include linearity, additivity, and the fact that the integral from \( a \) to \( a \) is zero.
+\end{theorem}
+
+\subsection{Fundamental Theorem of Calculus}
+\begin{theorem}
+If \( F \) is an antiderivative of \( f \) on an interval, then \( \int_a^b f(x) \, dx = F(b) - F(a) \).
+\end{theorem}
+
+\subsection{Numerical Integration Methods}
+\begin{method}
+Methods include the Trapezoidal Rule and Simpson's Rule, which provide approximations of definite integrals.
+\end{method}
+
+\section{Applications of Integrals}
+\subsection{Area Between Curves}
+\begin{application}
+The area between curves \( f(x) \) and \( g(x) \) from \( a \) to \( b \) is \( \int_a^b |f(x) - g(x)| \, dx \).
+\end{application}
+
+\subsection{Volumes of Solids of Revolution}
+\begin{application}
+The volume of a solid obtained by rotating a region about an axis can be found using the Disk or Washer methods.
+\end{application}
+
+\subsection{Arc Length and Surface Area}
+\begin{method}
+Formulas for the arc length of a curve and the surface area of a solid of revolution involve definite integrals.
+\end{method}
+
+\subsection{Work and Fluid Forces}
+\begin{application}
+Work done in moving an object and the force exerted by a fluid can be calculated using integration.
+\end{application}
+
+\chapter{Advanced Topics in Calculus}
+\section{Sequences and Series}
+\subsection{Convergence and Divergence}
+\begin{definition}
+A sequence \( \{a_n\} \) converges if it approaches a limit as \( n \) goes to infinity. A series \( \sum a_n \) converges if the sequence of its partial sums converges.
+\end{definition}
+
+\subsection{Tests for Convergence}
+\begin{method}
+Tests include the Integral Test, Comparison Test, Ratio Test, and Root Test.
+\end{method}
+
+\subsection{Power Series and Taylor Series}
+\begin{definition}
+A power series is a series of the form \( \sum_{n=0}^\infty a_n (x - c)^n \). A Taylor series is a power series that represents a function.
+\end{definition}
+
+\section{Multivariable Calculus}
+\subsection{Functions of Several Variables}
+\begin{definition}
+A function of several variables is a function that takes several inputs and produces a single output.
+\end{definition}
+
+\subsection{Partial Derivatives}
+\begin{definition}
+The partial derivative of a function with respect to one of its variables is its derivative with respect to that variable, holding the other variables constant.
+\end{definition}
+
+\subsection{Multiple Integrals}
+\begin{definition}
+Multiple integrals involve integration over more than one variable, such as double and triple integrals.
+\end{definition}
+
+\subsection{Vector Calculus}
+\begin{discussion}
+Vector calculus involves differentiation and integration of vector fields, including topics like gradient, divergence, and curl.
+\end{discussion}
+
+\section{Differential Equations}
+\subsection{First Order Differential Equations}
+\begin{method}
+Methods for solving include separation of variables, integrating factors, and exact equations.
+\end{method}
+
+\subsection{Second Order Linear Differential Equations}
+\begin{method}
+Includes homogeneous and non-homogeneous equations, characteristic equations, and particular solutions.
+\end{method}
+
+\subsection{Systems of Differential Equations}
+\begin{discussion}
+Systems of differential equations involve several interrelated differential equations and can be solved using matrix methods and eigenvalues.
+\end{discussion}
+
+\section{Conclusion}
 \paragraph{}
-The concept of a derivative is fundamental in the study of calculus.
-
-\section*{Conclusion}
-\paragraph{}
-This chapter introduces the important topic of the derivative. Please fork the LaTeX source code for CiB (available on GitHub) and create your own book that chooses the facts and exercises most relevant to you! Also, starring the CiB project on GitHub would be greatly appreciated! Thanks for reading CiB!
-
+This concludes the math currently included in CiB. Please fork the LaTeX source code for CiB (available on GitHub) and create your own book that chooses the facts and exercises most relevant to you! Also, starring the CiB project on GitHub would be greatly appreciated! Thanks for reading CiB!
 
 
 % --- Appendices ---
