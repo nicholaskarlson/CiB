@@ -67,7 +67,7 @@
         
         % Title and additional info
         \node at (current page.center) [font=\Huge, text width=0.8\textwidth, align=center] 
-            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.2}};
+            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.3}};
             
         \node[align=center, font=\large] at (current page.center) 
             [yshift=-2.5cm] {\today}; % <- This is the compilation date
@@ -402,19 +402,389 @@ Math, in many ways, is a collective endeavor. GitHub can provide a dynamic Commu
 \section{What is a Function?}
 \subsection{Definition and Examples}
 \begin{definition}
-A function is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output.
+A function is a relation between a set of inputs (domain) and a set of permissible outputs (range) with the property that each input is related to exactly one output.
 \end{definition}
+
 \begin{example}
 Consider the function \( f(x) = x^2 \), which maps each real number to its square.
 \end{example}
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(f(x)\),
+    xmin=-3, xmax=3,
+    ymin=-1, ymax=9,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+]
+\addplot[domain=-3:3, samples=100, smooth, thick, blue] {x^2};
+\node[anchor=west] at (axis cs: 2,4) {\(f(x) = x^2\)};
+\end{axis}
+\end{tikzpicture}
+
+\begin{example}
+Consider the function \( g(x) = \sin(x) \), which maps real numbers to their sine values.
+\end{example}
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(g(x)\),
+    xmin=-2*pi, xmax=2*pi,
+    ymin=-1.5, ymax=1.5,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west},
+    xtick={-6.28318, -3.14159, 0, 3.14159, 6.28318},
+    xticklabels={\(-2\pi\), \(-\pi\), 0, \(\pi\), \(2\pi\)}
+]
+\addplot[domain=-2*pi:2*pi, samples=100, smooth, thick, red] {sin(deg(x))};
+\node[anchor=west] at (axis cs: 3,0.5) {\(g(x) = \sin(x)\)};
+\end{axis}
+\end{tikzpicture}
+
+\begin{example}
+Consider the piecewise function \( h(x) \) defined as \( h(x) = \left\{\begin{array}{ll} x^2 & \text{if } x \leq 0 \\ \sqrt{x} & \text{if } x > 0 \end{array}\right. \).
+\end{example}
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(h(x)\),
+    xmin=-3, xmax=3,
+    ymin=-1, ymax=3,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+]
+\addplot[domain=-3:0, samples=50, smooth, thick, green] {x^2};
+\addplot[domain=0:3, samples=50, smooth, thick, green] {sqrt(x)};
+\node[anchor=west] at (axis cs: 2,1.5) {\(h(x)\)};
+\end{axis}
+\end{tikzpicture}
+
+\subsection{Exercises}
+\begin{exercise}
+Graph the function \( f(x) = 3x - 2 \). Identify its slope and y-intercept.
+\end{exercise}
+
+\begin{exercise}
+Consider the function \( g(x) = \frac{1}{x} \). For what values of \( x \) is \( g(x) \) undefined?
+\end{exercise}
+
+\begin{exercise}
+Find the domain and range of the function \( h(x) = \sqrt{x + 4} \).
+\end{exercise}
+
+\begin{exercise}
+Determine if the function \( f(x) = x^3 - x \) is even, odd, or neither. Justify your answer.
+\end{exercise}
+
+\begin{exercise}
+Sketch the graph of the piecewise function \( p(x) = \left\{\begin{array}{ll} x^2 & \text{if } x < 0 \\ x + 1 & \text{if } x \geq 0 \end{array}\right. \). Indicate any points of discontinuity.
+\end{exercise}
+
+\begin{exercise}
+Given the function \( f(x) = 2x^2 - 5x + 3 \), find \( f(-1) \) and \( f(2) \).
+\end{exercise}
+
+\begin{exercise}
+For the function \( f(x) = |x - 3| \), find the x-coordinate where \( f(x) = 0 \).
+\end{exercise}
+
+\begin{exercise}
+Create a function \( f(x) \) that has a domain of all real numbers except \( x = 2 \) and a range of \( y \geq 0 \).
+\end{exercise}
+
+\begin{exercise}
+Determine the intervals on which the function \( f(x) = -x^2 + 4x - 3 \) is increasing and decreasing.
+\end{exercise}
+
+\begin{exercise}
+For the function \( g(x) = \cos(x) \), evaluate \( g(\pi/2) \) and \( g(\pi) \).
+\end{exercise}
+
+% You can add instructions for submitting solutions or further exploration activities here
+
+\section{Solutions to Exercises}
+
+\begin{solution}[1]
+To graph \( f(x) = 3x - 2 \), we note that the slope (m) is 3 and the y-intercept (b) is -2. The graph is a straight line with these characteristics.
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(f(x)\),
+    xmin=-3, xmax=3,
+    ymin=-5, ymax=7,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+]
+\addplot[domain=-3:3, samples=100, smooth, thick, blue] {3*x - 2};
+\end{axis}
+\end{tikzpicture}
+\end{solution}
+
+\begin{solution}[2]
+The function \( g(x) = \frac{1}{x} \) is undefined when \( x = 0 \) because division by zero is not allowed.
+\end{solution}
+
+\begin{solution}[3]
+For \( h(x) = \sqrt{x + 4} \), the domain is \( x \geq -4 \) (since the expression inside the square root must be non-negative), and the range is \( y \geq 0 \) (since the square root produces non-negative results).
+\end{solution}
+
+\begin{solution}[4]
+The function \( f(x) = x^3 - x \) is odd because \( f(-x) = (-x)^3 - (-x) = -x^3 + x = -f(x) \).
+\end{solution}
+
+\begin{solution}[5]
+The piecewise function \( p(x) \) is sketched below. It is discontinuous at \( x = 0 \) since the left-hand limit (0) does not equal the right-hand limit (1).
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(p(x)\),
+    xmin=-3, xmax=3,
+    ymin=-1, ymax=4,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+]
+\addplot[domain=-3:0, samples=50, smooth, thick, green, unbounded coords=jump] {x^2};
+\addplot[domain=0:3, samples=50, smooth, thick, green] {x + 1};
+\end{axis}
+\end{tikzpicture}
+\end{solution}
+
+\begin{solution}[6]
+For \( f(x) = 2x^2 - 5x + 3 \), we find \( f(-1) = 2(-1)^2 - 5(-1) + 3 = 10 \) and \( f(2) = 2(2)^2 - 5(2) + 3 = -1 \).
+\end{solution}
+
+\begin{solution}[7]
+The function \( f(x) = |x - 3| \) equals 0 when \( x - 3 = 0 \), i.e., \( x = 3 \).
+\end{solution}
+
+\begin{solution}[8]
+One such function is \( f(x) = \frac{1}{(x-2)^2} \). The denominator ensures that \( x \neq 2 \) (domain), and the square ensures all output values are positive (range).
+\end{solution}
+
+\begin{solution}[9]
+For \( f(x) = -x^2 + 4x - 3 \), the function is increasing where its derivative \( f'(x) = -2x + 4 \) is positive, i.e., for \( x < 2 \), and decreasing where \( f'(x) \) is negative, i.e., for \( x > 2 \).
+\end{solution}
+
+\begin{solution}[10]
+For \( g(x) = \cos(x) \), we have \( g(\pi/2) = \cos(\pi/2) = 0 \) and \( g(\pi) = \cos(\pi) = -1 \).
+\end{solution}
 
 \subsection{Domain and Range}
 \begin{definition}
 The domain of a function is the set of all possible inputs, while the range is the set of all possible outputs.
 \end{definition}
+
 \begin{example}
-For \( f(x) = \sqrt{x} \), the domain is \( x \geq 0 \) and the range is \( y \geq 0 \).
+For \( f(x) = \sqrt{x} \), the domain is \( x \geq 0 \) and the range is \( y \geq 0 \). The graph of this function is as follows:
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(f(x)\),
+    xmin=0, xmax=4,
+    ymin=0, ymax=2,
+    samples=100,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+]
+\addplot[domain=0:4, smooth, thick, blue] {sqrt(x)};
+\end{axis}
+\end{tikzpicture}
 \end{example}
+
+\begin{example}
+Consider the function \( g(x) = \frac{1}{x} \). Its domain is \( x \neq 0 \) and its range is \( y \neq 0 \). The graph is given by:
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(g(x)\),
+    xmin=-5, xmax=5,
+    ymin=-5, ymax=5,
+    samples=100,
+    restrict y to domain=-5:5,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+]
+\addplot[domain=-5:-0.1, samples=50, smooth, thick, red] {1/x};
+\addplot[domain=0.1:5, samples=50, smooth, thick, red] {1/x};
+\end{axis}
+\end{tikzpicture}
+\end{example}
+
+\begin{example}
+For the function \( h(x) = x^2 - 4 \), the domain is all real numbers, but the range is \( y \geq -4 \). Its graph is:
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(h(x)\),
+    xmin=-3, xmax=3,
+    ymin=-5, ymax=5,
+    samples=100,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+]
+\addplot[domain=-3:3, smooth, thick, green] {x^2 - 4};
+\end{axis}
+\end{tikzpicture}
+\end{example}
+
+
+\subsection{Exercises on Domain and Range}
+
+\begin{exercise}
+Determine the domain and range of the function \( f(x) = 2x + 3 \).
+\end{exercise}
+
+\begin{exercise}
+Find the domain and range of the function \( g(x) = \frac{1}{x - 2} \).
+\end{exercise}
+
+\begin{exercise}
+Identify the domain and range for the quadratic function \( h(x) = x^2 - 6x + 9 \).
+\end{exercise}
+
+\begin{exercise}
+For the function \( k(x) = \ln(x - 1) \), determine its domain and range.
+\end{exercise}
+
+\begin{exercise}
+Consider the function \( m(x) = \frac{x}{x^2 - 4} \). What are its domain and range?
+\end{exercise}
+
+\begin{exercise}
+Find the domain and range for the trigonometric function \( n(x) = \sin(x) \).
+\end{exercise}
+
+\begin{exercise}
+Determine the domain and range of the absolute value function \( p(x) = |x + 5| \).
+\end{exercise}
+
+\begin{exercise}
+For the piecewise function \( q(x) = \begin{cases} x^2 & \text{if } x \leq 0 \\ 2x + 3 & \text{if } x > 0 \end{cases} \), identify the domain and range.
+\end{exercise}
+
+\begin{exercise}
+Consider the exponential function \( r(x) = 2^x \). What is its domain and range?
+\end{exercise}
+
+\begin{exercise}
+Identify the domain and range for the cubic function \( s(x) = x^3 - 3x \).
+\end{exercise}
+
+\subsection{Solutions to Exercises on Domain and Range}
+
+\begin{solution}[1]
+For \( f(x) = 2x + 3 \), the domain is all real numbers since there are no restrictions on \( x \). The range is also all real numbers because as \( x \) takes any real value, \( 2x + 3 \) also covers all real numbers.
+\end{solution}
+
+\begin{solution}[2]
+The function \( g(x) = \frac{1}{x - 2} \) is undefined when \( x = 2 \), so the domain is \( x \neq 2 \). The range is all real numbers except \( y \neq 0 \) because the function never touches the y-axis.
+\end{solution}
+
+\begin{solution}[3]
+For the quadratic function \( h(x) = x^2 - 6x + 9 \), the domain is all real numbers. Since the vertex of this parabola is at \( x = 3 \) and it opens upwards, the minimum value is \( h(3) = 0 \), thus the range is \( y \geq 0 \).
+\end{solution}
+
+\begin{solution}[4]
+The function \( k(x) = \ln(x - 1) \) requires \( x - 1 > 0 \), so the domain is \( x > 1 \). The range of a natural logarithm function is all real numbers.
+\end{solution}
+
+\begin{solution}[5]
+For \( m(x) = \frac{x}{x^2 - 4} \), the function is undefined for \( x = \pm 2 \), so the domain is \( x \neq \pm 2 \). The range is all real numbers, as the function can take any y-value.
+\end{solution}
+
+\begin{solution}[6]
+The domain of the trigonometric function \( n(x) = \sin(x) \) is all real numbers. The range of the sine function is between -1 and 1, inclusive, so \( y \in [-1, 1] \).
+\end{solution}
+
+\begin{solution}[7]
+For the absolute value function \( p(x) = |x + 5| \), the domain is all real numbers. The range is \( y \geq 0 \) since absolute values are always non-negative.
+\end{solution}
+
+\begin{solution}[8]
+The piecewise function \( q(x) \) is defined for all real numbers, so the domain is all real numbers. To find the range, consider each piece: \( x^2 \) and \( 2x + 3 \). The range is all non-negative values for \( x^2 \) and all real numbers for \( 2x + 3 \), thus the range is all real numbers.
+\end{solution}
+
+\begin{solution}[9]
+For the exponential function \( r(x) = 2^x \), the domain is all real numbers, as exponents can take any real value. The range is \( y > 0 \) since exponential functions are always positive.
+\end{solution}
+
+\begin{solution}[10]
+The cubic function \( s(x) = x^3 - 3x \) has a domain of all real numbers. The range is also all real numbers because as a cubic function, it extends infinitely in both the positive and negative y-directions.
+\end{solution}
+
+% HERE
 
 \subsection{Types of Functions}
 \subsubsection{Linear Functions}
