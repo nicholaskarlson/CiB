@@ -1,7 +1,5 @@
 \documentclass[a4paper,12pt]{book}
 \usepackage{graphicx} % For graphics
-\usepackage{hyperref} % For hyperlinks
-% \usepackage{makeidx} % For making an index
 \usepackage{float}
 \usepackage{tikz}
 \usepackage{tkz-euclide} % Add this line to include the tkz-euclide package
@@ -13,9 +11,10 @@
 \pgfplotsset{compat=newest}
 \usepgfplotslibrary{fillbetween} 
 
-\newcommand{\inputtoc}[1]{\input{#1}}
+% Configure hyperref package to color links blue
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
 
-% ... (rest of your preamble)
+\newcommand{\inputtoc}[1]{\input{#1}}
 
 % \makeindex % Command to make the index
 
@@ -47,8 +46,7 @@
 \newtheorem{application}{Application}
 \newtheorem{definition}{Definition}
 \newtheorem{method}{Method}
-\newtheorem{discussion}{Discussion} 
-  
+\newtheorem{discussion}{Discussion}
 
 \begin{document}
 
@@ -67,7 +65,7 @@
         
         % Title and additional info
         \node at (current page.center) [font=\Huge, text width=0.8\textwidth, align=center] 
-            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.4}};
+            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.41}};
             
         \node[align=center, font=\large] at (current page.center) 
             [yshift=-2.5cm] {\today}; % <- This is the compilation date
@@ -1218,7 +1216,8 @@ To start solving calculus problems with Python:
 At the beginning of your notebook, install any necessary Python libraries. For these exercises, ensure NumPy, SymPy, and Matplotlib are available:
 
 \begin{verbatim}
-!pip install numpy sympy matplotlib
+Remove # if the following packages are not installed:
+# !pip install numpy sympy matplotlib
 \end{verbatim}
 
 \subsubsection*{Solving Exercise 1: Graphing a Linear Function}
@@ -1267,15 +1266,14 @@ print("g(x) is undefined for x = 0")
 
 \subsection*{Accessing the Completed Colab Notebook}
 
-The Colab notebook we've discussed is available for viewing and interaction. You can access it by clicking on the following link: \href{https://colab.research.google.com/drive/1C4Rnja-fjwVB6GI5h1vYItJ5fbxDHlxh}{Finished Colab Notebook on Graphing and Analysis}. This link will take you directly to the notebook hosted on Google Colab, where you can view the complete code and run it yourself.
+The Colab notebook we've discussed is available for viewing and interaction. You can access it by clicking on the following link: \href{https://colab.research.google.com/drive/1HF-cmwqfIZ803i1i-CFyR7ssWsDt7WvV}{Finished Colab Notebook on Graphing and Analysis}. This link will take you directly to the notebook hosted on Google Colab, where you can view the complete code and run it yourself.
 
-\url{https://colab.research.google.com/drive/1C4Rnja-fjwVB6GI5h1vYItJ5fbxDHlxh}
+\url{https://colab.research.google.com/drive/1HF-cmwqfIZ803i1i-CFyR7ssWsDt7WvV}
 
 \subsection*{Adding the Notebook to Your GitHub Repository}
 
 If you have downloaded the Colab notebook to your local machine and want to add it to your Git repository, follow these terminal commands on your Ubuntu machine:
 
-\begin{verbatim}
 \begin{verbatim}
 # Navigate to your local Git repository directory
 cd path/to/your/repo
