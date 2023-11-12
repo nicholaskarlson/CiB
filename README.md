@@ -1,6 +1,6 @@
 # Calculus in Brief (CiB) with GitHub and LaTeX
 
-**Version**: 0.3
+**Version**: 0.4
 
 ## About
 
