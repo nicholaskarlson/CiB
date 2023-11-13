@@ -74,7 +74,7 @@
         
         % Title and additional info
         \node at (current page.center) [font=\Huge, text width=0.8\textwidth, align=center] 
-            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.43}};
+            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.44}};
             
         \node[align=center, font=\large] at (current page.center) 
             [yshift=-2.5cm] {\today}; % <- This is the compilation date
@@ -2626,7 +2626,7 @@ Understanding one-sided limits is crucial for analyzing the behavior of function
 
 \subsubsection*{Practice Problems}
 
-\textbf{Let's work on some practice problems to reinforce our understanding of one-sided limits.}
+Let's work on some practice problems to reinforce our understanding of one-sided limits.
 
 \begin{problem}
 Find the one-sided limits of the following function as \( x \) approaches the given values:
@@ -2671,7 +2671,7 @@ Now, you have a set of practice problems for students to work on to enhance thei
 
 \subsubsection*{Practice Problems - Solutions}
 
-\textbf{Let's solve the practice problems related to one-sided limits.}
+Let's solve the practice problems related to one-sided limits.
 
 \begin{problem}
 Find the one-sided limits of the following function as \( x \) approaches the given values:
@@ -2758,7 +2758,7 @@ Determine if the following statements are true or false:
 
 \subsection{Limits Involving Infinity}
 
-\textbf{Limits as \( x \) Approaches Infinity}
+Limits as \( x \) Approaches Infinity
 
 When dealing with limits involving infinity, we are interested in understanding the behavior of a function as \( x \) approaches positive or negative infinity. Let's start by discussing limits as \( x \) approaches positive infinity (\( \infty \)).
 
@@ -3167,7 +3167,7 @@ In summary, these standard limit laws (sum law, product law, quotient law, and p
 
 \subsubsection*{Practice Problems}
 
-\textbf{Let's practice applying the limit laws we discussed in the previous section.}
+Let's practice applying the limit laws we discussed in the previous section.
 
 \begin{problem}
 Find the following limits using the sum law, product law, quotient law, or power law as appropriate:
@@ -3251,7 +3251,7 @@ Evaluate the following limits. You may use any of the limit laws:
 
 \subsubsection*{Practice Problems - Solutions}
 
-\textbf{Let's go through the solutions and explanations for the practice problems.}
+Let's go through the solutions and explanations for the practice problems.
 
 \begin{problem}
 Find the following limits using the sum law, product law, quotient law, or power law as appropriate:
@@ -3511,28 +3511,943 @@ Since \(1 \leq f(x) \leq h(x)\) for all \(x\), and both \(f(x)\) and \(h(x)\) ap
 \]
 \end{solution}
 
-% HERE
 
 \subsection{Limits of Trigonometric Functions}
+
+In calculus, we often encounter limits involving trigonometric functions. These limits are essential for understanding the behavior of functions near specific points and are used in various mathematical and scientific applications. Let's explore some important limits of trigonometric functions.
+
 \begin{theorem}
-Includes limits such as \( \lim_{x \to 0} \frac{\sin x}{x} = 1 \).
+One of the fundamental limits involving trigonometric functions is:
+\[
+\lim_{{x \to 0}} \frac{\sin x}{x} = 1
+\]
 \end{theorem}
 
+The limit \( \lim_{{x \to 0}} \frac{\sin x}{x} = 1 \) is a crucial result and has significant implications in calculus. It's often referred to as the Sine Limit or Squeeze Theorem. To understand why this limit is equal to 1, let's consider a graphical representation.
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines = center,
+    xlabel = \(x\),
+    ylabel = \(f(x)\),
+    xmin = -3, xmax = 3,
+    ymin = -0.5, ymax = 1.5,
+    unbounded coords=jump, % Skip over problematic points
+  ]
+
+  % Function f(x)
+  \addplot [
+    domain=-3:3,
+    samples=200,
+    color=blue,
+    restrict y to domain=-10:10, % Restrict the y-range to avoid huge values
+  ] 
+  {sin(deg(\x))/\x};
+  \addlegendentry{\(\frac{\sin x}{x}\)}
+
+  % Point at x = 0
+  \addplot [mark=*, color=blue] coordinates {(0,1)};
+
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+
+
+As \(x\) approaches 0, the graph of \(y = \frac{\sin x}{x}\) approaches the horizontal line \(y = 1\). This visual representation helps illustrate why \( \lim_{{x \to 0}} \frac{\sin x}{x} = 1 \).
+
+The significance of this limit is profound, as it forms the basis for understanding the derivatives of trigonometric functions and plays a crucial role in calculus and mathematical analysis. It is often used as a building block for solving more complex limits involving trigonometric functions.
+
+In addition to the limit mentioned above, there are other important limits involving trigonometric functions that are used in calculus, such as limits involving \(\sin x\), \(\cos x\), and \(\tan x\) as \(x\) approaches specific values. These limits provide insights into the behavior of trigonometric functions near certain points and are essential tools in calculus and mathematics.
+
+In practice, these limits are applied to solve various real-world problems, including physics, engineering, and mathematical modeling. Understanding the limits of trigonometric functions is a fundamental skill for students and professionals in these fields.
+
+\subsubsection*{Practice Problems}
+
+Let's practice evaluating limits of trigonometric functions.
+
+\begin{problem}
+Evaluate the following limit:
+\[
+\lim_{{x \to 0}} \frac{\sin 2x}{x}
+\]
+\end{problem}
+
+\begin{problem}
+Find the limit as \(x\) approaches \(0\) for the function \(f(x)\) defined as:
+\[
+f(x) =
+\begin{cases}
+  \frac{\sin 3x}{x} & \text{if } x \neq 0 \\
+  0 & \text{if } x = 0
+\end{cases}
+\]
+\end{problem}
+
+\begin{problem}
+Determine the limit as \(x\) approaches \(\frac{\pi}{2}\) for the function \(g(x)\) given by:
+\[
+g(x) = \cos x
+\]
+\end{problem}
+
+\begin{problem}
+Evaluate the following limit:
+\[
+\lim_{{x \to \frac{\pi}{4}}} \frac{\sin x - \cos x}{x - \frac{\pi}{4}}
+\]
+\end{problem}
+
+\subsubsection*{Practice Problems - Solutions}
+
+Let's go through the solutions and explanations for the practice problems.
+
+\begin{problem}
+Evaluate the following limit:
+\[
+\lim_{{x \to 0}} \frac{\sin 2x}{x}
+\]
+\end{problem}
+
+\begin{solution}
+To evaluate this limit, we can use the Squeeze Theorem. Notice that for all \(x \neq 0\), we have \(2x \leq \sin 2x \leq 2x\). Therefore, we can use the following inequalities:
+\[
+2x \leq \frac{\sin 2x}{x} \leq 2x
+\]
+Next, consider the limits of the bounds as \(x\) approaches 0:
+\[
+\lim_{{x \to 0}} (2x) = 0
+\]
+Since both \(2x\) and \(-2x\) approach 0 as \(x\) approaches 0, we have:
+\[
+0 \leq \lim_{{x \to 0}} \frac{\sin 2x}{x} \leq 0
+\]
+By the Squeeze Theorem, the limit of \(\frac{\sin 2x}{x}\) as \(x\) approaches 0 is 0.
+\end{solution}
+
+\begin{problem}
+Find the limit as \(x\) approaches \(0\) for the function \(f(x)\) defined as:
+\[
+f(x) =
+\begin{cases}
+  \frac{\sin 3x}{x} & \text{if } x \neq 0 \\
+  0 & \text{if } x = 0
+\end{cases}
+\]
+\end{problem}
+
+\begin{solution}
+To find this limit, we can directly apply the Sine Limit:
+\[
+\lim_{{x \to 0}} \frac{\sin x}{x} = 1
+\]
+In this case, \(3x\) is used instead of \(x\), but the form remains the same. Therefore:
+\[
+\lim_{{x \to 0}} \frac{\sin 3x}{3x} = \frac{1}{3} \cdot 3 = 1
+\]
+So, the limit of \(f(x)\) as \(x\) approaches 0 is 1.
+\end{solution}
+
+\begin{problem}
+Determine the limit as \(x\) approaches \(\frac{\pi}{2}\) for the function \(g(x)\) given by:
+\[
+g(x) = \cos x
+\]
+\end{problem}
+
+\begin{solution}
+To find this limit, we can directly substitute \(\frac{\pi}{2}\) into the function:
+\[
+\lim_{{x \to \frac{\pi}{2}}} \cos x = \cos \left(\frac{\pi}{2}\right) = 0
+\]
+So, the limit of \(g(x)\) as \(x\) approaches \(\frac{\pi}{2}\) is 0.
+\end{solution}
+
+\begin{problem}
+Evaluate the following limit:
+\[
+\lim_{{x \to \frac{\pi}{4}}} \frac{\sin x - \cos x}{x - \frac{\pi}{4}}
+\]
+\end{problem}
+
+\begin{solution}
+To evaluate this limit, we can apply L'Hôpital's Rule, as the limit has the form \(\frac{0}{0}\). Taking the derivatives of the numerator and denominator:
+\[
+\lim_{{x \to \frac{\pi}{4}}} \frac{\frac{d}{dx}(\sin x - \cos x)}{\frac{d}{dx}(x - \frac{\pi}{4})} = \lim_{{x \to \frac{\pi}{4}}} \frac{(\cos x + \sin x)'}{1} = \frac{(\cos \frac{\pi}{4} + \sin \frac{\pi}{4})'}{1} = \frac{\left(\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}\right)}{1} = 1
+\]
+So, the limit of \(\frac{\sin x - \cos x}{x - \frac{\pi}{4}}\) as \(x\) approaches \(\frac{\pi}{4}\) is 1.
+\end{solution}
+
 \section{Continuity - Detail}
-\subsection{Definition and Examples}
+\subsection{Continuity Definition and Examples}
+
+In calculus, the concept of continuity is fundamental in understanding the behavior of functions. A function is considered continuous at a point if it satisfies the following criteria:
+
 \begin{definition}
-A function is continuous at a point if it is defined at that point, its limit exists at that point, and the limit equals the function value.
+A function is continuous at a point \(x = a\) if the following conditions hold:
+\begin{enumerate}
+  \item The function is defined at \(x = a\), meaning that \(f(a)\) is defined.
+  \item The limit of the function as \(x\) approaches \(a\) exists, denoted as \(\lim_{{x \to a}} f(x)\).
+  \item The limit \(\lim_{{x \to a}} f(x)\) is equal to the function value at \(x = a\), i.e., \(\lim_{{x \to a}} f(x) = f(a)\).
+\end{enumerate}
 \end{definition}
+
+The concept of continuity is crucial because it helps us determine when a function behaves smoothly without abrupt jumps or breaks. Let's explore some examples to illustrate continuity:
+
+\begin{example}
+Consider the function \(f(x) = x^2\). Is this function continuous at \(x = 2\)?
+\end{example}
+
+\begin{solution}
+To check for continuity, we need to verify the three conditions of continuity.
+
+\begin{enumerate}
+  \item \(f(2) = 2^2 = 4\), so the function is defined at \(x = 2\).
+  \item Next, we find the limit as \(x\) approaches 2:
+  \[
+  \lim_{{x \to 2}} f(x) = \lim_{{x \to 2}} x^2 = 2^2 = 4
+  \]
+  The limit exists and is equal to 4.
+  \item Since \(f(2) = 4\) and \(\lim_{{x \to 2}} f(x) = 4\), the limit equals the function value at \(x = 2\), and therefore, the function \(f(x) = x^2\) is continuous at \(x = 2\).
+\end{enumerate}
+\end{solution}
+
+\begin{example}
+Now, let's consider the function \(g(x) = \frac{1}{x}\). Is this function continuous at \(x = 0\)?
+\end{example}
+
+\begin{solution}
+To check for continuity, we again examine the three conditions.
+
+\begin{enumerate}
+  \item \(g(0)\) is undefined since division by zero is undefined. Therefore, the function is not defined at \(x = 0\).
+  \item We cannot compute the limit as \(x\) approaches 0 for \(g(x)\) since it's undefined at that point.
+  \item Since the function is not defined at \(x = 0\), we cannot compare the limit and the function value. Therefore, the function \(g(x) = \frac{1}{x}\) is not continuous at \(x = 0\).
+\end{enumerate}
+\end{solution}
+
+\begin{example}
+Let's consider a piecewise function:
+\[
+h(x) =
+\begin{cases}
+  x + 2 & \text{if } x < 1 \\
+  3x - 1 & \text{if } x \geq 1
+\end{cases}
+\]
+Is this function continuous at \(x = 1\)?
+\end{example}
+
+\begin{solution}
+To determine continuity, we examine the three conditions for both branches of the piecewise function separately.
+
+For \(x < 1\):
+\begin{enumerate}
+  \item \(h(x) = x + 2\), so it is defined at \(x = 1\).
+  \item The limit as \(x\) approaches 1 for this branch:
+  \[
+  \lim_{{x \to 1^-}} (x + 2) = 1 + 2 = 3
+  \]
+  The limit exists and is equal to 3.
+  \item \(h(1) = 1 + 2 = 3\).
+\end{enumerate}
+
+For \(x \geq 1\):
+\begin{enumerate}
+  \item \(h(x) = 3x - 1\), so it is defined at \(x = 1\).
+  \item The limit as \(x\) approaches 1 for this branch:
+  \[
+  \lim_{{x \to 1^+}} (3x - 1) = 3(1) - 1 = 2
+  \]
+  The limit exists and is equal to 2.
+  \item \(h(1) = 3(1) - 1 = 2\).
+\end{enumerate}
+
+Since both branches are defined and the limits equal the function values at \(x = 1\), the function \(h(x)\) is continuous at \(x = 1\).
+\end{solution}
+
+Continuity is a fundamental concept in calculus, and understanding when a function is continuous at a point helps us analyze and work with functions in various applications.
+
+\subsubsection*{Practice Problems}
+
+Let's practice applying the concept of continuity with some example problems:
+
+\begin{problem}
+Determine if the following function is continuous at \(x = 3\):
+\[
+f(x) =
+\begin{cases}
+  2x + 1 & \text{if } x < 3 \\
+  x^2 - 1 & \text{if } x \geq 3
+\end{cases}
+\]
+\end{problem}
+
+\begin{problem}
+Find the values of \(a\) for which the function \(g(x) = ax^2 + 1\) is continuous at \(x = 2\).
+\end{problem}
+
+\begin{problem}
+Consider the function \(h(x) = \frac{1}{x}\). Determine all the values of \(x\) for which \(h(x)\) is continuous.
+\end{problem}
+
+\begin{problem}
+Investigate the continuity of the function \(k(x)\) defined as:
+\[
+k(x) =
+\begin{cases}
+  \sin x & \text{if } x \neq \pi \\
+  0 & \text{if } x = \pi
+\end{cases}
+\]
+\end{problem}
+
+\subsubsection*{Practice Problems - Solutions}
+
+Let's go through the solutions and explanations for the practice problems on continuity.
+
+\begin{problem}
+Determine if the following function is continuous at \(x = 3\):
+\[
+f(x) =
+\begin{cases}
+  2x + 1 & \text{if } x < 3 \\
+  x^2 - 1 & \text{if } x \geq 3
+\end{cases}
+\]
+\end{problem}
+
+\begin{solution}
+To check for continuity at \(x = 3\), we need to examine both branches of the function separately.
+
+For \(x < 3\):
+\begin{enumerate}
+  \item \(f(x) = 2x + 1\), so it is defined at \(x = 3\).
+  \item The limit as \(x\) approaches 3 for this branch:
+  \[
+  \lim_{{x \to 3^-}} (2x + 1) = 2(3) + 1 = 7
+  \]
+  The limit exists and is equal to 7.
+  \item \(f(3) = 2(3) + 1 = 7\).
+\end{enumerate}
+
+For \(x \geq 3\):
+\begin{enumerate}
+  \item \(f(x) = x^2 - 1\), so it is defined at \(x = 3\).
+  \item The limit as \(x\) approaches 3 for this branch:
+  \[
+  \lim_{{x \to 3^+}} (x^2 - 1) = 3^2 - 1 = 8
+  \]
+  The limit exists and is equal to 8.
+  \item \(f(3) = 3^2 - 1 = 8\).
+\end{enumerate}
+
+Since both branches are defined and the limits equal the function values at \(x = 3\), the function \(f(x)\) is continuous at \(x = 3\).
+\end{solution}
+
+\begin{problem}
+Find the values of \(a\) for which the function \(g(x) = ax^2 + 1\) is continuous at \(x = 2\).
+\end{problem}
+
+\begin{solution}
+For the function \(g(x) = ax^2 + 1\) to be continuous at \(x = 2\), it must satisfy the three conditions of continuity:
+
+\begin{enumerate}
+  \item \(g(2) = a(2)^2 + 1 = 4a + 1\) must be defined.
+  \item The limit as \(x\) approaches 2, denoted as \(\lim_{{x \to 2}} g(x)\), must exist.
+  \item \(\lim_{{x \to 2}} g(x)\) must be equal to \(g(2)\).
+\end{enumerate}
+
+First, we consider the limit:
+\[
+\lim_{{x \to 2}} g(x) = \lim_{{x \to 2}} (ax^2 + 1) = 4a + 1
+\]
+
+For the function to be continuous at \(x = 2\), the limit must exist, and it must be equal to \(g(2)\). Therefore, we have:
+\[
+4a + 1 = 4a + 1
+\]
+
+No matter the value of \(a\), the function \(g(x)\) will be continuous at \(x = 2\) since the limit always exists and is equal to \(4a + 1\). So, there are no restrictions on the value of \(a\) for continuity at \(x = 2\).
+\end{solution}
+
+\begin{problem}
+Consider the function \(h(x) = \frac{1}{x}\). Determine all the values of \(x\) for which \(h(x)\) is continuous.
+\end{problem}
+
+\begin{solution}
+To find the values of \(x\) for which \(h(x)\) is continuous, we need to consider where the function is defined and check if the limit as \(x\) approaches each point exists.
+
+The function \(h(x) = \frac{1}{x}\) is defined for all \(x\) except when \(x = 0\) since division by zero is undefined. Therefore, \(h(x)\) is not continuous at \(x = 0\) because it's not even defined at that point.
+
+For all other values of \(x\), \(h(x)\) is continuous since it's defined, and the limit as \(x\) approaches any point \(x = a\) (where \(a \neq 0\)) exists and is equal to \(\frac{1}{a}\).
+
+In summary, \(h(x)\) is continuous for all \(x\) except \(x = 0\).
+\end{solution}
+
+\begin{problem}
+Investigate the continuity of the function \(k(x)\) defined as:
+\[
+k(x) =
+\begin{cases}
+  \sin x & \text{if } x \neq \pi \\
+  0 & \text{if } x = \pi
+\end{cases}
+\]
+\end{problem}
+
+\begin{solution}
+To investigate the continuity of \(k(x)\), we need to check the conditions of continuity at \(x = \pi\).
+
+\begin{enumerate}
+  \item \(k(\pi) = 0\) is defined.
+  \item The limit as \(x\) approaches \(\pi\):
+  \[
+  \lim_{{x \to \pi}} k(x) = \lim_{{x \to \pi}} \sin x = \sin(\pi) = 0
+  \]
+  The limit exists and is equal to 0.
+  \item \(k(\pi) = 0\).
+\end{enumerate}
+
+Therefore, \(k(x)\) is continuous at \(x = \pi\).
+
+For all other values of \(x\), \(k(x)\) is the sine function, which is known to be continuous everywhere.
+
+In conclusion, \(k(x)\) is continuous for all \(x\).
+\end{solution}
 
 \subsection{Types of Discontinuities}
+
+In calculus, discontinuities are points where a function behaves in a way that is not continuous, typically due to a sudden change or a point of undefined behavior. Discontinuities can be classified into three main types: removable, jump, and infinite discontinuities.
+
 \begin{definition}
-Discontinuities can be classified as removable, jump, or infinite.
+\textbf{Removable Discontinuity:} A removable discontinuity occurs at a point where the function is undefined or has a jump but can be made continuous by redefining the function value at that point.
 \end{definition}
 
+Consider the function \(f(x)\) defined as:
+
+\[
+f(x) =
+\begin{cases}
+  \frac{\sin x}{x} & \text{if } x \neq 0 \\
+  2 & \text{if } x = 0
+\end{cases}
+\]
+
+
+The graph of \(f(x)\) is shown below:
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines = center,
+    xlabel = \(x\),
+    ylabel = \(f(x)\),
+    xmin = -5, xmax = 5,
+    ymin = -0.5, ymax = 2.5,
+    legend style={at={(0.95,0.95)}, anchor=north east}
+  ]
+  \addplot [
+    domain=-5:5,
+    samples=200,
+    color=blue,
+  ]
+  {x == 0 ? 1 : sin(deg(x))/x}; % Conditional function definition
+  \addlegendentry{\(\frac{\sin x}{x}\)}
+
+  \addplot [
+    mark=*,
+    color=red,
+    only marks,
+    mark size=2pt
+  ]
+  coordinates {(0,1)}; % Point to represent the limit at x = 0
+  \addlegendentry{\(f(0) = 1\)}
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+
+At \(x = 0\), the function \(f(x)\) is undefined (division by zero). However, we can redefine \(f(0)\) as 2 to make it continuous at \(x = 0\). This is an example of a removable discontinuity.
+
+
+\begin{definition}
+\textbf{Jump Discontinuity:} A jump discontinuity occurs at a point where there is a sudden jump in the function's values from one side to the other.
+\end{definition}
+
+Consider the function \(g(x)\) defined as:
+
+\[
+g(x) =
+\begin{cases}
+  x + 1 & \text{if } x < 0 \\
+  x^2 - 1 & \text{if } x \geq 0
+\end{cases}
+\]
+
+The graph of \(g(x)\) is shown below:
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines = center,
+    xlabel = \(x\),
+    ylabel = \(g(x)\),
+    xmin = -2, xmax = 2,
+    ymin = -1.5, ymax = 1.5,
+    legend style={at={(0.95,0.95)}, anchor=north east}
+  ]
+  \addplot [
+    domain=-2:0, % Exclusive upper bound
+    samples=200,
+    color=blue,
+  ]
+  {x + 1};
+  \addlegendentry{\(x + 1\)}
+
+  \addplot [
+    domain=0:2, % Exclusive lower bound
+    samples=200,
+    color=blue,
+  ]
+  {x^2 - 1};
+  \addlegendentry{\(x^2 - 1\)}
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+
+At \(x = 0\), there is a sudden jump in the function's values from \(g(0^-) = 1\) to \(g(0^+) = -1\). This is an example of a jump discontinuity.
+
+\begin{definition}
+\textbf{Infinite Discontinuity:} An infinite discontinuity occurs at a point where the function approaches positive or negative infinity as \(x\) approaches that point.
+\end{definition}
+
+Consider the function \(h(x)\) defined as:
+
+\[
+h(x) =
+\begin{cases}
+  \frac{1}{x} & \text{if } x \neq 0 \\
+  0 & \text{if } x = 0
+\end{cases}
+\]
+
+The graph of \(h(x)\) is shown below:
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines = center,
+    xlabel = \(x\),
+    ylabel = \(h(x)\),
+    xmin = -5, xmax = 5,
+    ymin = -5, ymax = 5,
+    legend style={at={(0.95,0.95)}, anchor=north east}
+  ]
+  \addplot [
+    domain=-5:-0.1, % Avoid getting too close to 0 from the left
+    samples=200,
+    color=blue,
+  ]
+  {1/x};
+  \addlegendentry{\(\frac{1}{x}\)}
+
+  \addplot [
+    domain=0.1:5, % Avoid getting too close to 0 from the right
+    samples=200,
+    color=blue,
+  ]
+  {1/x};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+
+As \(x\) approaches 0 from the left (\(x \to 0^-\)), \(h(x)\) approaches negative infinity (\(h(x) \to -\infty\)), and as \(x\) approaches 0 from the right (\(x \to 0^+\)), \(h(x)\) approaches positive infinity (\(h(x) \to +\infty\)). This is an example of an infinite discontinuity.
+
+\subsubsection*{Example Problems}
+
+\begin{example}
+Consider the function \(f(x)\) defined as:
+
+\[
+f(x) =
+\begin{cases}
+  \frac{x^2 - 4}{x - 2} & \text{if } x \neq 2 \\
+  k & \text{if } x = 2
+\end{cases}
+\]
+
+Determine the value of \(k\) that makes \(f(x)\) continuous at \(x = 2\).
+\end{example}
+
+\begin{solution}
+For \(f(x)\) to be continuous at \(x = 2\), we need to ensure that the limit of \(f(x)\) as \(x\) approaches 2 exists, and it must be equal to the value of \(f(x)\) at \(x = 2\). 
+
+First, let's calculate the limit as \(x\) approaches 2:
+
+\[
+\lim_{{x \to 2}} f(x) = \lim_{{x \to 2}} \frac{x^2 - 4}{x - 2}
+\]
+
+We can simplify this limit using algebraic manipulation:
+
+\[
+\lim_{{x \to 2}} \frac{x^2 - 4}{x - 2} = \lim_{{x \to 2}} \frac{(x + 2)(x - 2)}{x - 2}
+\]
+
+Now, we can cancel the common factor \((x - 2)\) from the numerator and denominator:
+
+\[
+\lim_{{x \to 2}} (x + 2) = 2 + 2 = 4
+\]
+
+So, the limit of \(f(x)\) as \(x\) approaches 2 is 4. To make \(f(x)\) continuous at \(x = 2\), we set \(k\) to be equal to this limit:
+
+\[
+k = 4
+\]
+
+Therefore, \(f(x)\) is continuous at \(x = 2\) when \(k = 4\).
+\end{solution}
+
+\begin{example}
+Consider the function \(g(x)\) defined as:
+
+\[
+g(x) =
+\begin{cases}
+  \sqrt{x} & \text{if } x \geq 0 \\
+  -\sqrt{-x} & \text{if } x < 0
+\end{cases}
+\]
+
+Determine the type(s) of discontinuity, if any, at \(x = 0\).
+\end{example}
+
+\begin{solution}
+To determine the type(s) of discontinuity at \(x = 0\), we need to analyze the behavior of \(g(x)\) as \(x\) approaches 0 from both the left (\(x \to 0^-\)) and the right (\(x \to 0^+\)).
+
+As \(x\) approaches 0 from the left (\(x \to 0^-\)), \(g(x)\) approaches:
+
+\[
+\lim_{{x \to 0^-}} g(x) = \lim_{{x \to 0^-}} (-\sqrt{-x}) = -\sqrt{0} = 0
+\]
+
+As \(x\) approaches 0 from the right (\(x \to 0^+\)), \(g(x)\) approaches:
+
+\[
+\lim_{{x \to 0^+}} g(x) = \lim_{{x \to 0^+}} (\sqrt{x}) = \sqrt{0} = 0
+\]
+
+Both the left and right limits are equal and finite (\(0\)). Therefore, there is no jump or infinite discontinuity at \(x = 0\). However, \(g(x)\) is defined differently for \(x \geq 0\) and \(x < 0\), which means there is a removable discontinuity at \(x = 0\).
+
+To make \(g(x)\) continuous at \(x = 0\), we can redefine the function value at \(x = 0\) as \(g(0) = 0\). This removes the discontinuity, making \(g(x)\) continuous at \(x = 0\).
+\end{solution}
+
+\begin{example}
+Consider the function \(h(x)\) defined as:
+
+\[
+h(x) =
+\begin{cases}
+  \frac{1}{x^2} & \text{if } x \neq 0 \\
+  k & \text{if } x = 0
+\end{cases}
+\]
+
+Determine the values of \(k\) that make \(h(x)\) continuous at \(x = 0\).
+\end{example}
+
+\begin{solution}
+For \(h(x)\) to be continuous at \(x = 0\), we need to ensure that the limit of \(h(x)\) as \(x\) approaches 0 exists, and it must be equal to the value of \(h(x)\) at \(x = 0\).
+
+First, let's calculate the limit as \(x\) approaches 0:
+
+\[
+\lim_{{x \to 0}} h(x) = \lim_{{x \to 0}} \frac{1}{x^2}
+\]
+
+As \(x\) approaches 0, the denominator \(x^2\) approaches 0, and the fraction \(\frac{1}{x^2}\) approaches positive infinity (\(+\infty\)). Therefore, the limit of \(h(x)\) as \(x\) approaches 0 is \(+\infty\).
+
+To make \(h(x)\) continuous at \(x = 0\), we set \(k\) to be equal to this limit:
+
+\[
+k = +\infty
+\]
+
+Therefore, \(h(x)\) is continuous at \(x = 0\) when \(k = +\infty\).
+\end{solution}
+
+\subsubsection*{Solutions to Example Problems}
+
+\begin{example}
+Consider the function \(f(x)\) defined as:
+
+\[
+f(x) =
+\begin{cases}
+  \frac{x^2 - 4}{x - 2} & \text{if } x \neq 2 \\
+  k & \text{if } x = 2
+\end{cases}
+\]
+
+Determine the value of \(k\) that makes \(f(x)\) continuous at \(x = 2\).
+\end{example}
+
+\begin{solution}
+For \(f(x)\) to be continuous at \(x = 2\), we need to ensure that the limit of \(f(x)\) as \(x\) approaches 2 exists, and it must be equal to the value of \(f(x)\) at \(x = 2\). 
+
+First, let's calculate the limit as \(x\) approaches 2:
+
+\[
+\lim_{{x \to 2}} f(x) = \lim_{{x \to 2}} \frac{x^2 - 4}{x - 2}
+\]
+
+We can simplify this limit using algebraic manipulation:
+
+\[
+\lim_{{x \to 2}} \frac{x^2 - 4}{x - 2} = \lim_{{x \to 2}} \frac{(x + 2)(x - 2)}{x - 2}
+\]
+
+Now, we can cancel the common factor \((x - 2)\) from the numerator and denominator:
+
+\[
+\lim_{{x \to 2}} (x + 2) = 2 + 2 = 4
+\]
+
+So, the limit of \(f(x)\) as \(x\) approaches 2 is 4. To make \(f(x)\) continuous at \(x = 2\), we set \(k\) to be equal to this limit:
+
+\[
+k = 4
+\]
+
+Therefore, \(f(x)\) is continuous at \(x = 2\) when \(k = 4\).
+\end{solution}
+
+\begin{example}
+Consider the function \(g(x)\) defined as:
+
+\[
+g(x) =
+\begin{cases}
+  \sqrt{x} & \text{if } x \geq 0 \\
+  -\sqrt{-x} & \text{if } x < 0
+\end{cases}
+\]
+
+Determine the type(s) of discontinuity, if any, at \(x = 0\).
+\end{example}
+
+\begin{solution}
+To determine the type(s) of discontinuity at \(x = 0\), we need to analyze the behavior of \(g(x)\) as \(x\) approaches 0 from both the left (\(x \to 0^-\)) and the right (\(x \to 0^+\)).
+
+As \(x\) approaches 0 from the left (\(x \to 0^-\)), \(g(x)\) approaches:
+
+\[
+\lim_{{x \to 0^-}} g(x) = \lim_{{x \to 0^-}} (-\sqrt{-x}) = -\sqrt{0} = 0
+\]
+
+As \(x\) approaches 0 from the right (\(x \to 0^+\)), \(g(x)\) approaches:
+
+\[
+\lim_{{x \to 0^+}} g(x) = \lim_{{x \to 0^+}} (\sqrt{x}) = \sqrt{0} = 0
+\]
+
+Both the left and right limits are equal and finite (\(0\)). Therefore, there is no jump or infinite discontinuity at \(x = 0\). However, \(g(x)\) is defined differently for \(x \geq 0\) and \(x < 0\), which means there is a removable discontinuity at \(x = 0\).
+
+To make \(g(x)\) continuous at \(x = 0\), we can redefine the function value at \(x = 0\) as \(g(0) = 0\). This removes the discontinuity, making \(g(x)\) continuous at \(x = 0\).
+\end{solution}
+
+\begin{example}
+Consider the function \(h(x)\) defined as:
+
+\[
+h(x) =
+\begin{cases}
+  \frac{1}{x^2} & \text{if } x \neq 0 \\
+  k & \text{if } x = 0
+\end{cases}
+\]
+
+Determine the values of \(k\) that make \(h(x)\) continuous at \(x = 0\).
+\end{example}
+
+\begin{solution}
+For \(h(x)\) to be continuous at \(x = 0\), we need to ensure that the limit of \(h(x)\) as \(x\) approaches 0 exists, and it must be equal to the value of \(h(x)\) at \(x = 0\).
+
+First, let's calculate the limit as \(x\) approaches 0:
+
+\[
+\lim_{{x \to 0}} h(x) = \lim_{{x \to 0}} \frac{1}{x^2}
+\]
+
+As \(x\) approaches 0, the denominator \(x^2\) approaches 0, and the fraction \(\frac{1}{x^2}\) approaches positive infinity (\(+\infty\)). Therefore, the limit of \(h(x)\) as \(x\) approaches 0 is \(+\infty\).
+
+To make \(h(x)\) continuous at \(x = 0\), we set \(k\) to be equal to this limit:
+
+\[
+k = +\infty
+\]
+
+Therefore, \(h(x)\) is continuous at \(x = 0\) when \(k = +\infty\).
+\end{solution}
+
 \subsection{Intermediate Value Theorem}
+
 \begin{theorem}
 If a function is continuous on a closed interval \([a, b]\) and \( N \) is any number between \( f(a) \) and \( f(b) \), then there exists a number \( c \) in the interval such that \( f(c) = N \).
 \end{theorem}
+
+\begin{definition}
+A function \( f \) is said to be continuous on a closed interval \([a, b]\) if it is continuous at every point in the interval.
+\end{definition}
+
+\begin{discussion}
+The Intermediate Value Theorem is a fundamental result in calculus that asserts the existence of a point in a continuous function where the function takes on a given value. This theorem is particularly useful in proving the existence of roots.
+\end{discussion}
+
+\begin{example}
+Consider the function \( f(x) = x^2 - 4 \) on the interval \([-3, 3]\). Since \( f(-3) = 5 \) and \( f(3) = 5 \), and \( 0 \) is between \( 5 \) and \( 5 \), by the Intermediate Value Theorem, there exists a \( c \) in \([-3, 3]\) such that \( f(c) = 0 \).
+\end{example}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    title={Graph of \( f(x) = x^2 - 4 \)},
+    xlabel=\( x \),
+    ylabel=\( f(x) \),
+    xmin=-3.5, xmax=3.5,
+    ymin=-5, ymax=5,
+    axis lines=center,
+    grid=both,
+    minor tick num=1,
+    major grid style={line width=.2pt,draw=gray!50},
+    minor grid style={line width=.1pt,draw=gray!25},
+    legend pos=north west,
+]
+
+\addplot[smooth, thick, color=blue] {x^2 - 4};
+\addlegendentry{\( f(x) = x^2 - 4 \)}
+
+\addplot[holdot] coordinates{(-2,0) (2,0)};
+\addplot[soldot] coordinates{(-3,5) (3,5)};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{exercise}
+Show using the Intermediate Value Theorem that the function \( g(x) = x^3 - x - 1 \) has a root in the interval \([1, 2]\).
+\end{exercise}
+
+% You may add more exercises, examples, or discussions as needed.
+
+\subsubsection*{Practice Problems on Intermediate Value Theorem}
+
+\begin{problem}
+Show that the function \( h(x) = 3x^3 - 2x + 1 \) has at least one root in the interval \([-2, 2]\). 
+\end{problem}
+
+\begin{solution}[Optional]
+% Here you can include a detailed solution or hints. This part can be left for the students to solve.
+\end{solution}
+
+\begin{problem}
+Consider the function \( k(x) = \cos(x) - x \). Use the Intermediate Value Theorem to prove that there is a root of \( k \) in the interval \([0, \frac{\pi}{2}]\).
+\end{problem}
+
+\begin{solution}[Optional]
+% Solution or hints go here.
+\end{solution}
+
+\begin{problem}
+Let \( f(x) = e^x - 4x \). Demonstrate using the IVT that \( f \) has a root between 1 and 2.
+\end{problem}
+
+\begin{solution}[Optional]
+% Solution or hints go here.
+\end{solution}
+
+\begin{problem}
+Given the function \( m(x) = x^5 - 5x + 4 \), use the Intermediate Value Theorem to find an interval of length 1 where \( m \) must have a root.
+\end{problem}
+
+\begin{solution}[Optional]
+% Solution or hints go here.
+\end{solution}
+
+\begin{problem}
+Assume the function \( p(x) = \ln(x) - x^2 + 3 \) is continuous on the interval \([1, 4]\). Apply the IVT to prove that \( p \) has at least one root in this interval.
+\end{problem}
+
+\begin{solution}[Optional]
+% Solution or hints go here.
+\end{solution}
+
+% More problems can be added as per the requirement.
+
+\subsubsection*{Solutions to Practice Problems on Intermediate Value Theorem}
+
+\begin{solution}[\textbf{Problem 1}]
+To show that \( h(x) = 3x^3 - 2x + 1 \) has at least one root in the interval \([-2, 2]\), we need to check the values of \( h \) at the endpoints and apply the IVT.
+
+At \( x = -2 \), \( h(-2) = 3(-2)^3 - 2(-2) + 1 = -24 + 4 + 1 = -19 \).
+
+At \( x = 2 \), \( h(2) = 3(2)^3 - 2(2) + 1 = 24 - 4 + 1 = 21 \).
+
+Since \( h(-2) < 0 \) and \( h(2) > 0 \), and \( h \) is a polynomial (hence continuous), by the IVT, there is at least one root of \( h \) in the interval \([-2, 2]\).
+\end{solution}
+
+\begin{solution}[\textbf{Problem 2}]
+For \( k(x) = \cos(x) - x \), we evaluate \( k \) at \( 0 \) and \( \frac{\pi}{2} \):
+
+At \( x = 0 \), \( k(0) = \cos(0) - 0 = 1 \).
+
+At \( x = \frac{\pi}{2} \), \( k(\frac{\pi}{2}) = \cos(\frac{\pi}{2}) - \frac{\pi}{2} = -\frac{\pi}{2} \).
+
+Since \( k(0) > 0 \) and \( k(\frac{\pi}{2}) < 0 \), and \( k \) is continuous, there must be a root of \( k \) in the interval \([0, \frac{\pi}{2}]\) by the IVT.
+\end{solution}
+
+\begin{solution}[\textbf{Problem 3}]
+To apply the IVT to \( f(x) = e^x - 4x \) in the interval [1, 2], we first evaluate \( f \) at the endpoints:
+
+At \( x = 1 \), \( f(1) = e^1 - 4(1) = e - 4 \).
+
+At \( x = 2 \), \( f(2) = e^2 - 4(2) = e^2 - 8 \).
+
+Since \( e < 4 \) and \( e^2 > 8 \), it follows that \( f(1) < 0 \) and \( f(2) > 0 \). Hence, by the IVT, there is a root of \( f \) between 1 and 2.
+\end{solution}
+
+\begin{solution}[\textbf{Problem 4}]
+For the function \( m(x) = x^5 - 5x + 4 \), we need to find an interval of length 1 where \( m \) has a root. 
+
+Consider the intervals \([-1, 0]\) and \([0, 1]\). We compute \( m(-1) \), \( m(0) \), and \( m(1) \):
+
+\( m(-1) = (-1)^5 - 5(-1) + 4 = -1 + 5 + 4 = 8 \).
+
+\( m(0) = 0^5 - 5(0) + 4 = 4 \).
+
+\( m(1) = 1^5 - 5(1) + 4 = 0 \).
+
+Since \( m(-1) > 0 \) and \( m(0) < 0 \), there is at least one root in \([-1, 0]\) by the IVT. Similarly, since \( m(0) < 0 \) and \( m(1) = 0 \), there is a root at \( x = 1 \) in \([0, 1]\).
+\end{solution}
+
+\begin{solution}[\textbf{Problem 5}]
+For \( p(x) = \ln(x) - x^2 + 3 \), evaluate \( p \) at \( x = 1 \) and \( x = 4 \):
+
+\( p(1) = \ln(1) - 1^2 + 3 = 0 - 1 + 3 = 2 \).
+
+\( p(4) = \ln(4) - 4^2 + 3 = \ln(4) - 16 + 3 = \ln(4) - 13 \).
+
+Since \( \ln(4) < 13 \), it follows that \( p(4) < 0 \). Given \( p(1) > 0 \) and \( p(4) < 0 \), and \( p \) is continuous on \([1, 4]\), by the IVT, there is at least one root of \( p \) in this interval.
+\end{solution}
+
+% End of solutions
+
+% HERE
 
 \chapter{The Derivative - Detail}
 \section{Understanding Derivatives}
