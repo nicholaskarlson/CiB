@@ -74,7 +74,7 @@
         
         % Title and additional info
         \node at (current page.center) [font=\Huge, text width=0.8\textwidth, align=center] 
-            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.42}};
+            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.43}};
             
         \node[align=center, font=\large] at (current page.center) 
             [yshift=-2.5cm] {\today}; % <- This is the compilation date
@@ -2572,28 +2572,946 @@ The limit of \( t(x) = x^3 \) as \( x \) approaches -1 is -1. Choose \(\delta = 
 To show the limit of \( u(x) = \frac{1}{\sqrt{x + 4}} \) as \( x \) approaches 0 is \(\frac{1}{2}\), choose \(\delta = \min\left(1, 4\epsilon^2\right)\). Then \( 0 < |x| < \delta \) implies \( |u(x) - \frac{1}{2}| < \epsilon \).
 \end{solution}
 
-% HERE
-
 \subsection{One-sided Limits}
+
+In calculus, the concept of limits is essential for understanding the behavior of functions as they approach specific values. One-sided limits are a special case of limits that help us analyze the behavior of a function as it approaches a particular point from either the left or the right.
+
 \begin{definition}
-The one-sided limits of \( f(x) \) as \( x \) approaches \( a \) from the left (or right) are the values the function approaches as \( x \) approaches \( a \) from the left (or right).
+The one-sided limits of \( f(x) \) as \( x \) approaches \( a \) from the left (denoted as \( x \to a^- \)) and as \( x \) approaches \( a \) from the right (denoted as \( x \to a^+ \)) are the values the function approaches as \( x \) gets arbitrarily close to \( a \) from the left or the right, respectively. Mathematically, we write:
+
+\[
+\lim_{{x \to a^-}} f(x) = L^- \quad \text{and} \quad \lim_{{x \to a^+}} f(x) = L^+
+\]
+
+where \( L^- \) and \( L^+ \) are the one-sided limits from the left and right, respectively.
+
 \end{definition}
+
+To visualize one-sided limits, consider the following example:
+
+\begin{example}
+Let's examine the function \( f(x) = \frac{1}{x} \). We want to find the one-sided limits of this function as \( x \) approaches \( 0 \).
+
+\[
+\lim_{{x \to 0^-}} \frac{1}{x} = -\infty \quad \text{and} \quad \lim_{{x \to 0^+}} \frac{1}{x} = +\infty
+\]
+
+As \( x \) approaches \( 0 \) from the left, \( \frac{1}{x} \) goes to negative infinity, and as \( x \) approaches \( 0 \) from the right, \( \frac{1}{x} \) goes to positive infinity.
+
+\begin{center}
+\begin{tikzpicture}
+% Axis
+\draw[->] (-3,0) -- (3,0) node[below] {$x$};
+\draw[->] (0,-3) -- (0,3) node[left] {$f(x)$};
+
+% Asymptotes
+\draw[dashed] (-3,-3) -- (0,0);
+\draw[dashed] (3,3) -- (0,0);
+
+% Graph
+\draw[domain=-3:-0.2,smooth,variable=\x,blue] plot ({\x},{1/\x});
+\draw[domain=0.2:3,smooth,variable=\x,red] plot ({\x},{1/\x});
+
+% Labels
+\draw (0.2,-0.1) -- (0.2,0.1) node[above] {$0$};
+\draw (-0.2,-0.1) -- (-0.2,0.1) node[above] {$0$};
+\draw (1,1.2) node[right] {$y=\frac{1}{x}$};
+\end{tikzpicture}
+\end{center}
+
+In the graph, the function approaches negative infinity as \( x \) approaches \( 0 \) from the left and positive infinity as \( x \) approaches \( 0 \) from the right, indicating the one-sided limits.
+\end{example}
+
+Understanding one-sided limits is crucial for analyzing the behavior of functions near specific points, especially when dealing with discontinuities or asymptotes.
+
+\subsubsection*{Practice Problems}
+
+\textbf{Let's work on some practice problems to reinforce our understanding of one-sided limits.}
+
+\begin{problem}
+Find the one-sided limits of the following function as \( x \) approaches the given values:
+\begin{enumerate}[label=(\alph*)]
+  \item \( \lim_{{x \to 2^-}} (x^2 - 4x + 4) \)
+  \item \( \lim_{{x \to 2^+}} (x^2 - 4x + 4) \)
+  \item \( \lim_{{x \to 0^-}} \left(\frac{1}{x} - \frac{1}{|x|}\right) \)
+  \item \( \lim_{{x \to 0^+}} \left(\frac{1}{x} - \frac{1}{|x|}\right) \)
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Consider the function \( f(x) = \begin{cases}
+  x + 1 & \text{if } x < 0 \\
+  2x & \text{if } x \geq 0
+\end{cases} \)
+Find the following one-sided limits:
+\begin{enumerate}[label=(\alph*)]
+  \item \( \lim_{{x \to 0^-}} f(x) \)
+  \item \( \lim_{{x \to 0^+}} f(x) \)
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Determine if the following statements are true or false:
+\begin{enumerate}[label=(\alph*)]
+  \item If \( \lim_{{x \to a^-}} f(x) = \lim_{{x \to a^+}} f(x) \), then \( \lim_{{x \to a}} f(x) \) exists.
+  \item If \( \lim_{{x \to a^-}} f(x) \) and \( \lim_{{x \to a^+}} f(x) \) both exist and are finite, then \( \lim_{{x \to a}} f(x) \) exists and is finite.
+  \item If \( \lim_{{x \to a^-}} f(x) \) and \( \lim_{{x \to a^+}} f(x) \) both exist but are not equal, then \( \lim_{{x \to a}} f(x) \) does not exist.
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+  \item True. If the left-hand and right-hand limits are equal, then the two-sided limit exists and is equal to that common value.
+  \item True. If both one-sided limits exist and are finite, then the two-sided limit exists and is also finite.
+  \item True. If the one-sided limits are not equal, it indicates a discontinuity at \( x = a \), so the two-sided limit does not exist.
+\end{enumerate}
+\end{solution}
+
+Now, you have a set of practice problems for students to work on to enhance their understanding of one-sided limits. The solutions to these problems are also provided to help students check their work.
+
+\subsubsection*{Practice Problems - Solutions}
+
+\textbf{Let's solve the practice problems related to one-sided limits.}
+
+\begin{problem}
+Find the one-sided limits of the following function as \( x \) approaches the given values:
+\begin{enumerate}[label=(\alph*)]
+  \item \( \lim_{{x \to 2^-}} (x^2 - 4x + 4) \)
+  \item \( \lim_{{x \to 2^+}} (x^2 - 4x + 4) \)
+  \item \( \lim_{{x \to 0^-}} \left(\frac{1}{x} - \frac{1}{|x|}\right) \)
+  \item \( \lim_{{x \to 0^+}} \left(\frac{1}{x} - \frac{1}{|x|}\right) \)
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+  \item To find \( \lim_{{x \to 2^-}} (x^2 - 4x + 4) \), we substitute \( x = 2 \) into the expression:
+  
+  \[ \lim_{{x \to 2^-}} (x^2 - 4x + 4) = (2^2 - 4 \cdot 2 + 4) = 0 \]
+  
+  The limit exists, and its value is \( 0 \).
+  
+  \item To find \( \lim_{{x \to 2^+}} (x^2 - 4x + 4) \), we substitute \( x = 2 \) into the expression:
+  
+  \[ \lim_{{x \to 2^+}} (x^2 - 4x + 4) = (2^2 - 4 \cdot 2 + 4) = 0 \]
+  
+  The limit exists, and its value is \( 0 \).
+  
+  \item To find \( \lim_{{x \to 0^-}} \left(\frac{1}{x} - \frac{1}{|x|}\right) \), we substitute \( x = 0 \) from the left side:
+  
+  \[ \lim_{{x \to 0^-}} \left(\frac{1}{x} - \frac{1}{|x|}\right) = \left(\frac{1}{0} - \frac{1}{|0|}\right) = -\infty \]
+  
+  The limit is \( -\infty \).
+  
+  \item To find \( \lim_{{x \to 0^+}} \left(\frac{1}{x} - \frac{1}{|x|}\right) \), we substitute \( x = 0 \) from the right side:
+  
+  \[ \lim_{{x \to 0^+}} \left(\frac{1}{x} - \frac{1}{|x|}\right) = \left(\frac{1}{0} - \frac{1}{|0|}\right) = +\infty \]
+  
+  The limit is \( +\infty \).
+\end{enumerate}
+\end{solution}
+
+\begin{problem}
+Consider the function \( f(x) = \begin{cases}
+  x + 1 & \text{if } x < 0 \\
+  2x & \text{if } x \geq 0
+\end{cases} \)
+Find the following one-sided limits:
+\begin{enumerate}[label=(\alph*)]
+  \item \( \lim_{{x \to 0^-}} f(x) \)
+  \item \( \lim_{{x \to 0^+}} f(x) \)
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+  \item To find \( \lim_{{x \to 0^-}} f(x) \), we approach \( 0 \) from the left side:
+  
+  \[ \lim_{{x \to 0^-}} f(x) = \lim_{{x \to 0^-}} (x + 1) = 1 \]
+  
+  The left-hand limit is \( 1 \).
+  
+  \item To find \( \lim_{{x \to 0^+}} f(x) \), we approach \( 0 \) from the right side:
+  
+  \[ \lim_{{x \to 0^+}} f(x) = \lim_{{x \to 0^+}} (2x) = 0 \]
+  
+  The right-hand limit is \( 0 \).
+\end{enumerate}
+\end{solution}
+
+\begin{problem}
+Determine if the following statements are true or false:
+\begin{enumerate}[label=(\alph*)]
+  \item If \( \lim_{{x \to a^-}} f(x) = \lim_{{x \to a^+}} f(x) \), then \( \lim_{{x \to a}} f(x) \) exists.
+  \item If \( \lim_{{x \to a^-}} f(x) \) and \( \lim_{{x \to a^+}} f(x) \) both exist and are finite, then \( \lim_{{x \to a}} f(x) \) exists and is finite.
+  \item If \( \lim_{{x \to a^-}} f(x) \) and \( \lim_{{x \to a^+}} f(x) \) both exist but are not equal, then \( \lim_{{x \to a}} f(x) \) does not exist.
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+  \item True. If the left-hand and right-hand limits are equal, then the two-sided limit exists and is equal to that common value.
+  \item True. If both one-sided limits exist and are finite, then the two-sided limit exists and is also finite.
+  \item True. If the one-sided limits are not equal, it indicates a discontinuity at \( x = a \), so the two-sided limit does not exist.
+\end{enumerate}
+\end{solution}
 
 \subsection{Limits Involving Infinity}
+
+\textbf{Limits as \( x \) Approaches Infinity}
+
+When dealing with limits involving infinity, we are interested in understanding the behavior of a function as \( x \) approaches positive or negative infinity. Let's start by discussing limits as \( x \) approaches positive infinity (\( \infty \)).
+
 \begin{definition}
-A limit involving infinity is the value that \( f(x) \) approaches as \( x \) approaches infinity, or as \( f(x) \) approaches infinity for some finite \( x \).
+A limit involving infinity is the value that \( f(x) \) approaches as \( x \) approaches positive infinity (\( x \to \infty \)), or as \( f(x) \) approaches infinity for some finite \( x \).
 \end{definition}
 
-\section{Properties of Limits}
-\subsection{Limit Laws}
+To visualize this concept, consider the following example:
+
+\begin{example}
+Let's examine the function \( f(x) = \frac{1}{x} \). We want to find the limit of this function as \( x \) approaches positive infinity (\( x \to \infty \)).
+
+\[
+\lim_{{x \to \infty}} \frac{1}{x} = 0
+\]
+
+As \( x \) becomes larger and larger, \( \frac{1}{x} \) approaches zero.
+
+\begin{center}
+\begin{tikzpicture}
+% Axis
+\draw[->] (0,0) -- (6,0) node[below] {$x$};
+\draw[->] (0,0) -- (0,4) node[left] {$f(x)$};
+
+% Asymptote
+\draw[dashed] (0,0) -- (6,0);
+
+% Graph
+\draw[domain=0.2:6,smooth,variable=\x,blue] plot ({\x},{1/\x});
+
+% Labels
+\draw (0.2,-0.1) -- (0.2,0.1) node[above] {$0$};
+\draw (1,1.5) node[right] {$y=\frac{1}{x}$};
+\end{tikzpicture}
+\end{center}
+
+In the graph, as \( x \) goes to infinity, \( \frac{1}{x} \) approaches \( 0 \), which is the limit.
+\end{example}
+
+Limits as \( x \) Approaches Negative Infinity
+
+Similarly, we can analyze limits as \( x \) approaches negative infinity (\( x \to -\infty \)).
+
+\begin{example}
+Consider the function \( g(x) = e^x \). We want to find the limit of this function as \( x \) approaches negative infinity (\( x \to -\infty \)).
+
+\[
+\lim_{{x \to -\infty}} e^x = 0
+\]
+
+As \( x \) becomes more and more negative, \( e^x \) approaches zero.
+
+\begin{center}
+\begin{tikzpicture}
+% Axis
+\draw[->] (-4,0) -- (2,0) node[below] {$x$};
+\draw[->] (0,0) -- (0,4) node[left] {$g(x)$};
+
+% Asymptote
+\draw[dashed] (0,0) -- (-4,0);
+
+% Graph
+\draw[domain=-4:1,smooth,variable=\x,blue] plot ({\x},{exp(\x)});
+
+% Labels
+\draw (-0.1,-0.1) -- (-0.1,0.1) node[above] {$0$};
+\draw (1,3) node[right] {$y=e^x$};
+\end{tikzpicture}
+\end{center}
+
+In the graph, as \( x \) goes to negative infinity, \( e^x \) approaches \( 0 \), which is the limit.
+\end{example}
+
+Understanding limits involving infinity is crucial for analyzing the long-term behavior of functions as \( x \) becomes infinitely large or small.
+
+\subsubsection*{Practice Problems}
+
+Let's work on some practice problems to reinforce our understanding of limits involving infinity.
+
+\begin{problem}
+Find the limit as \( x \) approaches positive infinity for the following functions:
+\begin{enumerate}[label=(\alph*)]
+  \item \( \lim_{{x \to \infty}} \frac{3x + 2}{x - 1} \)
+  \item \( \lim_{{x \to \infty}} \sqrt{x^2 + 1} \)
+  \item \( \lim_{{x \to \infty}} \frac{2x^3 + 4x^2 - 3}{x^4 + 5x^2 + 1} \)
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+  \item To find \( \lim_{{x \to \infty}} \frac{3x + 2}{x - 1} \), we divide both the numerator and the denominator by the highest power of \( x \):
+  
+  \[
+  \lim_{{x \to \infty}} \frac{3x + 2}{x - 1} = \lim_{{x \to \infty}} \frac{\frac{3x}{x} + \frac{2}{x}}{\frac{x}{x} - \frac{1}{x}} = \lim_{{x \to \infty}} \frac{3 + 0}{1 - 0} = 3
+  \]
+  
+  The limit is \( 3 \).
+  
+  \item To find \( \lim_{{x \to \infty}} \sqrt{x^2 + 1} \), we can use the fact that \( \sqrt{x^2} = x \) for all positive \( x \):
+  
+  \[
+  \lim_{{x \to \infty}} \sqrt{x^2 + 1} = \lim_{{x \to \infty}} \sqrt{x^2(1 + \frac{1}{x^2})} = \lim_{{x \to \infty}} \sqrt{x^2} \sqrt{1 + \frac{1}{x^2}} = \lim_{{x \to \infty}} x \cdot 1 = \infty
+  \]
+  
+  The limit is \( \infty \).
+  
+  \item To find \( \lim_{{x \to \infty}} \frac{2x^3 + 4x^2 - 3}{x^4 + 5x^2 + 1} \), we divide both the numerator and the denominator by the highest power of \( x \) in the denominator:
+  
+  \[
+  \lim_{{x \to \infty}} \frac{2x^3 + 4x^2 - 3}{x^4 + 5x^2 + 1} = \lim_{{x \to \infty}} \frac{x^3(2 + \frac{4}{x} - \frac{3}{x^3})}{x^4(1 + \frac{5}{x^2} + \frac{1}{x^4})} = \lim_{{x \to \infty}} \frac{2 + 0 - 0}{1 + 0 + 0} = 2
+  \]
+  
+  The limit is \( 2 \).
+\end{enumerate}
+\end{solution}
+
+\begin{problem}
+Find the limit as \( x \) approaches negative infinity for the following functions:
+\begin{enumerate}[label=(\alph*)]
+  \item \( \lim_{{x \to -\infty}} \frac{2x^2 - 5x + 1}{3x^2 + 2} \)
+  \item \( \lim_{{x \to -\infty}} \frac{4x}{x^2 + 1} \)
+  \item \( \lim_{{x \to -\infty}} e^x \)
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+  \item To find \( \lim_{{x \to -\infty}} \frac{2x^2 - 5x + 1}{3x^2 + 2} \), we divide both the numerator and the denominator by the highest power of \( x \):
+  
+  \[
+  \lim_{{x \to -\infty}} \frac{2x^2 - 5x + 1}{3x^2 + 2} = \lim_{{x \to -\infty}} \frac{x^2(2 - \frac{5}{x} + \frac{1}{x^2})}{x^2(3 + \frac{2}{x^2})} = \lim_{{x \to -\infty}} \frac{2 - 0 + 0}{3 + 0} = \frac{2}{3}
+  \]
+  
+  The limit is \( \frac{2}{3} \).
+  
+  \item To find \( \lim_{{x \to -\infty}} \frac{4x}{x^2 + 1} \), we divide both the numerator and the denominator by the highest power of \( x \):
+  
+  \[
+  \lim_{{x \to -\infty}} \frac{4x}{x^2 + 1} = \lim_{{x \to -\infty}} \frac{x(4)}{x^2(1 + \frac{1}{x^2})} = \lim_{{x \to -\infty}} \frac{4}{1 + 0} = 4
+  \]
+  
+  The limit is \( 4 \).
+  
+  \item To find \( \lim_{{x \to -\infty}} e^x \), we know that as \( x \) approaches negative infinity, \( e^x \) approaches \( 0 \).
+  
+  \[
+  \lim_{{x \to -\infty}} e^x = 0
+  \]
+  
+  The limit is \( 0 \).
+\end{enumerate}
+\end{solution}
+
+\subsubsection*{Practice Problems - Solutions}
+
+Let's solve the practice problems related to limits involving infinity.
+
+\begin{problem}
+Find the limit as \( x \) approaches positive infinity for the following functions:
+\begin{enumerate}[label=(\alph*)]
+  \item \( \lim_{{x \to \infty}} \frac{3x + 2}{x - 1} \)
+  \item \( \lim_{{x \to \infty}} \sqrt{x^2 + 1} \)
+  \item \( \lim_{{x \to \infty}} \frac{2x^3 + 4x^2 - 3}{x^4 + 5x^2 + 1} \)
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+  \item To find \( \lim_{{x \to \infty}} \frac{3x + 2}{x - 1} \), we divide both the numerator and the denominator by the highest power of \( x \):
+  
+  \[
+  \lim_{{x \to \infty}} \frac{3x + 2}{x - 1} = \lim_{{x \to \infty}} \frac{\frac{3x}{x} + \frac{2}{x}}{\frac{x}{x} - \frac{1}{x}} = \lim_{{x \to \infty}} \frac{3 + 0}{1 - 0} = 3
+  \]
+  
+  The limit is \( 3 \).
+  
+  \item To find \( \lim_{{x \to \infty}} \sqrt{x^2 + 1} \), we can use the fact that \( \sqrt{x^2} = x \) for all positive \( x \):
+  
+  \[
+  \lim_{{x \to \infty}} \sqrt{x^2 + 1} = \lim_{{x \to \infty}} \sqrt{x^2(1 + \frac{1}{x^2})} = \lim_{{x \to \infty}} \sqrt{x^2} \sqrt{1 + \frac{1}{x^2}} = \lim_{{x \to \infty}} x \cdot 1 = \infty
+  \]
+  
+  The limit is \( \infty \).
+  
+  \item To find \( \lim_{{x \to \infty}} \frac{2x^3 + 4x^2 - 3}{x^4 + 5x^2 + 1} \), we divide both the numerator and the denominator by the highest power of \( x \) in the denominator:
+  
+  \[
+  \lim_{{x \to \infty}} \frac{2x^3 + 4x^2 - 3}{x^4 + 5x^2 + 1} = \lim_{{x \to \infty}} \frac{x^3(2 + \frac{4}{x} - \frac{3}{x^3})}{x^4(1 + \frac{5}{x^2} + \frac{1}{x^4})} = \lim_{{x \to \infty}} \frac{2 + 0 - 0}{1 + 0 + 0} = 2
+  \]
+  
+  The limit is \( 2 \).
+\end{enumerate}
+\end{solution}
+
+\begin{problem}
+Find the limit as \( x \) approaches negative infinity for the following functions:
+\begin{enumerate}[label=(\alph*)]
+  \item \( \lim_{{x \to -\infty}} \frac{2x^2 - 5x + 1}{3x^2 + 2} \)
+  \item \( \lim_{{x \to -\infty}} \frac{4x}{x^2 + 1} \)
+  \item \( \lim_{{x \to -\infty}} e^x \)
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+  \item To find \( \lim_{{x \to -\infty}} \frac{2x^2 - 5x + 1}{3x^2 + 2} \), we divide both the numerator and the denominator by the highest power of \( x \):
+  
+  \[
+  \lim_{{x \to -\infty}} \frac{2x^2 - 5x + 1}{3x^2 + 2} = \lim_{{x \to -\infty}} \frac{x^2(2 - \frac{5}{x} + \frac{1}{x^2})}{x^2(3 + \frac{2}{x^2})} = \lim_{{x \to -\infty}} \frac{2 - 0 + 0}{3 + 0} = \frac{2}{3}
+  \]
+  
+  The limit is \( \frac{2}{3} \).
+  
+  \item To find \( \lim_{{x \to -\infty}} \frac{4x}{x^2 + 1} \), we divide both the numerator and the denominator by the highest power of \( x \):
+  
+  \[
+  \lim_{{x \to -\infty}} \frac{4x}{x^2 + 1} = \lim_{{x \to -\infty}} \frac{x(4)}{x^2(1 + \frac{1}{x^2})} = \lim_{{x \to -\infty}} \frac{4}{1 + 0} = 4
+  \]
+  
+  The limit is \( 4 \).
+  
+  \item To find \( \lim_{{x \to -\infty}} e^x \), we know that as \( x \) approaches negative infinity, \( e^x \) approaches \( 0 \).
+  
+  \[
+  \lim_{{x \to -\infty}} e^x = 0
+  \]
+  
+  The limit is \( 0 \).
+\end{enumerate}
+\end{solution}
+
+
+\subsection{Properties of Limits}
+
+\textbf{Limit Laws}
+
+In calculus, we often encounter limits of functions, and there are several standard limit laws that help us simplify the evaluation of limits. These laws include the sum law, product law, quotient law, and power law. Let's explore each of these limit laws and provide graphical interpretations.
+
 \begin{theorem}
 Standard limit laws include the sum law, product law, quotient law, and power law.
 \end{theorem}
 
+\textbf{Sum Law}
+
+The sum law states that if \( \lim_{{x \to a}} f(x) \) and \( \lim_{{x \to a}} g(x) \) both exist, then:
+
+\[
+\lim_{{x \to a}} [f(x) + g(x)] = \lim_{{x \to a}} f(x) + \lim_{{x \to a}} g(x)
+\]
+
+In other words, the limit of the sum of two functions is equal to the sum of their limits. Let's illustrate this with a graphical example.
+
+\begin{example}
+Consider the functions \( f(x) = 2x \) and \( g(x) = x^2 \). We want to find \( \lim_{{x \to 2}} (2x + x^2) \).
+
+\begin{center}
+\begin{tikzpicture}
+% Axis
+\draw[->] (-1,0) -- (4,0) node[below] {$x$};
+\draw[->] (0,-1) -- (0,8) node[left] {$y$};
+
+% Functions
+\draw[domain=0:3,smooth,variable=\x,blue] plot ({\x},{2*\x}) node[right] {$f(x) = 2x$};
+\draw[domain=0:3,smooth,variable=\x,red] plot ({\x},{\x*\x}) node[right] {$g(x) = x^2$};
+
+% Limits
+\draw[dashed] (2,0) -- (2,4) node[above left] {$\lim_{{x \to 2}} f(x) = 4$};
+\draw[dashed] (2,0) -- (2,4) node[above right] {$\lim_{{x \to 2}} g(x) = 4$};
+
+% Sum
+\draw[dashed] (2,0) -- (2,8) node[above left] {$\lim_{{x \to 2}} (f(x) + g(x)) = 8$};
+\end{tikzpicture}
+\end{center}
+
+As \( x \) approaches 2, both \( f(x) \) and \( g(x) \) approach 4. Therefore, by the sum law:
+
+\[
+\lim_{{x \to 2}} (2x + x^2) = \lim_{{x \to 2}} f(x) + \lim_{{x \to 2}} g(x) = 4 + 4 = 8
+\]
+\end{example}
+
+The sum law allows us to find limits of complex functions by breaking them down into simpler parts.
+
+\textbf{Product Law}
+
+The product law states that if \( \lim_{{x \to a}} f(x) \) and \( \lim_{{x \to a}} g(x) \) both exist, then:
+
+\[
+\lim_{{x \to a}} [f(x) \cdot g(x)] = \lim_{{x \to a}} f(x) \cdot \lim_{{x \to a}} g(x)
+\]
+
+In other words, the limit of the product of two functions is equal to the product of their limits. Let's illustrate this with a graphical example.
+
+\begin{example}
+Consider the functions \( f(x) = x \) and \( g(x) = \frac{1}{x} \). We want to find \( \lim_{{x \to 1}} (x \cdot \frac{1}{x}) \).
+
+\begin{center}
+\begin{tikzpicture}
+% Axis
+\draw[->] (-1,0) -- (3,0) node[below] {$x$};
+\draw[->] (0,-3) -- (0,3) node[left] {$y$};
+
+% Functions
+\draw[domain=0.1:2.9,smooth,variable=\x,blue] plot ({\x},{\x}) node[right] {$f(x) = x$};
+\draw[domain=0.1:2.9,smooth,variable=\x,red] plot ({\x},{1/\x}) node[right] {$g(x) = \frac{1}{x}$};
+
+% Limits
+\draw[dashed] (1,0) -- (1,1) node[above left] {$\lim_{{x \to 1}} f(x) = 1$};
+\draw[dashed] (1,0) -- (1,1) node[below right] {$\lim_{{x \to 1}} g(x) = 1$};
+
+% Product
+\draw[dashed] (1,0) -- (1,1) node[above right] {$\lim_{{x \to 1}} (f(x) \cdot g(x)) = 1$};
+\end{tikzpicture}
+\end{center}
+
+As \( x \) approaches 1, both \( f(x) \) and \( g(x) \) approach 1. Therefore, by the product law:
+
+\[
+\lim_{{x \to 1}} (x \cdot \frac{1}{x}) = \lim_{{x \to 1}} f(x) \cdot \lim_{{x \to 1}} g(x) = 1 \cdot 1 = 1
+\]
+\end{example}
+
+The product law allows us to find limits of products of functions without directly evaluating the product.
+
+\textbf{Quotient Law}
+
+The quotient law states that if \( \lim_{{x \to a}} f(x) \) and \( \lim_{{x \to a}} g(x) \) both exist and \( \lim_{{x \to a}} g(x) \neq 0 \), then:
+
+\[
+\lim_{{x \to a}} \frac{f(x)}{g(x)} = \frac{\lim_{{x \to a}} f(x)}{\lim_{{x \to a}} g(x)}
+\]
+
+In other words, the limit of the quotient of two functions is equal to the quotient of their limits, provided that the limit of the denominator is not zero. Let's illustrate this with a graphical example.
+
+\begin{example}
+Consider the functions \( f(x) = x^2 \) and \( g(x) = x \). We want to find \( \lim_{{x \to 2}} \frac{x^2}{x} \).
+
+\begin{center}
+\begin{tikzpicture}
+% Axis
+\draw[->] (-1,0) -- (4,0) node[below] {$x$};
+\draw[->] (0,-1) -- (0,4) node[left] {$y$};
+
+% Functions
+\draw[domain=0:3,smooth,variable=\x,blue] plot ({\x},{\x^2}) node[right] {$f(x) = x^2$};
+\draw[domain=0:3,smooth,variable=\x,red] plot ({\x},{\x}) node[right] {$g(x) = x$};
+
+% Limits
+\draw[dashed] (2,0) -- (2,4) node[above left] {$\lim_{{x \to 2}} f(x) = 4$};
+\draw[dashed] (2,0) -- (2,2) node[above left] {$\lim_{{x \to 2}} g(x) = 2$};
+
+% Quotient
+\draw[dashed] (2,0) -- (2,2) node[above right] {$\lim_{{x \to 2}} \frac{f(x)}{g(x)} = \frac{4}{2} = 2$};
+\end{tikzpicture}
+\end{center}
+
+As \( x \) approaches 2, both \( f(x) \) and \( g(x) \) approach 4 and 2, respectively. Therefore, by the quotient law:
+
+\[
+\lim_{{x \to 2}} \frac{x^2}{x} = \frac{\lim_{{x \to 2}} f(x)}{\lim_{{x \to 2}} g(x)} = \frac{4}{2} = 2
+\]
+\end{example}
+
+The quotient law helps us find limits involving fractions of functions by simplifying the process.
+
+\textbf{Power Law}
+
+The power law states that if \( \lim_{{x \to a}} f(x) \) exists and \( n \) is a positive integer, then:
+
+\[
+\lim_{{x \to a}} [f(x)]^n = [\lim_{{x \to a}} f(x)]^n
+\]
+
+In other words, the limit of a function raised to a power is equal to the function's limit raised to that power. Let's illustrate this with a graphical example.
+
+\begin{example}
+Consider the function \( f(x) = x \). We want to find \( \lim_{{x \to 3}} (x^2) \).
+
+\begin{center}
+\begin{tikzpicture}
+% Axis
+\draw[->] (-1,0) -- (4,0) node[below] {$x$};
+\draw[->] (0,-1) -- (0,4) node[left] {$y$};
+
+% Function
+\draw[domain=0:3,smooth,variable=\x,blue] plot ({\x},{\x}) node[right] {$f(x) = x$};
+
+% Limit
+\draw[dashed] (3,0) -- (3,3) node[above left] {$\lim_{{x \to 3}} f(x) = 3$};
+
+% Power
+\draw[dashed] (3,0) -- (3,9) node[above left] {$\lim_{{x \to 3}} (f(x))^2 = (3)^2 = 9$};
+\end{tikzpicture}
+\end{center}
+
+As \( x \) approaches 3, \( f(x) \) approaches 3. Therefore, by the power law:
+
+\[
+\lim_{{x \to 3}} (x^2) = [\lim_{{x \to 3}} f(x)]^2 = (3)^2 = 9
+\]
+\end{example}
+
+The power law simplifies the evaluation of limits involving powers of functions.
+
+In summary, these standard limit laws (sum law, product law, quotient law, and power law) provide essential tools for evaluating limits and understanding the behavior of functions as they approach certain points.
+
+\subsubsection*{Practice Problems}
+
+\textbf{Let's practice applying the limit laws we discussed in the previous section.}
+
+\begin{problem}
+Find the following limits using the sum law, product law, quotient law, or power law as appropriate:
+\begin{enumerate}[label=(\alph*)]
+  \item \( \lim_{{x \to 0}} (3x + 2x^2) \)
+  \item \( \lim_{{x \to 1}} (x^2 + x) \)
+  \item \( \lim_{{x \to 2}} \left(\frac{x^2}{x + 1}\right) \)
+  \item \( \lim_{{x \to 2}} (x - 1)^3 \)
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+  \item Using the sum law:
+  \[
+  \lim_{{x \to 0}} (3x + 2x^2) = \lim_{{x \to 0}} 3x + \lim_{{x \to 0}} 2x^2 = 0 + 0 = 0
+  \]
+  
+  \item Using the sum law:
+  \[
+  \lim_{{x \to 1}} (x^2 + x) = \lim_{{x \to 1}} x^2 + \lim_{{x \to 1}} x = 1 + 1 = 2
+  \]
+  
+  \item Using the quotient law:
+  \[
+  \lim_{{x \to 2}} \left(\frac{x^2}{x + 1}\right) = \frac{\lim_{{x \to 2}} x^2}{\lim_{{x \to 2}} (x + 1)} = \frac{4}{3} = \frac{4}{3}
+  \]
+  
+  \item Using the power law:
+  \[
+  \lim_{{x \to 2}} (x - 1)^3 = (\lim_{{x \to 2}} (x - 1))^3 = (2 - 1)^3 = 1
+  \]
+\end{enumerate}
+\end{solution}
+
+\begin{problem}
+Evaluate the following limits. You may use any of the limit laws:
+\begin{enumerate}[label=(\alph*)]
+  \item \( \lim_{{x \to 0}} (2x^3 - 3x^2 + 4x - 1) \)
+  \item \( \lim_{{x \to 3}} \left(\frac{x^2 - 9}{x - 3}\right) \)
+  \item \( \lim_{{x \to -1}} \left(\frac{x^2 + 2x - 3}{x + 1}\right) \)
+  \item \( \lim_{{x \to 4}} \left(\frac{x^3 - 64}{x - 4}\right) \)
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+  \item Using the sum law and power law:
+  \[
+  \lim_{{x \to 0}} (2x^3 - 3x^2 + 4x - 1) = \lim_{{x \to 0}} (2x^3) - \lim_{{x \to 0}} (3x^2) + \lim_{{x \to 0}} (4x) - \lim_{{x \to 0}} (1) = 0 - 0 + 0 - 1 = -1
+  \]
+  
+  \item Using the quotient law:
+  \[
+  \lim_{{x \to 3}} \left(\frac{x^2 - 9}{x - 3}\right) = \frac{\lim_{{x \to 3}} (x^2 - 9)}{\lim_{{x \to 3}} (x - 3)} = \frac{0}{0} \text{ (indeterminate)}
+  \]
+  We can simplify further using factoring:
+  \[
+  \lim_{{x \to 3}} \left(\frac{x^2 - 9}{x - 3}\right) = \lim_{{x \to 3}} \left(\frac{(x + 3)(x - 3)}{x - 3}\right) = \lim_{{x \to 3}} (x + 3) = 6
+  \]
+  
+  \item Using the quotient law:
+  \[
+  \lim_{{x \to -1}} \left(\frac{x^2 + 2x - 3}{x + 1}\right) = \frac{\lim_{{x \to -1}} (x^2 + 2x - 3)}{\lim_{{x \to -1}} (x + 1)} = \frac{0}{0} \text{ (indeterminate)}
+  \]
+  We can simplify further using factoring:
+  \[
+  \lim_{{x \to -1}} \left(\frac{x^2 + 2x - 3}{x + 1}\right) = \lim_{{x \to -1}} \left(\frac{(x + 3)(x - 1)}{x + 1}\right) = \lim_{{x \to -1}} (x - 1) = -2
+  \]
+  
+  \item Using the quotient law:
+  \[
+  \lim_{{x \to 4}} \left(\frac{x^3 - 64}{x - 4}\right) = \frac{\lim_{{x \to 4}} (x^3 - 64)}{\lim_{{x \to 4}} (x - 4)} = \frac{0}{0} \text{ (indeterminate)}
+  \]
+  We can simplify further using factoring:
+  \[
+  \lim_{{x \to 4}} \left(\frac{x^3 - 64}{x - 4}\right) = \lim_{{x \to 4}} \left(\frac{(x - 4)(x^2 + 4x + 16)}{x - 4}\right) = \lim_{{x \to 4}} (x^2 + 4x + 16) = 68
+  \]
+\end{enumerate}
+\end{solution}
+
+\subsubsection*{Practice Problems - Solutions}
+
+\textbf{Let's go through the solutions and explanations for the practice problems.}
+
+\begin{problem}
+Find the following limits using the sum law, product law, quotient law, or power law as appropriate:
+\begin{enumerate}[label=(\alph*)]
+  \item \( \lim_{{x \to 0}} (3x + 2x^2) \)
+  \item \( \lim_{{x \to 1}} (x^2 + x) \)
+  \item \( \lim_{{x \to 2}} \left(\frac{x^2}{x + 1}\right) \)
+  \item \( \lim_{{x \to 2}} (x - 1)^3 \)
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+  \item Using the sum law:
+  \[
+  \lim_{{x \to 0}} (3x + 2x^2) = \lim_{{x \to 0}} 3x + \lim_{{x \to 0}} 2x^2 = 0 + 0 = 0
+  \]
+  
+  \item Using the sum law:
+  \[
+  \lim_{{x \to 1}} (x^2 + x) = \lim_{{x \to 1}} x^2 + \lim_{{x \to 1}} x = 1 + 1 = 2
+  \]
+  
+  \item Using the quotient law:
+  \[
+  \lim_{{x \to 2}} \left(\frac{x^2}{x + 1}\right) = \frac{\lim_{{x \to 2}} x^2}{\lim_{{x \to 2}} (x + 1)} = \frac{4}{3} = \frac{4}{3}
+  \]
+  
+  \item Using the power law:
+  \[
+  \lim_{{x \to 2}} (x - 1)^3 = (\lim_{{x \to 2}} (x - 1))^3 = (2 - 1)^3 = 1
+  \]
+\end{enumerate}
+\end{solution}
+
+\begin{problem}
+Evaluate the following limits. You may use any of the limit laws:
+\begin{enumerate}[label=(\alph*)]
+  \item \( \lim_{{x \to 0}} (2x^3 - 3x^2 + 4x - 1) \)
+  \item \( \lim_{{x \to 3}} \left(\frac{x^2 - 9}{x - 3}\right) \)
+  \item \( \lim_{{x \to -1}} \left(\frac{x^2 + 2x - 3}{x + 1}\right) \)
+  \item \( \lim_{{x \to 4}} \left(\frac{x^3 - 64}{x - 4}\right) \)
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+  \item Using the sum law and power law:
+  \[
+  \lim_{{x \to 0}} (2x^3 - 3x^2 + 4x - 1) = \lim_{{x \to 0}} (2x^3) - \lim_{{x \to 0}} (3x^2) + \lim_{{x \to 0}} (4x) - \lim_{{x \to 0}} (1) = 0 - 0 + 0 - 1 = -1
+  \]
+  
+  \item Using the quotient law:
+  \[
+  \lim_{{x \to 3}} \left(\frac{x^2 - 9}{x - 3}\right) = \frac{\lim_{{x \to 3}} (x^2 - 9)}{\lim_{{x \to 3}} (x - 3)} = \frac{0}{0} \text{ (indeterminate)}
+  \]
+  We can simplify further using factoring:
+  \[
+  \lim_{{x \to 3}} \left(\frac{x^2 - 9}{x - 3}\right) = \lim_{{x \to 3}} \left(\frac{(x + 3)(x - 3)}{x - 3}\right) = \lim_{{x \to 3}} (x + 3) = 6
+  \]
+  
+  \item Using the quotient law:
+  \[
+  \lim_{{x \to -1}} \left(\frac{x^2 + 2x - 3}{x + 1}\right) = \frac{\lim_{{x \to -1}} (x^2 + 2x - 3)}{\lim_{{x \to -1}} (x + 1)} = \frac{0}{0} \text{ (indeterminate)}
+  \]
+  We can simplify further using factoring:
+  \[
+  \lim_{{x \to -1}} \left(\frac{x^2 + 2x - 3}{x + 1}\right) = \lim_{{x \to -1}} \left(\frac{(x + 3)(x - 1)}{x + 1}\right) = \lim_{{x \to -1}} (x - 1) = -2
+  \]
+  
+  \item Using the quotient law:
+  \[
+  \lim_{{x \to 4}} \left(\frac{x^3 - 64}{x - 4}\right) = \frac{\lim_{{x \to 4}} (x^3 - 64)}{\lim_{{x \to 4}} (x - 4)} = \frac{0}{0} \text{ (indeterminate)}
+  \]
+  We can simplify further using factoring:
+  \[
+  \lim_{{x \to 4}} \left(\frac{x^3 - 64}{x - 4}\right) = \lim_{{x \to 4}} \left(\frac{(x - 4)(x^2 + 4x + 16)}{x - 4}\right) = \lim_{{x \to 4}} (x^2 + 4x + 16) = 68
+  \]
+\end{enumerate}
+\end{solution}
+
 \subsection{Squeeze Theorem}
-\begin{theorem}
-If \( f(x) \leq g(x) \leq h(x) \) for all \( x \) near \( a \) and the limits of \( f(x) \) and \( h(x) \) as \( x \) approaches \( a \) are equal, then the limit of \( g(x) \) as \( x \) approaches \( a \) is the same.
+
+The Squeeze Theorem is a powerful tool for finding the limit of a function when it is bounded between two other functions whose limits are known. This theorem is particularly useful when direct substitution or algebraic simplification of a limit expression is difficult. The theorem can be stated as follows:
+
+\begin{theorem}[Squeeze Theorem]
+If \( f(x) \leq g(x) \leq h(x) \) for all \( x \) near \( a \), and the limits of \( f(x) \) and \( h(x) \) as \( x \) approaches \( a \) are equal, then the limit of \( g(x) \) as \( x \) approaches \( a \) is the same:
+\[
+\lim_{{x \to a}} f(x) = \lim_{{x \to a}} h(x) = L \implies \lim_{{x \to a}} g(x) = L
+\]
 \end{theorem}
+
+This theorem essentially states that if \( g(x) \) is "squeezed" between two functions \( f(x) \) and \( h(x) \), and both \( f(x) \) and \( h(x) \) approach the same limit \( L \) as \( x \) approaches \( a \), then \( g(x) \) also approaches \( L \) as \( x \) approaches \( a \).
+
+Let's illustrate the Squeeze Theorem with a graphical example.
+
+\begin{example}
+Consider the functions \( f(x) = \frac{\sin(x)}{x} \) and \( g(x) = 1 \) for \( x \neq 0 \). We want to find the limit of \( g(x) \) as \( x \) approaches 0.
+
+\begin{center}
+\begin{tikzpicture}
+% Axis
+\draw[->] (-3,0) -- (3,0) node[below] {$x$};
+\draw[->] (0,-0.5) -- (0,1.5) node[left] {$y$};
+
+% Function f(x)
+% Splitting the domain to avoid x = 0
+\draw[domain=-3:-0.1,smooth,variable=\x,blue] plot ({\x},{sin(deg(\x))/\x});
+\draw[domain=0.1:3,smooth,variable=\x,blue] plot ({\x},{sin(deg(\x))/\x}) node[right] {$f(x) = \frac{\sin(x)}{x}$};
+
+% Function g(x)
+\draw[dashed,red] (-3,1) -- (3,1) node[right] {$g(x) = 1$};
+
+% Fill
+% Adjusting the fill to avoid x = 0
+\fill[gray!30] (-3,1) -- plot[domain=-3:-0.1,smooth,variable=\x] ({\x},{sin(deg(\x))/\x}) -- (-0.1,1) -- (0.1,1) -- plot[domain=0.1:3,smooth,variable=\x] ({\x},{sin(deg(\x))/\x}) -- (3,1) -- cycle;
+
+% Labels
+\draw (0.5,0.7) node[blue] {$f(x)$};
+\draw (2,1.2) node[red] {$g(x)$};
+\draw (-1.8,0.5) node {$\sin(x)/x \leq 1$};
+\end{tikzpicture}
+\end{center}
+
+
+As shown in the graph, for all \( x \neq 0 \), \( f(x) = \frac{\sin(x)}{x} \) is bounded between -1 and 1. Additionally, \( \lim_{{x \to 0}} \frac{\sin(x)}{x} = 1 \) as it is a well-known limit.
+
+Therefore, by the Squeeze Theorem, since \( -1 \leq \frac{\sin(x)}{x} \leq 1 \) for all \( x \neq 0 \) and \( \lim_{{x \to 0}} \frac{\sin(x)}{x} = 1 \), we conclude that \( \lim_{{x \to 0}} 1 = 1 \).
+
+So, \( \lim_{{x \to 0}} g(x) = 1 \).
+\end{example}
+
+The Squeeze Theorem provides a powerful method to evaluate limits by establishing upper and lower bounds for a function and leveraging known limits of the bounding functions.
+
+\subsubsection*{Practice Problems}
+
+Let's practice using the Squeeze Theorem to evaluate limits.
+
+\begin{problem}
+Evaluate the following limit using the Squeeze Theorem:
+\[
+\lim_{{x \to 0}} x^2\sin\left(\frac{1}{x}\right)
+\]
+\end{problem}
+
+\begin{problem}
+Find the limit as \( x \) approaches 0 for the function \( f(x) \) defined as follows:
+\[
+f(x) =
+\begin{cases}
+  x & \text{if } x \neq 0 \\
+  0 & \text{if } x = 0
+\end{cases}
+\]
+\end{problem}
+
+\begin{problem}
+Evaluate the following limit:
+\[
+\lim_{{x \to 0}} \left(\cos^2(x) + \sin^2(x)\right)
+\]
+\end{problem}
+
+\begin{problem}
+Determine the limit as \( x \) approaches 0 for the function \( g(x) \) defined as follows:
+\[
+g(x) =
+\begin{cases}
+  \frac{\sin(x)}{x} & \text{if } x \neq 0 \\
+  1 & \text{if } x = 0
+\end{cases}
+\]
+\end{problem}
+
+\subsubsection*{Practice Problems - Solutions}
+
+Let's go through the solutions and explanations for the practice problems.
+
+\begin{problem}
+Evaluate the following limit using the Squeeze Theorem:
+\[
+\lim_{{x \to 0}} x^2\sin\left(\frac{1}{x}\right)
+\]
+\end{problem}
+
+\begin{solution}
+To evaluate this limit, let's use the Squeeze Theorem. First, notice that for all \(x \neq 0\), we have \(-x^2 \leq x^2\sin\left(\frac{1}{x}\right) \leq x^2\). Therefore, we can use the following inequalities:
+\[
+-x^2 \leq x^2\sin\left(\frac{1}{x}\right) \leq x^2
+\]
+Next, consider the limits of the bounds as \(x\) approaches 0:
+\[
+\lim_{{x \to 0}} (-x^2) = 0 \quad \text{and} \quad \lim_{{x \to 0}} (x^2) = 0
+\]
+Since both \(x^2\) and \(-x^2\) approach 0 as \(x\) approaches 0, we have:
+\[
+0 \leq \lim_{{x \to 0}} x^2\sin\left(\frac{1}{x}\right) \leq 0
+\]
+By the Squeeze Theorem, the limit of \(x^2\sin\left(\frac{1}{x}\right)\) as \(x\) approaches 0 is 0.
+\end{solution}
+
+\begin{problem}
+Find the limit as \(x\) approaches 0 for the function \(f(x)\) defined as follows:
+\[
+f(x) =
+\begin{cases}
+  x & \text{if } x \neq 0 \\
+  0 & \text{if } x = 0
+\end{cases}
+\]
+\end{problem}
+
+\begin{solution}
+To find this limit, we can use the Squeeze Theorem. Consider the function \(f(x) = x\). We know that \(\lim_{{x \to 0}} x = 0\). 
+
+Now, let's analyze the function \(g(x)\) defined as \(g(x) = 0\) for all \(x\). Clearly, \(\lim_{{x \to 0}} g(x) = 0\).
+
+Since \(0 \leq f(x) \leq |x|\) for all \(x\), and both \(f(x)\) and \(|x|\) approach 0 as \(x\) approaches 0, we can apply the Squeeze Theorem to conclude that:
+\[
+\lim_{{x \to 0}} f(x) = 0
+\]
+\end{solution}
+
+\begin{problem}
+Evaluate the following limit:
+\[
+\lim_{{x \to 0}} \left(\cos^2(x) + \sin^2(x)\right)
+\]
+\end{problem}
+
+\begin{solution}
+This limit is straightforward to evaluate. Notice that \(\cos^2(x) + \sin^2(x)\) is the identity for all \(x\). Therefore:
+\[
+\lim_{{x \to 0}} \left(\cos^2(x) + \sin^2(x)\right) = \lim_{{x \to 0}} 1 = 1
+\]
+\end{solution}
+
+\begin{problem}
+Determine the limit as \(x\) approaches 0 for the function \(g(x)\) defined as follows:
+\[
+g(x) =
+\begin{cases}
+  \frac{\sin(x)}{x} & \text{if } x \neq 0 \\
+  1 & \text{if } x = 0
+\end{cases}
+\]
+\end{problem}
+
+\begin{solution}
+To find this limit, we can use the Squeeze Theorem. Consider the function \(f(x) = \frac{\sin(x)}{x}\). We know that \(\lim_{{x \to 0}} \frac{\sin(x)}{x} = 1\) as it is a well-known limit.
+
+Now, let's analyze the function \(h(x)\) defined as \(h(x) = 1\) for all \(x\). Clearly, \(\lim_{{x \to 0}} h(x) = 1\).
+
+Since \(1 \leq f(x) \leq h(x)\) for all \(x\), and both \(f(x)\) and \(h(x)\) approach 1 as \(x\) approaches 0, we can apply the Squeeze Theorem to conclude that:
+\[
+\lim_{{x \to 0}} \frac{\sin(x)}{x} = 1
+\]
+\end{solution}
+
+% HERE
 
 \subsection{Limits of Trigonometric Functions}
 \begin{theorem}
