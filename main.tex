@@ -1,6 +1,7 @@
 \documentclass[a4paper,12pt]{book}
 \usepackage{graphicx} % For graphics
 \usepackage{float}
+\usepackage{comment}
 \usepackage{tikz}
 \usepackage{tkz-euclide} % Add this line to include the tkz-euclide package
 \usetikzlibrary{calc}
@@ -9,6 +10,14 @@
 \usepackage{amssymb}
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
+
+% Define custom styles for holdot and soldot
+\tikzset{
+    holdot/.style={color=black,only marks,mark=*},
+    soldot/.style={color=black,fill=white,only marks,mark=*},
+}
+
+
 \usepgfplotslibrary{fillbetween} 
 
 % Configure hyperref package to color links blue
@@ -65,7 +74,7 @@
         
         % Title and additional info
         \node at (current page.center) [font=\Huge, text width=0.8\textwidth, align=center] 
-            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.41}};
+            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.42}};
             
         \node[align=center, font=\large] at (current page.center) 
             [yshift=-2.5cm] {\today}; % <- This is the compilation date
@@ -1065,43 +1074,1031 @@ To find the real zeros of \( t(x) = x^4 - 2x^2 - 3 \), solve \( x^4 - 2x^2 - 3 =
 \end{solution}
 
 
-% HERE
-
 \subsection{Rational Functions}
 \begin{definition}
-A rational function is the ratio of two polynomial functions.
+A rational function is the ratio of two polynomial functions, typically expressed in the form \( f(x) = \frac{p(x)}{q(x)} \), where both \( p(x) \) and \( q(x) \) are polynomial functions and \( q(x) \neq 0 \).
 \end{definition}
+
+Rational functions can exhibit a variety of behaviors, including asymptotes and discontinuities, making them interesting subjects of study in calculus.
+
+\paragraph{Characteristics of Rational Functions:}
+\begin{itemize}
+    \item The vertical asymptotes occur at values of \( x \) for which \( q(x) = 0 \), provided these points are not cancelled out by the numerator.
+    \item Horizontal asymptotes are determined by the degrees of \( p(x) \) and \( q(x) \).
+    \item Rational functions may have holes if a factor in the denominator is cancelled out by the numerator.
+\end{itemize}
+
+\paragraph{Graphing Rational Functions:}
+Consider the function \( f(x) = \frac{x^2 - 4}{x - 2} \). Here, we have a hole at \( x = 2 \) because the factor \( (x - 2) \) is cancelled. The graph can be plotted as follows:
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    xlabel = \( x \),
+    ylabel = {\( f(x) \)},
+    xmin=-10, xmax=10,
+    ymin=-10, ymax=10,
+    restrict y to domain=-10:10,
+    samples=100,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+]
+% Plotting the rational function
+\addplot[domain=-10:1.9, smooth, thick, blue]{(x^2 - 4)/(x - 2)};
+\addplot[domain=2.1:10, smooth, thick, blue]{(x^2 - 4)/(x - 2)};
+\draw[dashed] (axis cs:2,-10) -- (axis cs:2,10);
+\end{axis}
+\end{tikzpicture}
+
+\paragraph{Applications of Rational Functions:}
+Rational functions are used in various fields, including engineering, economics, and physics, to model scenarios where variables inversely affect each other.
+
+\begin{exercise}
+Graph the rational function \( g(x) = \frac{1}{x - 1} \) and determine its vertical and horizontal asymptotes.
+\end{exercise}
+
+\begin{exercise}
+Consider the function \( h(x) = \frac{x^2 - 1}{x^2 + x - 2} \). Identify its vertical and horizontal asymptotes, and sketch the graph.
+\end{exercise}
+
+\subsubsection*{Exercises on Rational Functions}
+
+\begin{exercise}
+Graph the rational function \( g(x) = \frac{1}{x - 1} \) and determine its vertical and horizontal asymptotes.
+\end{exercise}
+
+\begin{exercise}
+Consider the function \( h(x) = \frac{x^2 - 1}{x^2 + x - 2} \). Identify its vertical and horizontal asymptotes, and sketch the graph.
+\end{exercise}
+
+\begin{exercise}
+Find the domain of the rational function \( f(x) = \frac{2x - 3}{x^2 - 4} \).
+\end{exercise}
+
+\begin{exercise}
+Determine the vertical and horizontal asymptotes for the function \( p(x) = \frac{x^3 - 4x}{x^2 - 5x + 6} \) and sketch its graph.
+\end{exercise}
+
+\begin{exercise}
+For the rational function \( q(x) = \frac{x^2 + 2x + 1}{x^2 - 1} \), identify any holes or asymptotes, and graph the function.
+\end{exercise}
+
+\begin{exercise}
+Given \( r(x) = \frac{3x - 5}{2x + 4} \), calculate \( r(2) \) and determine the behavior of \( r(x) \) as \( x \) approaches infinity.
+\end{exercise}
+
+\begin{exercise}
+Sketch the graph of the function \( s(x) = \frac{x}{x^2 - 9} \) and find the x- and y-intercepts.
+\end{exercise}
+
+\begin{exercise}
+Analyze the rational function \( t(x) = \frac{5x - 4}{x - 3} \) for any asymptotes or discontinuities and provide its graph.
+\end{exercise}
+
+\begin{exercise}
+Find the range of the function \( u(x) = \frac{2}{x - 1} + 3 \).
+\end{exercise}
+
+\begin{exercise}
+Determine the inverse of the function \( v(x) = \frac{1}{2 - x} \).
+\end{exercise}
+
+\subsubsection*{Solutions to Exercises on Rational Functions}
+
+\begin{solution}[1]
+For \( g(x) = \frac{1}{x - 1} \), the vertical asymptote is at \( x = 1 \) (where the denominator equals zero), and the horizontal asymptote is \( y = 0 \) (as \( x \) approaches infinity, \( g(x) \) approaches 0).
+\end{solution}
+
+\begin{solution}[2]
+In \( h(x) = \frac{x^2 - 1}{x^2 + x - 2} \), the vertical asymptotes are at the roots of the denominator, \( x = 1 \) and \( x = -2 \). The horizontal asymptote is \( y = 1 \) as the degrees of the numerator and denominator are the same.
+\end{solution}
+
+\begin{solution}[3]
+The domain of \( f(x) = \frac{2x - 3}{x^2 - 4} \) is all real numbers except \( x = \pm 2 \), where the denominator equals zero.
+\end{solution}
+
+\begin{solution}[4]
+For \( p(x) = \frac{x^3 - 4x}{x^2 - 5x + 6} \), vertical asymptotes are at \( x = 2 \) and \( x = 3 \), the roots of the denominator. There is no horizontal asymptote as the degree of the numerator is greater than that of the denominator.
+\end{solution}
+
+\begin{solution}[5]
+In \( q(x) = \frac{x^2 + 2x + 1}{x^2 - 1} \), there is a hole at \( x = -1 \) (factor cancelled in numerator and denominator), vertical asymptotes at \( x = \pm 1 \), and no horizontal asymptote.
+\end{solution}
+
+\begin{solution}[6]
+For \( r(x) = \frac{3x - 5}{2x + 4} \), \( r(2) = \frac{1}{8} \). As \( x \) approaches infinity, \( r(x) \) approaches \( \frac{3}{2} \).
+\end{solution}
+
+\begin{solution}[7]
+In \( s(x) = \frac{x}{x^2 - 9} \), the x-intercepts are at \( x = 0 \), y-intercept at \( y = 0 \), and vertical asymptotes at \( x = \pm 3 \).
+\end{solution}
+
+\begin{solution}[8]
+The function \( t(x) = \frac{5x - 4}{x - 3} \) has a vertical asymptote at \( x = 3 \) and no horizontal asymptote. Discontinuity occurs at \( x = 3 \).
+\end{solution}
+
+\begin{solution}[9]
+To find the range of \( u(x) = \frac{2}{x - 1} + 3 \), consider the behavior as \( x \) approaches 1 and infinity. The range is all real numbers except \( y = 3 \).
+\end{solution}
+
+\begin{solution}[10]
+The inverse of \( v(x) = \frac{1}{2 - x} \) can be found by swapping \( x \) and \( y \) and solving for \( y \): \( x = \frac{1}{2 - y} \) leads to \( y = 2 - \frac{1}{x} \).
+\end{solution}
 
 \subsection{Trigonometric Functions}
 \begin{definition}
 Trigonometric functions include \( \sin(x) \), \( \cos(x) \), and \( \tan(x) \), relating angles to ratios of sides in right triangles.
 \end{definition}
 
+Trigonometric functions are fundamental in calculus, physics, and engineering. They are periodic functions and have various properties that are essential in the study of waves, oscillations, and circular motion.
+
+\paragraph{Properties of Trigonometric Functions:}
+\begin{itemize}
+    \item The functions \( \sin(x) \) and \( \cos(x) \) are periodic with a period of \( 2\pi \).
+    \item The function \( \tan(x) \) is periodic with a period of \( \pi \).
+    \item These functions have specific symmetries: \( \sin(x) \) is odd, \( \cos(x) \) is even, and \( \tan(x) \) is odd.
+\end{itemize}
+
+\paragraph{Graphing Trigonometric Functions:}
+Using `pgfplots` to graph \( \sin(x) \) and \( \cos(x) \):
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(y\),
+    xmin=-2*pi, xmax=2*pi,
+    ymin=-1.5, ymax=1.5,
+    xtick={-6.28318, -3.14159, 0, 3.14159, 6.28318},
+    xticklabels={\(-2\pi\), \(-\pi\), 0, \(\pi\), \(2\pi\)},
+    ytick={-1, 0, 1},
+    legend pos=north east,
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+% Plotting sin(x)
+\addplot[domain=-2*pi:2*pi, samples=100, color=blue]{sin(deg(x))};
+\addlegendentry{\(\sin(x)\)}
+
+% Plotting cos(x)
+\addplot[domain=-2*pi:2*pi, samples=100, color=red]{cos(deg(x))};
+\addlegendentry{\(\cos(x)\)}
+\end{axis}
+\end{tikzpicture}
+
+\paragraph{Applications of Trigonometric Functions:}
+Trigonometric functions model phenomena such as sound waves, light waves, and describe the motion of pendulums and other periodic phenomena.
+
+\begin{exercise}
+Graph the function \( f(x) = \tan(x) \) and identify its asymptotes.
+\end{exercise}
+
+\begin{exercise}
+Find the amplitude and period of the function \( g(x) = 3\sin(2x) \).
+\end{exercise}
+
+\begin{exercise}
+Determine the phase shift and vertical shift for the function \( h(x) = \cos(x - \pi/2) + 1 \).
+\end{exercise}
+
+\subsubsection*{Exercises on Trigonometric Functions}
+
+\begin{exercise}
+Graph the function \( f(x) = \tan(x) \) and identify its asymptotes.
+\end{exercise}
+
+\begin{exercise}
+Find the amplitude and period of the function \( g(x) = 3\sin(2x) \).
+\end{exercise}
+
+\begin{exercise}
+Determine the phase shift and vertical shift for the function \( h(x) = \cos(x - \pi/2) + 1 \).
+\end{exercise}
+
+\begin{exercise}
+Prove that \( \sin^2(x) + \cos^2(x) = 1 \) using a unit circle.
+\end{exercise}
+
+\begin{exercise}
+Evaluate \( \sin(\pi/6) \), \( \cos(\pi/3) \), and \( \tan(\pi/4) \).
+\end{exercise}
+
+\begin{exercise}
+Sketch the graph of \( f(x) = \sin(x) - \cos(x) \) over the interval \([0, 2\pi]\).
+\end{exercise}
+
+\begin{exercise}
+Find the values of \( x \) where \( \sin(x) = -\sqrt{3}/2 \) in the interval \([-\pi, \pi]\).
+\end{exercise}
+
+\begin{exercise}
+For the function \( g(x) = 2\cos(3x - \pi) \), identify the amplitude, period, phase shift, and sketch its graph.
+\end{exercise}
+
+\begin{exercise}
+Determine the exact value of \( \tan(\pi/6) + \cos(\pi/3) \).
+\end{exercise}
+
+\begin{exercise}
+Solve for \( x \) in the equation \( 3\sin(x) + 4\cos(x) = 0 \) over the interval \([0, 2\pi]\).
+\end{exercise}
+
+\subsubsection*{Solutions to Exercises on Trigonometric Functions}
+
+\begin{solution}[1]
+For \( f(x) = \tan(x) \), the graph has vertical asymptotes at \( x = \pm \frac{\pi}{2}, \pm \frac{3\pi}{2}, \ldots \) where the cosine function in the denominator equals zero.
+\end{solution}
+
+\begin{solution}[2]
+The function \( g(x) = 3\sin(2x) \) has an amplitude of 3 (the coefficient of the sine function) and a period of \( \frac{\pi}{2} \) (computed as \( \frac{2\pi}{2} = \pi \)).
+\end{solution}
+
+\begin{solution}[3]
+For \( h(x) = \cos(x - \pi/2) + 1 \), the phase shift is \( \frac{\pi}{2} \) to the right, and the vertical shift is 1 unit upwards.
+\end{solution}
+
+\begin{solution}[4]
+Using the unit circle, we know that \( \sin(x) \) and \( \cos(x) \) represent the y-coordinate and x-coordinate, respectively, of a point on the circle. Since the radius of the unit circle is 1, we have \( \sin^2(x) + \cos^2(x) = 1^2 = 1 \).
+\end{solution}
+
+\begin{solution}[5]
+Evaluate \( \sin(\pi/6) = 1/2 \), \( \cos(\pi/3) = 1/2 \), and \( \tan(\pi/4) = 1 \).
+\end{solution}
+
+\begin{solution}[6]
+To graph \( f(x) = \sin(x) - \cos(x) \), plot the sine and cosine functions separately and then subtract their values for each \( x \) in the interval \([0, 2\pi]\).
+\end{solution}
+
+\begin{solution}[7]
+The values of \( x \) where \( \sin(x) = -\sqrt{3}/2 \) in the interval \([-\pi, \pi]\) are \( x = -\pi/3 \) and \( x = -2\pi/3 \).
+\end{solution}
+
+\begin{solution}[8]
+For \( g(x) = 2\cos(3x - \pi) \), the amplitude is 2, the period is \( \frac{2\pi}{3} \), and the phase shift is \( \frac{\pi}{3} \) to the right. Sketch the graph accordingly.
+\end{solution}
+
+\begin{solution}[9]
+The exact value of \( \tan(\pi/6) + \cos(\pi/3) \) is \( \frac{\sqrt{3}}{3} + \frac{1}{2} \).
+\end{solution}
+
+\begin{solution}[10]
+Solve \( 3\sin(x) + 4\cos(x) = 0 \) over the interval \([0, 2\pi]\). Dividing by \( \cos(x) \) and applying trigonometric identities, we find \( x = \frac{\pi}{2}, \frac{3\pi}{2} \).
+\end{solution}
+
 \subsection{Exponential and Logarithmic Functions}
 \begin{definition}
-Exponential functions have the form \( f(x) = a^x \) and logarithmic functions are their inverses.
+Exponential functions have the form \( f(x) = a^x \) where \( a \) is a positive constant. Logarithmic functions are the inverses of exponential functions and are usually expressed as \( g(x) = \log_a(x) \) for a logarithm to the base \( a \).
 \end{definition}
+
+Exponential and logarithmic functions are widely used in many fields, including physics, engineering, and economics, due to their properties of describing growth and decay processes.
+
+\paragraph{Characteristics of Exponential Functions:}
+\begin{itemize}
+    \item Exponential growth occurs when \( a > 1 \), and exponential decay happens when \( 0 < a < 1 \).
+    \item The graph of an exponential function always lies above the x-axis and increases or decreases rapidly.
+    \item Exponential functions have a horizontal asymptote at \( y = 0 \).
+\end{itemize}
+
+\paragraph{Characteristics of Logarithmic Functions:}
+\begin{itemize}
+    \item The logarithmic function \( \log_a(x) \) is undefined for \( x \leq 0 \).
+    \item The graph of a logarithmic function passes through the point \( (1, 0) \) and has a vertical asymptote at \( x = 0 \).
+    \item Logarithmic functions increase slowly and are used to model the inverse of exponential growth or decay.
+\end{itemize}
+
+\paragraph{Graphing Exponential and Logarithmic Functions:}
+Here we graph \( f(x) = 2^x \) and its inverse \( g(x) = \log_2(x) \) using `pgfplots`:
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    xlabel = \( x \),
+    ylabel = {\( y \)},
+    xmin=-10, xmax=10,
+    ymin=-10, ymax=10,
+    samples=100,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+]
+
+% Plotting the exponential function
+\addplot[domain=-2:3.5, smooth, thick, blue]{2^x};
+\addlegendentry{\(2^x\)}
+
+% Plotting the logarithmic function
+\addplot[domain=0.1:10, smooth, thick, red]{log2(x)};
+\addlegendentry{\(\log_2(x)\)}
+\end{axis}
+\end{tikzpicture}
+
+\begin{exercise}
+Graph the exponential function \( h(x) = e^x \) and identify its key characteristics.
+\end{exercise}
+
+\begin{exercise}
+Sketch the graph of \( k(x) = \log_e(x) \) (also known as \( \ln(x) \)) and discuss its properties.
+\end{exercise}
+
+\subsubsection*{Exercises on Exponential and Logarithmic Functions}
+
+\begin{exercise}
+Graph the exponential function \( h(x) = e^x \) and identify its key characteristics.
+\end{exercise}
+
+\begin{exercise}
+Sketch the graph of \( k(x) = \log_e(x) \) (also known as \( \ln(x) \)) and discuss its properties.
+\end{exercise}
+
+\begin{exercise}
+Evaluate the expression \( e^{\ln(5)} \) and explain the relationship between the exponential and logarithmic functions.
+\end{exercise}
+
+\begin{exercise}
+Find the solution to the equation \( 3^x = 27 \).
+\end{exercise}
+
+\begin{exercise}
+Determine the x-intercept of the logarithmic function \( f(x) = \log_2(x - 1) \).
+\end{exercise}
+
+\begin{exercise}
+Solve for \( x \) in the equation \( \ln(x) + \ln(2x) = 3 \).
+\end{exercise}
+
+\begin{exercise}
+Graph the function \( g(x) = 2^x + 3 \) and describe how it differs from the basic exponential function \( f(x) = 2^x \).
+\end{exercise}
+
+\begin{exercise}
+Find the domain and range of the function \( h(x) = \ln(x - 2) \).
+\end{exercise}
+
+\begin{exercise}
+Calculate the derivative of the function \( f(x) = e^{2x} \) using the rules of differentiation for exponential functions.
+\end{exercise}
+
+\begin{exercise}
+Given the function \( g(x) = \log_{10}(x^2 - 1) \), find the points of discontinuity.
+\end{exercise}
+
+\subsubsection*{Solutions to Exercises on Exponential and Logarithmic Functions}
+
+\begin{solution}[1]
+For \( h(x) = e^x \), the graph is an increasing exponential function. It passes through the point (0, 1) and has a horizontal asymptote at \( y = 0 \). The function is always positive and increases rapidly as \( x \) increases.
+\end{solution}
+
+\begin{solution}[2]
+The function \( k(x) = \log_e(x) \), or \( \ln(x) \), has a graph that passes through the point (1, 0) and has a vertical asymptote at \( x = 0 \). The function is defined for \( x > 0 \) and increases slowly as \( x \) increases.
+\end{solution}
+
+\begin{solution}[3]
+Evaluate \( e^{\ln(5)} \). Since the exponential and logarithmic functions are inverses of each other, \( e^{\ln(5)} = 5 \).
+\end{solution}
+
+\begin{solution}[4]
+Solve \( 3^x = 27 \). Recognizing that \( 27 = 3^3 \), we find \( x = 3 \).
+\end{solution}
+
+\begin{solution}[5]
+To find the x-intercept of \( f(x) = \log_2(x - 1) \), set \( f(x) = 0 \). This yields \( \log_2(x - 1) = 0 \), so \( x - 1 = 1 \), and thus \( x = 2 \).
+\end{solution}
+
+\begin{solution}[6]
+Solve \( \ln(x) + \ln(2x) = 3 \). Combine the logarithms: \( \ln(2x^2) = 3 \). Exponentiating both sides gives \( 2x^2 = e^3 \). Solving for \( x \) yields \( x = \pm \sqrt{\frac{e^3}{2}} \), but only the positive solution is valid since \( \ln(x) \) is undefined for negative \( x \).
+\end{solution}
+
+\begin{solution}[7]
+Graph \( g(x) = 2^x + 3 \). This graph is a vertical shift of the function \( f(x) = 2^x \) upwards by 3 units. It increases exponentially and passes through the point (0, 4).
+\end{solution}
+
+\begin{solution}[8]
+The domain of \( h(x) = \ln(x - 2) \) is \( x > 2 \), and the range is all real numbers since the logarithmic function can take any real value.
+\end{solution}
+
+\begin{solution}[9]
+The derivative of \( f(x) = e^{2x} \) is \( f'(x) = 2e^{2x} \), using the chain rule for differentiation.
+\end{solution}
+
+\begin{solution}[10]
+For \( g(x) = \log_{10}(x^2 - 1) \), the function is undefined at points where \( x^2 - 1 \leq 0 \), which occurs at \( x = -1 \) and \( x = 1 \). These are the points of discontinuity.
+\end{solution}
+
 
 \section{Function Properties}
 \subsection{Continuity}
 \begin{definition}
-A function is continuous at a point if the limit of the function as it approaches the point is equal to the function value at that point.
+A function is continuous at a point if the limit of the function as it approaches the point is equal to the function value at that point. Formally, a function \( f(x) \) is continuous at a point \( c \) if \( \lim_{x \to c} f(x) = f(c) \).
 \end{definition}
+
+Continuity is a fundamental concept in calculus, essential for understanding limits, derivatives, and integrals.
+
+\paragraph{Types of Discontinuities:}
+\begin{itemize}
+    \item A function has a \textit{removable discontinuity} at a point if the limit exists but is not equal to the function value at that point.
+    \item A \textit{jump discontinuity} occurs when the left-hand and right-hand limits exist but are not equal to each other.
+    \item An \textit{infinite discontinuity} occurs when the function approaches infinity near the point of discontinuity.
+\end{itemize}
+
+\paragraph{Graphing Continuous Functions:}
+To illustrate continuity, consider the function \( f(x) = \frac{x^2 - 4}{x - 2} \) and its simplified form \( g(x) = x + 2 \). The function \( f(x) \) has a removable discontinuity at \( x = 2 \).
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(y\),
+    xmin=-1, xmax=4,
+    ymin=-1, ymax=6,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+]
+
+% Plotting f(x)
+\addplot[domain=-1:1.9, smooth, thick, blue]{(x^2 - 4)/(x - 2)};
+\addplot[domain=2.1:4, smooth, thick, blue]{(x^2 - 4)/(x - 2)};
+\addplot[holdot] coordinates{(2,4)};
+\addplot[soldot] coordinates{(2,0)};
+\node[anchor=west] at (axis cs: 3,5) {\(f(x) = \frac{x^2 - 4}{x - 2}\)};
+
+% Plotting g(x)
+\addplot[domain=-1:4, smooth, thick, red]{x + 2};
+\node[anchor=west] at (axis cs: 3,2) {\(g(x) = x + 2\)};
+
+\end{axis}
+\end{tikzpicture}
+
+\paragraph{Applications of Continuity:}
+Continuous functions are used in various applications, including physics (to model continuous motion), economics (to describe continuous growth), and engineering (in signal processing).
+
+\begin{exercise}
+Determine if the function \( h(x) = \frac{x^2 - 1}{x - 1} \) is continuous at \( x = 1 \).
+\end{exercise}
+
+\begin{exercise}
+Evaluate the continuity of the piecewise function \( k(x) = 
+\begin{cases} 
+x^2 & \text{if } x < 2 \\
+4 & \text{if } x = 2 \\
+x + 2 & \text{if } x > 2 
+\end{cases} \) at \( x = 2 \).
+\end{exercise}
+
+\subsubsection*{Exercises on Continuity}
+
+\begin{exercise}
+Determine if the function \( h(x) = \frac{x^2 - 1}{x - 1} \) is continuous at \( x = 1 \).
+\end{exercise}
+
+\begin{exercise}
+Evaluate the continuity of the piecewise function \( k(x) = 
+\begin{cases} 
+x^2 & \text{if } x < 2 \\
+4 & \text{if } x = 2 \\
+x + 2 & \text{if } x > 2 
+\end{cases} \) at \( x = 2 \).
+\end{exercise}
+
+\begin{exercise}
+Is the function \( f(x) = \frac{1}{x} \) continuous at \( x = 0 \)? Justify your answer.
+\end{exercise}
+
+\begin{exercise}
+Consider the function \( g(x) = \ln(x) \). Determine the points of discontinuity, if any.
+\end{exercise}
+
+\begin{exercise}
+Prove that the function \( p(x) = x^3 - 3x + 1 \) is continuous for all real numbers.
+\end{exercise}
+
+\begin{exercise}
+Find the value of \( a \) for which the function \( q(x) = 
+\begin{cases} 
+2x + a & \text{if } x \leq 3 \\
+x^2 - 1 & \text{if } x > 3 
+\end{cases} \) is continuous at \( x = 3 \).
+\end{exercise}
+
+\begin{exercise}
+Determine whether the function \( r(x) = \frac{\sin(x)}{x} \) is continuous at \( x = 0 \).
+\end{exercise}
+
+\begin{exercise}
+For the function \( s(x) = \sqrt{x} \), identify the intervals where it is continuous.
+\end{exercise}
+
+\begin{exercise}
+Show that the function \( t(x) = e^{-x^2} \) is continuous everywhere.
+\end{exercise}
+
+\begin{exercise}
+Is the function \( u(x) = \frac{|x|}{x} \) continuous at \( x = 0 \)? Explain your reasoning.
+\end{exercise}
+
+\subsubsection*{Solutions to Exercises on Continuity}
+
+\begin{solution}[1]
+For \( h(x) = \frac{x^2 - 1}{x - 1} \), factorize the numerator to get \( h(x) = \frac{(x - 1)(x + 1)}{x - 1} \). At \( x = 1 \), the function simplifies to \( h(1) = 2 \), and the limit as \( x \) approaches 1 is also 2. Hence, \( h(x) \) is continuous at \( x = 1 \).
+\end{solution}
+
+\begin{solution}[2]
+For \( k(x) \), at \( x < 2 \), \( k(x) = x^2 \); at \( x = 2 \), \( k(x) = 4 \); and at \( x > 2 \), \( k(x) = x + 2 \). The left-hand limit as \( x \) approaches 2 is 4, and the right-hand limit is also 4. Since the function value at \( x = 2 \) is 4, \( k(x) \) is continuous at \( x = 2 \).
+\end{solution}
+
+\begin{solution}[3]
+The function \( f(x) = \frac{1}{x} \) is not continuous at \( x = 0 \) because it is not defined there (the denominator becomes zero), and the limits as \( x \) approaches 0 are \( \pm \infty \).
+\end{solution}
+
+\begin{solution}[4]
+The function \( g(x) = \ln(x) \) is continuous for all \( x > 0 \). It has a discontinuity at \( x = 0 \) because it is not defined for \( x \leq 0 \).
+\end{solution}
+
+\begin{solution}[5]
+Since \( p(x) = x^3 - 3x + 1 \) is a polynomial function, it is continuous for all real numbers (polynomials are continuous everywhere).
+\end{solution}
+
+\begin{solution}[6]
+For \( q(x) \) to be continuous at \( x = 3 \), the values from the left and right must be equal at \( x = 3 \). Setting \( 2(3) + a = 3^2 - 1 \) gives \( a = 5 \).
+\end{solution}
+
+\begin{solution}[7]
+The function \( r(x) = \frac{\sin(x)}{x} \) is continuous at \( x = 0 \) by applying L'Hôpital's Rule or recognizing that \( \lim_{x \to 0} \frac{\sin(x)}{x} = 1 \).
+\end{solution}
+
+\begin{solution}[8]
+The function \( s(x) = \sqrt{x} \) is continuous for all \( x \geq 0 \) since it is defined and smooth over this interval.
+\end{solution}
+
+\begin{solution}[9]
+The function \( t(x) = e^{-x^2} \) is continuous everywhere as the composition of continuous functions (exponential and polynomial) is continuous.
+\end{solution}
+
+\begin{solution}[10]
+The function \( u(x) = \frac{|x|}{x} \) is not continuous at \( x = 0 \) as it is not defined there (the denominator becomes zero).
+\end{solution}
 
 \subsection{Differentiability}
 \begin{definition}
-A function is differentiable at a point if it has a defined derivative at that point.
+A function is differentiable at a point if it has a defined derivative at that point. Formally, a function \( f(x) \) is differentiable at \( c \) if the limit \(\lim_{h \to 0} \frac{f(c + h) - f(c)}{h}\) exists.
 \end{definition}
+
+Differentiability is a key concept in calculus, relating closely to the continuity of a function and its smoothness.
+
+\paragraph{Characteristics of Differentiable Functions:}
+\begin{itemize}
+    \item If a function is differentiable at a point, it is also continuous at that point, but the converse is not necessarily true.
+    \item A function may fail to be differentiable at a point if it has a corner, cusp, or vertical tangent, or is discontinuous at that point.
+\end{itemize}
+
+\paragraph{Graphing and Analyzing Differentiability:}
+Consider a function \( f(x) \) with a cusp at \( x = 0 \). For example, \( f(x) = |x| \) is not differentiable at \( x = 0 \) due to the cusp.
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(f(x)\),
+    xmin=-2, xmax=2,
+    ymin=-1, ymax=2,
+    samples=100,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+]
+
+% Plotting the function
+\addplot[domain=-2:2, smooth, thick, blue]{abs(x)};
+\node[anchor=west] at (axis cs: 1.5,1.5) {\(f(x) = |x|\)};
+
+\end{axis}
+\end{tikzpicture}
+
+
+\paragraph{Applications of Differentiability:}
+Differentiability is used in physics to analyze motion (velocity and acceleration) and in economics to find rates of change (marginal costs and revenues).
+
+\begin{exercise}
+Determine whether the function \( g(x) = x^2 \) is differentiable at \( x = 0 \) and explain why.
+\end{exercise}
+
+\begin{exercise}
+Analyze the differentiability of the piecewise function \( h(x) = 
+\begin{cases} 
+x^2 & \text{if } x \leq 1 \\
+2x - 1 & \text{if } x > 1 
+\end{cases} \) at \( x = 1 \).
+\end{exercise}
+
+\subsubsection*{Exercises on Differentiability}
+
+\begin{exercise}
+Determine whether the function \( g(x) = x^2 \) is differentiable at \( x = 0 \) and explain why.
+\end{exercise}
+
+\begin{exercise}
+Analyze the differentiability of the piecewise function \( h(x) = 
+\begin{cases} 
+x^2 & \text{if } x \leq 1 \\
+2x - 1 & \text{if } x > 1 
+\end{cases} \) at \( x = 1 \).
+\end{exercise}
+
+\begin{exercise}
+Check if the function \( f(x) = \frac{1}{x} \) is differentiable at \( x = 0 \) and provide a justification for your answer.
+\end{exercise}
+
+\begin{exercise}
+Determine whether the function \( k(x) = |x| \) is differentiable at \( x = 0 \). Give reasons for your answer.
+\end{exercise}
+
+\begin{exercise}
+For the function \( p(x) = x^3 \), find the derivative at \( x = 2 \) and discuss its differentiability at this point.
+\end{exercise}
+
+\begin{exercise}
+Consider the function \( q(x) = 
+\begin{cases} 
+x^2 \sin(\frac{1}{x}) & \text{if } x \neq 0 \\
+0 & \text{if } x = 0 
+\end{cases} \). Is \( q(x) \) differentiable at \( x = 0 \)?
+\end{exercise}
+
+\begin{exercise}
+Evaluate the differentiability of the function \( r(x) = \sqrt{x} \) at \( x = 0 \).
+\end{exercise}
+
+\begin{exercise}
+Find the points of non-differentiability, if any, for the function \( s(x) = \frac{|x|}{x} \).
+\end{exercise}
+
+\begin{exercise}
+Given the function \( t(x) = \ln(x) \), determine its differentiability over its domain.
+\end{exercise}
+
+\begin{exercise}
+Prove that the function \( u(x) = e^x \) is differentiable for all real numbers \( x \).
+\end{exercise}
+
+\subsubsection*{Solutions to Exercises on Differentiability}
+
+\begin{solution}[1]
+The function \( g(x) = x^2 \) is differentiable at \( x = 0 \). This is because its derivative \( g'(x) = 2x \) is defined at \( x = 0 \) (with \( g'(0) = 0 \)), showing that the function is smooth and has no sharp corners or cusps at this point.
+\end{solution}
+
+\begin{solution}[2]
+The piecewise function \( h(x) \) is differentiable at \( x = 1 \) as both pieces of the function have the same derivative at this point. For \( x \leq 1 \), the derivative is \( 2x \), and for \( x > 1 \), it is 2. Since both derivatives equal 2 at \( x = 1 \), the function is differentiable there.
+\end{solution}
+
+\begin{solution}[3]
+The function \( f(x) = \frac{1}{x} \) is not differentiable at \( x = 0 \) because it is not defined at this point. The function has a discontinuity (infinite discontinuity) at \( x = 0 \), which precludes differentiability.
+\end{solution}
+
+\begin{solution}[4]
+The function \( k(x) = |x| \) is not differentiable at \( x = 0 \). Although the function is continuous at \( x = 0 \), it has a sharp corner at this point, which means that the limit defining the derivative does not exist.
+\end{solution}
+
+\begin{solution}[5]
+For \( p(x) = x^3 \), the derivative is \( p'(x) = 3x^2 \). At \( x = 2 \), \( p'(2) = 12 \). The function is differentiable at this point as the derivative is defined and finite.
+\end{solution}
+
+\begin{solution}[6]
+The function \( q(x) \) is differentiable at \( x = 0 \). Although the expression \( x^2 \sin(\frac{1}{x}) \) seems complex, its derivative at \( x = 0 \) is 0, making the function differentiable at this point.
+\end{solution}
+
+\begin{solution}[7]
+The function \( r(x) = \sqrt{x} \) is not differentiable at \( x = 0 \). The derivative, \( \frac{1}{2\sqrt{x}} \), becomes infinite as \( x \) approaches 0, indicating a vertical tangent line at this point.
+\end{solution}
+
+\begin{solution}[8]
+The function \( s(x) = \frac{|x|}{x} \) is not differentiable at \( x = 0 \) as it is not continuous there. The function has a jump discontinuity at this point.
+\end{solution}
+
+\begin{solution}[9]
+The function \( t(x) = \ln(x) \) is differentiable over its domain \( (0, \infty) \). Its derivative, \( \frac{1}{x} \), is defined for all \( x > 0 \).
+\end{solution}
+
+\begin{solution}[10]
+The function \( u(x) = e^x \) is differentiable for all real numbers \( x \) because its derivative, \( e^x \), is defined and continuous for all \( x \).
+\end{solution}
 
 \subsection{Asymptotic Behavior}
 \begin{definition}
-Asymptotic behavior refers to the behavior of a function as it approaches infinity or a particular value.
+Asymptotic behavior refers to the behavior of a function as it approaches infinity or a particular value. A function may approach a finite value (horizontal asymptote), become infinitely large (vertical asymptote), or approach a certain path (slant asymptote).
 \end{definition}
+
+Understanding asymptotes is crucial in calculus for analyzing function limits and behavior at extreme values.
+
+\paragraph{Types of Asymptotes:}
+\begin{itemize}
+    \item \textit{Horizontal asymptotes} occur when a function approaches a horizontal line as \( x \) goes to infinity or minus infinity.
+    \item \textit{Vertical asymptotes} occur at values of \( x \) where the function tends towards infinity or minus infinity.
+    \item \textit{Slant (or oblique) asymptotes} occur when the function approaches a line that is not horizontal as \( x \) goes to infinity or minus infinity.
+\end{itemize}
+
+\paragraph{Graphing Asymptotic Behavior:}
+Consider the function \( f(x) = \frac{2x}{x - 1} \). It has a vertical asymptote at \( x = 1 \) and a horizontal asymptote at \( y = 2 \).
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    xlabel = \( x \),
+    ylabel = {\( f(x) \)},
+    xmin=-10, xmax=10,
+    ymin=-10, ymax=10,
+    restrict y to domain=-10:10,
+    samples=100,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+]
+
+% Plotting the function
+\addplot[domain=-10:0.9, smooth, thick, blue]{2*x/(x - 1)};
+\addplot[domain=1.1:10, smooth, thick, blue]{2*x/(x - 1)};
+\draw[dashed] (axis cs:1,-10) -- (axis cs:1,10);
+\draw[dashed] (axis cs:-10,2) -- (axis cs:10,2);
+\end{axis}
+\end{tikzpicture}
+
+\paragraph{Applications of Asymptotic Analysis:}
+Asymptotic analysis is used in various fields, such as physics for studying motion at high velocities, in economics for long-term growth models, and in probability for extreme value theory.
+
+\begin{exercise}
+Determine the horizontal and vertical asymptotes of the function \( g(x) = \frac{3x^2 - x}{x^2 + 2} \).
+\end{exercise}
+
+\begin{exercise}
+Analyze the asymptotic behavior of the function \( h(x) = \frac{x^2 + 3x}{x + 1} \).
+\end{exercise}
+
+\subsubsection*{Exercises on Asymptotic Behavior}
+
+\begin{exercise}
+Determine the horizontal and vertical asymptotes of the function \( g(x) = \frac{3x^2 - x}{x^2 + 2} \).
+\end{exercise}
+
+\begin{exercise}
+Analyze the asymptotic behavior of the function \( h(x) = \frac{x^2 + 3x}{x + 1} \).
+\end{exercise}
+
+\begin{exercise}
+Find all asymptotes of the function \( f(x) = \frac{4x^3 - 2x + 1}{2x^2 - 3x + 5} \).
+\end{exercise}
+
+\begin{exercise}
+Determine the horizontal asymptote, if any, for the function \( p(x) = e^x \).
+\end{exercise}
+
+\begin{exercise}
+Identify any vertical asymptotes for the function \( q(x) = \ln(x - 2) \).
+\end{exercise}
+
+\begin{exercise}
+For the function \( r(x) = \frac{x}{x^2 - 4} \), describe its asymptotic behavior as \( x \) approaches 2 and -2.
+\end{exercise}
+
+\begin{exercise}
+Calculate the slant asymptote for the function \( s(x) = \frac{x^2 - x + 1}{x - 3} \).
+\end{exercise}
+
+\begin{exercise}
+Examine the function \( t(x) = \frac{1}{\sqrt{x^2 + 1}} \) for horizontal asymptotes.
+\end{exercise}
+
+\begin{exercise}
+Does the function \( u(x) = \frac{\sin(x)}{x} \) have any horizontal asymptotes as \( x \) approaches infinity?
+\end{exercise}
+
+\begin{exercise}
+Analyze the function \( v(x) = x\sin(\frac{1}{x}) \) for x approaching 0 and determine if there are any asymptotes.
+\end{exercise}
+
+\subsubsection*{Solutions to Exercises on Asymptotic Behavior}
+
+\begin{solution}[1]
+For \( g(x) = \frac{3x^2 - x}{x^2 + 2} \), the horizontal asymptote is found by comparing the degrees of the numerator and denominator. Since they are the same, the horizontal asymptote is \( y = \frac{3}{1} = 3 \). There are no vertical asymptotes as the denominator is never zero.
+\end{solution}
+
+\begin{solution}[2]
+The function \( h(x) = \frac{x^2 + 3x}{x + 1} \) has a slant asymptote since the degree of the numerator is one more than the degree of the denominator. Dividing the numerator by the denominator gives the slant asymptote \( y = x + 2 \). There is no vertical asymptote as \( x + 1 \) does not equal zero for any real \( x \).
+\end{solution}
+
+\begin{solution}[3]
+For \( f(x) = \frac{4x^3 - 2x + 1}{2x^2 - 3x + 5} \), the degree of the numerator is higher than the degree of the denominator, so there is no horizontal asymptote. For vertical asymptotes, solve \( 2x^2 - 3x + 5 = 0 \), which has no real solutions, so there are no vertical asymptotes.
+\end{solution}
+
+\begin{solution}[4]
+The function \( p(x) = e^x \) does not have a horizontal asymptote as it grows exponentially and does not approach a finite value as \( x \) approaches infinity.
+\end{solution}
+
+\begin{solution}[5]
+The function \( q(x) = \ln(x - 2) \) has a vertical asymptote at \( x = 2 \) since the logarithm becomes undefined at this point.
+\end{solution}
+
+\begin{solution}[6]
+For \( r(x) = \frac{x}{x^2 - 4} \), the function has vertical asymptotes at \( x = 2 \) and \( x = -2 \) where the denominator equals zero.
+\end{solution}
+
+\begin{solution}[7]
+The function \( s(x) = \frac{x^2 - x + 1}{x - 3} \) has a slant asymptote since the degree of the numerator is one more than the denominator. Divide \( x^2 - x + 1 \) by \( x - 3 \) to find the slant asymptote equation.
+\end{solution}
+
+\begin{solution}[8]
+The function \( t(x) = \frac{1}{\sqrt{x^2 + 1}} \) has a horizontal asymptote at \( y = 0 \) as the value approaches zero when \( x \) approaches infinity.
+\end{solution}
+
+\begin{solution}[9]
+The function \( u(x) = \frac{\sin(x)}{x} \) has a horizontal asymptote at \( y = 0 \) as \( x \) approaches infinity since the sine function oscillates between -1 and 1 while \( x \) grows without bound.
+\end{solution}
+
+\begin{solution}[10]
+The function \( v(x) = x\sin(\frac{1}{x}) \) for \( x \) approaching 0 does not have any asymptotes. As \( x \) approaches 0, \( \sin(\frac{1}{x}) \) oscillates rapidly, but the product with \( x \) ensures that the function remains bounded and approaches 0.
+\end{solution}
 
 \subsection{Periodicity and Symmetry}
 \begin{definition}
 A function is periodic if it repeats its values at regular intervals, and it is symmetric if it exhibits mirror symmetry about an axis or point.
 \end{definition}
+
+Periodicity and symmetry play important roles in understanding the behavior and properties of functions, especially in the fields of trigonometry and wave analysis.
+
+\paragraph{Types of Symmetry:}
+\begin{itemize}
+    \item A function is \textit{even} if \( f(-x) = f(x) \), showing symmetry about the y-axis.
+    \item A function is \textit{odd} if \( f(-x) = -f(x) \), showing rotational symmetry about the origin.
+\end{itemize}
+
+\paragraph{Graphing Periodic and Symmetric Functions:}
+For instance, \( \sin(x) \) is an example of a periodic function, and \( x^2 \) is an example of an even function. 
+
+% Plot for sin(x)
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(y\),
+    xmin=-2*pi, xmax=2*pi,
+    ymin=-1.5, ymax=1.5,
+    xtick={-6.28318, -3.14159, 0, 3.14159, 6.28318},
+    xticklabels={\(-2\pi\), \(-\pi\), 0, \(\pi\), \(2\pi\)},
+    ytick={-1, 0, 1},
+    legend pos=north east,
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+% Plotting sin(x)
+\addplot[domain=-2*pi:2*pi, samples=100, color=blue]{sin(deg(x))};
+\addlegendentry{\(\sin(x)\)}
+\end{axis}
+\end{tikzpicture}
+
+% Plot for x^2
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(y\),
+    xmin=-3, xmax=3,
+    ymin=0, ymax=9,
+    grid=both,
+    grid style=dashed,
+]
+
+% Plotting x^2
+\addplot[domain=-3:3, samples=100, color=red]{x^2};
+\addlegendentry{\(x^2\)}
+\end{axis}
+\end{tikzpicture}
+
+\paragraph{Applications of Periodicity and Symmetry:}
+These concepts are frequently applied in physics for analyzing wave patterns, in engineering for signal processing, and in mathematics for solving trigonometric equations.
+
+\begin{exercise}
+Determine if the function \( f(x) = \cos(x) \) is periodic, and if so, find its period.
+\end{exercise}
+
+\begin{exercise}
+Analyze the symmetry of the function \( g(x) = x^3 - x \). Is it even, odd, or neither?
+\end{exercise}
+
+\subsubsection*{Exercises on Periodicity and Symmetry}
+
+\begin{exercise}
+Determine if the function \( f(x) = \cos(x) \) is periodic, and if so, find its period.
+\end{exercise}
+
+\begin{exercise}
+Analyze the symmetry of the function \( g(x) = x^3 - x \). Is it even, odd, or neither?
+\end{exercise}
+
+\begin{exercise}
+Identify the periodicity of the function \( h(x) = \sin(2x) \) and specify the period.
+\end{exercise}
+
+\begin{exercise}
+Check whether the function \( p(x) = x^4 - 6x^2 + 8 \) is even, odd, or neither.
+\end{exercise}
+
+\begin{exercise}
+For the function \( q(x) = \tan(x) \), determine if it is periodic and find the period.
+\end{exercise}
+
+\begin{exercise}
+Investigate the symmetry of the function \( r(x) = \frac{1}{x} \). Is it symmetric about the y-axis, the origin, or neither?
+\end{exercise}
+
+\begin{exercise}
+Examine the function \( s(x) = e^x \) for periodicity. Is this function periodic?
+\end{exercise}
+
+\begin{exercise}
+Determine the period of the function \( t(x) = \cos(3x - \pi) \).
+\end{exercise}
+
+\begin{exercise}
+Analyze the function \( u(x) = x^2 - 2x + 1 \) for symmetry. Is it symmetric about the y-axis?
+\end{exercise}
+
+\begin{exercise}
+Check whether the function \( v(x) = \sin(x) + \cos(x) \) is periodic, and if so, identify its period.
+\end{exercise}
+
+\subsubsection*{Solutions to Exercises on Periodicity and Symmetry}
+
+\begin{solution}[1]
+The function \( f(x) = \cos(x) \) is periodic. Its period is \( 2\pi \) since \(\cos(x + 2\pi) = \cos(x)\) for all \(x\).
+\end{solution}
+
+\begin{solution}[2]
+The function \( g(x) = x^3 - x \) is odd. This is because \( g(-x) = (-x)^3 - (-x) = -x^3 + x = -g(x) \).
+\end{solution}
+
+\begin{solution}[3]
+The function \( h(x) = \sin(2x) \) is periodic with a period of \( \pi \). This is because \(\sin(2(x + \pi)) = \sin(2x + 2\pi) = \sin(2x)\).
+\end{solution}
+
+\begin{solution}[4]
+The function \( p(x) = x^4 - 6x^2 + 8 \) is even since \( p(-x) = (-x)^4 - 6(-x)^2 + 8 = x^4 - 6x^2 + 8 = p(x) \).
+\end{solution}
+
+\begin{solution}[5]
+The function \( q(x) = \tan(x) \) is periodic with a period of \( \pi \) because \(\tan(x + \pi) = \tan(x)\) for all \(x\).
+\end{solution}
+
+\begin{solution}[6]
+The function \( r(x) = \frac{1}{x} \) is neither even nor odd, and it does not exhibit symmetry about the y-axis or the origin.
+\end{solution}
+
+\begin{solution}[7]
+The function \( s(x) = e^x \) is not periodic. It does not repeat its values at regular intervals.
+\end{solution}
+
+\begin{solution}[8]
+The function \( t(x) = \cos(3x - \pi) \) is periodic with a period of \( \frac{2\pi}{3} \). This period is derived from the coefficient of \(x\) in the argument of the cosine function.
+\end{solution}
+
+\begin{solution}[9]
+The function \( u(x) = x^2 - 2x + 1 \) is not symmetric about the y-axis. It is a parabola that opens upwards and does not have symmetry about the y-axis.
+\end{solution}
+
+\begin{solution}[10]
+The function \( v(x) = \sin(x) + \cos(x) \) is periodic with a period of \( 2\pi \) since both sine and cosine functions have a period of \( 2\pi \).
+\end{solution}
+
 
 \section{Function Transformations}
 \subsection{Translation and Scaling}
@@ -1109,17 +2106,473 @@ A function is periodic if it repeats its values at regular intervals, and it is 
 Translation shifts a function horizontally or vertically, while scaling changes its size.
 \end{definition}
 
+Translation and scaling are fundamental operations in function manipulation, allowing for adjustments in position and size of the graph of a function.
+
+\paragraph{Types of Transformations:}
+\begin{itemize}
+    \item \textit{Horizontal Translation:} Shifting a function left or right. For instance, \( f(x) \) to \( f(x - h) \) shifts the function right by \( h \).
+    \item \textit{Vertical Translation:} Moving a function up or down. For example, \( f(x) \) to \( f(x) + k \) raises the function by \( k \).
+    \item \textit{Horizontal Scaling:} Stretching or compressing a function horizontally. \( f(x) \) to \( f(cx) \) scales the function horizontally.
+    \item \textit{Vertical Scaling:} Altering the function's height. \( f(x) \) to \( cf(x) \) scales the function vertically.
+\end{itemize}
+
+\paragraph{Graphing Translated and Scaled Functions:}
+Let's consider the function \( f(x) = x^2 \), its translation, and scaling.
+
+% Original function
+\begin{tikzpicture}
+\begin{axis}[
+    title={Original Function \( f(x) = x^2 \)},
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(y\),
+    xmin=-3, xmax=3,
+    ymin=0, ymax=9,
+    grid=both,
+    grid style=dashed,
+]
+
+\addplot[domain=-3:3, samples=100, color=blue]{x^2};
+\end{axis}
+\end{tikzpicture}
+
+% Translated function
+\begin{tikzpicture}
+\begin{axis}[
+    title={Translated Function \( f(x - 2) = (x - 2)^2 \)},
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(y\),
+    xmin=-1, xmax=5,
+    ymin=0, ymax=9,
+    grid=both,
+    grid style=dashed,
+]
+
+\addplot[domain=-1:5, samples=100, color=red]{(x - 2)^2};
+\end{axis}
+\end{tikzpicture}
+
+% Scaled function
+\begin{tikzpicture}
+\begin{axis}[
+    title={Scaled Function \( 2f(x) = 2x^2 \)},
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(y\),
+    xmin=-3, xmax=3,
+    ymin=0, ymax=18,
+    grid=both,
+    grid style=dashed,
+]
+
+\addplot[domain=-3:3, samples=100, color=green]{2*x^2};
+\end{axis}
+\end{tikzpicture}
+
+\paragraph{Applications of Translation and Scaling:}
+These transformations are widely used in data analysis for adjusting graphs, in physics to model motion and waves, and in other mathematical contexts for function analysis.
+
+\begin{exercise}
+Graph the function \( g(x) = (x - 3)^2 + 2 \) and describe its translation and scaling relative to \( f(x) = x^2 \).
+\end{exercise}
+
+\begin{exercise}
+For the function \( h(x) = \frac{1}{2}\sin(2x + \pi) \), identify the translations and scalings applied to the basic sine function.
+\end{exercise}
+
+\subsubsection*{Exercises on Translation and Scaling}
+
+\begin{exercise}
+Graph the function \( g(x) = (x - 3)^2 + 2 \) and describe its translation and scaling relative to \( f(x) = x^2 \).
+\end{exercise}
+
+\begin{exercise}
+For the function \( h(x) = \frac{1}{2}\sin(2x + \pi) \), identify the translations and scalings applied to the basic sine function.
+\end{exercise}
+
+\begin{exercise}
+Consider the function \( p(x) = -3\cos(x - \pi/2) \). Describe its vertical and horizontal translations, and vertical scaling.
+\end{exercise}
+
+\begin{exercise}
+Determine the translation and scaling transformations applied to the function \( f(x) = x^2 \) to obtain \( q(x) = 4(x + 1)^2 - 5 \).
+\end{exercise}
+
+\begin{exercise}
+Sketch the graph of \( r(x) = \frac{1}{3}(x - 2)^3 + 4 \) and explain the transformations applied to the basic cubic function \( f(x) = x^3 \).
+\end{exercise}
+
+\begin{exercise}
+Graph the function \( s(x) = 2\sin(\pi x - \pi/2) + 1 \) and describe its periodicity, translation, and scaling.
+\end{exercise}
+
+\begin{exercise}
+Analyze the function \( t(x) = \frac{x + 2}{x - 1} \) for vertical and horizontal translations and any scaling factors.
+\end{exercise}
+
+\begin{exercise}
+Identify the transformations applied to the exponential function \( f(x) = e^x \) to produce \( u(x) = 2e^{-x + 3} - 1 \).
+\end{exercise}
+
+\begin{exercise}
+Consider the function \( v(x) = \sqrt{x + 4} - 2 \). Determine the transformations applied to the basic square root function \( f(x) = \sqrt{x} \).
+\end{exercise}
+
+\begin{exercise}
+Graph the function \( w(x) = \ln(x - 3) + 2 \) and describe its translation and scaling relative to the natural logarithm function \( f(x) = \ln(x) \).
+\end{exercise}
+
+\subsubsection*{Solutions to Exercises on Translation and Scaling}
+
+\begin{solution}[1]
+The function \( g(x) = (x - 3)^2 + 2 \) is a translation of \( f(x) = x^2 \). It is translated 3 units to the right and 2 units up.
+\end{solution}
+
+\begin{solution}[2]
+For \( h(x) = \frac{1}{2}\sin(2x + \pi) \), the function is scaled vertically by a factor of \( \frac{1}{2} \), horizontally by a factor of \( \frac{1}{2} \) (period is \( \pi \)), and translated \( \frac{\pi}{2} \) units to the left.
+\end{solution}
+
+\begin{solution}[3]
+The function \( p(x) = -3\cos(x - \pi/2) \) is vertically scaled by a factor of 3, inverted (due to the negative sign), and translated \( \frac{\pi}{2} \) units to the right.
+\end{solution}
+
+\begin{solution}[4]
+In \( q(x) = 4(x + 1)^2 - 5 \), the function \( f(x) = x^2 \) is horizontally translated 1 unit to the left, vertically scaled by a factor of 4, and translated 5 units down.
+\end{solution}
+
+\begin{solution}[5]
+The function \( r(x) = \frac{1}{3}(x - 2)^3 + 4 \) is a transformation of \( f(x) = x^3 \) with a horizontal translation 2 units to the right, vertical scaling by \( \frac{1}{3} \), and vertical translation 4 units up.
+\end{solution}
+
+\begin{solution}[6]
+For \( s(x) = 2\sin(\pi x - \pi/2) + 1 \), the function is vertically scaled by 2, translated \( \frac{1}{2} \) unit to the right, and translated 1 unit up. The period is \( \frac{2\pi}{\pi} = 2 \).
+\end{solution}
+
+\begin{solution}[7]
+The function \( t(x) = \frac{x + 2}{x - 1} \) involves a horizontal translation 1 unit to the right and 2 units to the left in the numerator. There's no clear vertical or horizontal scaling.
+\end{solution}
+
+\begin{solution}[8]
+The function \( u(x) = 2e^{-x + 3} - 1 \) is translated 3 units to the right, reflected over the y-axis, vertically scaled by 2, and translated 1 unit down from \( f(x) = e^x \).
+\end{solution}
+
+\begin{solution}[9]
+In \( v(x) = \sqrt{x + 4} - 2 \), the square root function \( f(x) = \sqrt{x} \) is translated 4 units to the left and 2 units down.
+\end{solution}
+
+\begin{solution}[10]
+The function \( w(x) = \ln(x - 3) + 2 \) is a translation of the natural logarithm function \( f(x) = \ln(x) \), shifted 3 units to the right and 2 units up.
+\end{solution}
+
 \subsection{Reflection and Rotation}
 \begin{definition}
 Reflection inverts a function across a line, and rotation turns it around a point.
 \end{definition}
 
-\chapter{Limits and Continuity}
-\section{Introduction to Limits}
-\subsection{Definition of a Limit}
+Reflection and rotation are key transformations in function manipulation, changing the orientation of the graph of a function.
+
+\paragraph{Types of Transformations:}
+\begin{itemize}
+    \item \textit{Reflection Across the y-axis:} Reflecting a function \( f(x) \) to \( f(-x) \) inverts it across the y-axis.
+    \item \textit{Reflection Across the x-axis:} Reflecting a function \( f(x) \) to \( -f(x) \) inverts it across the x-axis.
+    \item \textit{Rotation:} Rotation involves turning the graph of a function around a specific point, often the origin.
+\end{itemize}
+
+\paragraph{Graphing Reflected and Rotated Functions:}
+Consider the function \( f(x) = x^2 \) and its reflection across the y-axis.
+
+% Original function
+\begin{tikzpicture}
+\begin{axis}[
+    title={Original Function \( f(x) = x^2 \)},
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(y\),
+    xmin=-3, xmax=3,
+    ymin=0, ymax=9,
+    grid=both,
+    grid style=dashed,
+]
+
+\addplot[domain=-3:3, samples=100, color=blue]{x^2};
+\end{axis}
+\end{tikzpicture}
+
+% Reflected function
+\begin{tikzpicture}
+\begin{axis}[
+    title={Reflected Function \( f(-x) = (-x)^2 \)},
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(y\),
+    xmin=-3, xmax=3,
+    ymin=0, ymax=9,
+    grid=both,
+    grid style=dashed,
+]
+
+\addplot[domain=-3:3, samples=100, color=red]{(-x)^2};
+\end{axis}
+\end{tikzpicture}
+
+\paragraph{Applications of Reflection and Rotation:}
+These transformations are used in various applications, such as in physics for understanding wave properties, in engineering for signal processing, and in computer graphics for image manipulation.
+
+\begin{exercise}
+Graph the function \( g(x) = -\frac{1}{x} \) and describe its reflection relative to the basic function \( f(x) = \frac{1}{x} \).
+\end{exercise}
+
+\begin{exercise}
+Consider the function \( h(x) = \sqrt{-x} \). Describe the transformation applied to the basic function \( f(x) = \sqrt{x} \).
+\end{exercise}
+
+\subsubsection*{Exercises on Reflection and Rotation}
+
+\begin{exercise}
+Graph the function \( g(x) = -\frac{1}{x} \) and describe its reflection relative to the basic function \( f(x) = \frac{1}{x} \).
+\end{exercise}
+
+\begin{exercise}
+Consider the function \( h(x) = \sqrt{-x} \). Describe the transformation applied to the basic function \( f(x) = \sqrt{x} \).
+\end{exercise}
+
+\begin{exercise}
+Reflect the function \( p(x) = x^3 \) across the x-axis and sketch the resulting graph.
+\end{exercise}
+
+\begin{exercise}
+Graph the function \( q(x) = -\sin(x) \) and explain how it is transformed from the basic sine function.
+\end{exercise}
+
+\begin{exercise}
+Analyze the rotation of the function \( r(x) = \cos(-x) \) and describe how it differs from \( f(x) = \cos(x) \).
+\end{exercise}
+
+\begin{exercise}
+Reflect the function \( s(x) = e^x \) across the y-axis and describe the changes in its graph.
+\end{exercise}
+
+\begin{exercise}
+Graph \( t(x) = -\ln(x) \) and discuss its reflection in relation to the function \( f(x) = \ln(x) \).
+\end{exercise}
+
+\begin{exercise}
+Consider the function \( u(x) = \tan(-x) \). Is it a reflection or a rotation of the basic tangent function? Explain.
+\end{exercise}
+
+\begin{exercise}
+Sketch the function \( v(x) = \sqrt{1 - x} \) and describe the transformation from \( f(x) = \sqrt{x} \).
+\end{exercise}
+
+\begin{exercise}
+Reflect the function \( w(x) = x^2 + x \) across the y-axis and sketch the resulting graph.
+\end{exercise}
+
+\subsubsection*{Solutions to Exercises on Reflection and Rotation}
+
+\begin{solution}[1]
+The function \( g(x) = -\frac{1}{x} \) is a reflection of \( f(x) = \frac{1}{x} \) across the x-axis. The negative sign in front of the function inverts it vertically.
+\end{solution}
+
+\begin{solution}[2]
+The function \( h(x) = \sqrt{-x} \) is a reflection of \( f(x) = \sqrt{x} \) across the y-axis. The negative sign inside the square root reflects the function horizontally.
+\end{solution}
+
+\begin{solution}[3]
+Reflecting \( p(x) = x^3 \) across the x-axis results in \( -x^3 \). This inversion changes the direction of the cubic curve, flipping it vertically.
+\end{solution}
+
+\begin{solution}[4]
+The function \( q(x) = -\sin(x) \) is the basic sine function reflected across the x-axis. The negative sign reverses the peaks and troughs of the sine wave.
+\end{solution}
+
+\begin{solution}[5]
+The function \( r(x) = \cos(-x) \) is the same as \( f(x) = \cos(x) \) due to the even property of the cosine function. It represents a rotation of the cosine function by \( \pi \) radians, but the graph remains unchanged.
+\end{solution}
+
+\begin{solution}[6]
+Reflecting \( s(x) = e^x \) across the y-axis results in \( e^{-x} \). The graph changes from increasing exponentially to decreasing exponentially as \( x \) increases.
+\end{solution}
+
+\begin{solution}[7]
+Graphing \( t(x) = -\ln(x) \) shows it is a reflection of \( f(x) = \ln(x) \) across the x-axis. The logarithmic curve is inverted vertically.
+\end{solution}
+
+\begin{solution}[8]
+The function \( u(x) = \tan(-x) \) is a reflection of the basic tangent function across the y-axis due to the odd property of the tangent function.
+\end{solution}
+
+\begin{solution}[9]
+The function \( v(x) = \sqrt{1 - x} \) is transformed from \( f(x) = \sqrt{x} \) by a horizontal reflection across the y-axis and a horizontal translation 1 unit to the right.
+\end{solution}
+
+\begin{solution}[10]
+Reflecting \( w(x) = x^2 + x \) across the y-axis results in \( (-x)^2 - x = x^2 - x \). The quadratic curve is flipped horizontally.
+\end{solution}
+
+
+\chapter{Limits and Continuity - Detail}
+\section{Introduction to Limits - Detail}
+\subsection{Definition of a Limit - Detail}
 \begin{definition}
 The limit of \( f(x) \) as \( x \) approaches \( a \) is \( L \) if for every \( \epsilon > 0 \), there exists a \( \delta > 0 \) such that \( |f(x) - L| < \epsilon \) whenever \( 0 < |x - a| < \delta \).
 \end{definition}
+
+This definition, known as the \(\epsilon-\delta\) definition of a limit, is fundamental in calculus. It formalizes the concept of approaching a value.
+
+\paragraph{Understanding \(\epsilon-\delta\) Criteria:}
+\begin{itemize}
+    \item \(\epsilon\) (epsilon) represents how close \( f(x) \) is to \( L \).
+    \item \(\delta\) (delta) represents how close \( x \) is to \( a \).
+    \item The statement means that \( f(x) \) gets arbitrarily close to \( L \) as \( x \) approaches \( a \).
+\end{itemize}
+
+\begin{comment}
+
+\paragraph{Graphical Representation:}
+The following graph illustrates the concept using a function \( f(x) \) and a point \( a \).
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    xlabel = \( x \),
+    ylabel = {\( f(x) \)},
+    xmin=0, xmax=5,
+    ymin=0, ymax=10,
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    samples=100
+]
+
+% Define a, L, delta, and epsilon
+\def\a{3}
+\def\L{3.5}
+\def\delta{0.5} % Define delta here
+\def\epsilon{0.5} % Define epsilon here
+
+% Epsilon and delta lines
+\draw[dashed, color=blue] (axis cs:\a-\delta,0) -- (axis cs:\a-\delta,\L);
+\draw[dashed, color=blue] (axis cs:\a+\delta,0) -- (axis cs:\a+\delta,\L);
+\draw[dashed, color=red] (axis cs:0,\L+\epsilon) -- (axis cs:\a,\L+\epsilon);
+\draw[dashed, color=red] (axis cs:0,\L-\epsilon) -- (axis cs:\a,\L-\epsilon);
+
+% Points for a and L
+\node[label={above right:\( a-\delta \)},circle,fill,inner sep=2pt] at (axis cs:\a-\delta,{(\a-\delta)^2/4 + 2}) {};
+\node[label={above right:\( a+\delta \)},circle,fill,inner sep=2pt] at (axis cs:\a+\delta,{(\a+\delta)^2/4 + 2}) {};
+\node[label={left:\( L+\epsilon \)},circle,fill,inner sep=2pt] at (axis cs:0,\L+\epsilon) {};
+\node[label={left:\( L-\epsilon \)},circle,fill,inner sep=2pt] at (axis cs:0,\L-\epsilon) {};
+
+% Function plot
+\addplot[domain=0:5, color=blue, ultra thick]{x^2/4 + 2};
+\addlegendentry{\( f(x) \)}
+\end{axis}
+\end{tikzpicture}
+
+\end{comment}
+
+% \begin{comment}
+% Your block of text or code here.
+% \end{comment}
+
+
+\paragraph{Applications of Limits:}
+Limits are used in calculus to define derivatives, integrals, and continuity. They are essential in understanding instantaneous rates of change and areas under curves.
+
+\begin{exercise}
+Using the \(\epsilon-\delta\) definition, show that the limit of \( f(x) = x^2 \) as \( x \) approaches 2 is 4.
+\end{exercise}
+
+\begin{exercise}
+Consider \( f(x) = \frac{1}{x} \). Explain using the \(\epsilon-\delta\) definition why the limit as \( x \) approaches 0 does not exist.
+\end{exercise}
+
+\subsubsection*{Exercises on the Definition of a Limit}
+
+\begin{exercise}
+Using the \(\epsilon-\delta\) definition, show that the limit of \( f(x) = x^2 \) as \( x \) approaches 2 is 4.
+\end{exercise}
+
+\begin{exercise}
+Consider \( f(x) = \frac{1}{x} \). Explain using the \(\epsilon-\delta\) definition why the limit as \( x \) approaches 0 does not exist.
+\end{exercise}
+
+\begin{exercise}
+Prove that the limit of \( g(x) = 3x + 2 \) as \( x \) approaches 4 is 14 using the \(\epsilon-\delta\) approach.
+\end{exercise}
+
+\begin{exercise}
+Use the \(\epsilon-\delta\) definition to demonstrate that the limit of \( h(x) = \sqrt{x} \) as \( x \) approaches 9 is 3.
+\end{exercise}
+
+\begin{exercise}
+Verify that the limit of \( p(x) = \frac{x^2 - 1}{x - 1} \) as \( x \) approaches 1 is 2 using the \(\epsilon-\delta\) criteria.
+\end{exercise}
+
+\begin{exercise}
+Determine whether the limit of \( q(x) = \frac{\sin(x)}{x} \) as \( x \) approaches 0 exists, and if so, find the limit using the \(\epsilon-\delta\) definition.
+\end{exercise}
+
+\begin{exercise}
+Prove that the limit of \( r(x) = \frac{1}{x^2} \) as \( x \) approaches -3 is \(\frac{1}{9}\), employing the \(\epsilon-\delta\) method.
+\end{exercise}
+
+\begin{exercise}
+Using the \(\epsilon-\delta\) definition, establish that the limit of \( s(x) = \frac{x - 2}{x^2 - 4} \) as \( x \) approaches 2 does not exist.
+\end{exercise}
+
+\begin{exercise}
+Determine the limit of \( t(x) = x^3 \) as \( x \) approaches -1 using the \(\epsilon-\delta\) definition, and verify your result.
+\end{exercise}
+
+\begin{exercise}
+Use the \(\epsilon-\delta\) approach to show that the limit of \( u(x) = \frac{1}{\sqrt{x + 4}} \) as \( x \) approaches 0 is \(\frac{1}{2}\).
+\end{exercise}
+
+\subsubsection*{Solutions to Exercises on the Definition of a Limit}
+
+\begin{solution}[1]
+To show the limit of \( f(x) = x^2 \) as \( x \) approaches 2 is 4, choose \(\delta = \min\left(1, \frac{\epsilon}{5}\right)\). For \( 0 < |x - 2| < \delta \), we have \( |f(x) - 4| = |x^2 - 4| = |(x - 2)(x + 2)| < 5|x - 2| < \epsilon \).
+\end{solution}
+
+\begin{solution}[2]
+For \( f(x) = \frac{1}{x} \), as \( x \) approaches 0, the function values increase without bound. Therefore, no matter how small \(\delta\) is chosen, \( |f(x) - L| \) cannot be made less than any \(\epsilon > 0\). Hence, the limit does not exist.
+\end{solution}
+
+\begin{solution}[3]
+To show the limit of \( g(x) = 3x + 2 \) as \( x \) approaches 4 is 14, choose \(\delta = \frac{\epsilon}{3}\). Then for \( 0 < |x - 4| < \delta \), we have \( |g(x) - 14| = |3x + 2 - 14| = 3|x - 4| < \epsilon \).
+\end{solution}
+
+\begin{solution}[4]
+For \( h(x) = \sqrt{x} \) and \( x \) approaching 9, choose \(\delta = \min\left(1, \epsilon^2\right)\). Then \( 0 < |x - 9| < \delta \) implies \( |\sqrt{x} - 3| < \epsilon \).
+\end{solution}
+
+\begin{solution}[5]
+For \( p(x) = \frac{x^2 - 1}{x - 1} \), factorize the numerator as \( (x - 1)(x + 1) \). The limit as \( x \) approaches 1 is 2, as \( p(x) \) simplifies to \( x + 1 \) and \( p(1) = 2 \). To show this, choose \(\delta = \epsilon\).
+\end{solution}
+
+\begin{solution}[6]
+For \( q(x) = \frac{\sin(x)}{x} \) as \( x \) approaches 0, use the squeeze theorem. Since \( -1 \leq \sin(x) \leq 1 \), then \( -\frac{1}{x} \leq \frac{\sin(x)}{x} \leq \frac{1}{x} \). As \( x \) approaches 0, both bounds approach 0, so the limit is 0.
+\end{solution}
+
+\begin{solution}[7]
+To show the limit of \( r(x) = \frac{1}{x^2} \) as \( x \) approaches -3 is \(\frac{1}{9}\), choose \(\delta = \min\left(1, 3\epsilon\right)\). Then \( 0 < |x + 3| < \delta \) implies \( |r(x) - \frac{1}{9}| < \epsilon \).
+\end{solution}
+
+\begin{solution}[8]
+For \( s(x) = \frac{x - 2}{x^2 - 4} \), the function is undefined at \( x = 2 \), and the denominator approaches 0 as \( x \) approaches 2. Thus, the function values become unbounded, and the limit does not exist.
+\end{solution}
+
+\begin{solution}[9]
+The limit of \( t(x) = x^3 \) as \( x \) approaches -1 is -1. Choose \(\delta = \sqrt[3]{\epsilon}\). Then \( 0 < |x + 1| < \delta \) implies \( |x^3 + 1| < \epsilon \).
+\end{solution}
+
+\begin{solution}[10]
+To show the limit of \( u(x) = \frac{1}{\sqrt{x + 4}} \) as \( x \) approaches 0 is \(\frac{1}{2}\), choose \(\delta = \min\left(1, 4\epsilon^2\right)\). Then \( 0 < |x| < \delta \) implies \( |u(x) - \frac{1}{2}| < \epsilon \).
+\end{solution}
+
+% HERE
 
 \subsection{One-sided Limits}
 \begin{definition}
@@ -1147,7 +2600,7 @@ If \( f(x) \leq g(x) \leq h(x) \) for all \( x \) near \( a \) and the limits of
 Includes limits such as \( \lim_{x \to 0} \frac{\sin x}{x} = 1 \).
 \end{theorem}
 
-\section{Continuity}
+\section{Continuity - Detail}
 \subsection{Definition and Examples}
 \begin{definition}
 A function is continuous at a point if it is defined at that point, its limit exists at that point, and the limit equals the function value.
@@ -1163,7 +2616,7 @@ Discontinuities can be classified as removable, jump, or infinite.
 If a function is continuous on a closed interval \([a, b]\) and \( N \) is any number between \( f(a) \) and \( f(b) \), then there exists a number \( c \) in the interval such that \( f(c) = N \).
 \end{theorem}
 
-\chapter{The Derivative}
+\chapter{The Derivative - Detail}
 \section{Understanding Derivatives}
 \subsection{Definition and Notation}
 \begin{definition}
