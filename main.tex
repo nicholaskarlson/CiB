@@ -4447,14 +4447,151 @@ Since \( \ln(4) < 13 \), it follows that \( p(4) < 0 \). Given \( p(1) > 0 \) an
 
 % End of solutions
 
-% HERE
-
 \chapter{The Derivative - Detail}
 \section{Understanding Derivatives}
-\subsection{Definition and Notation}
+\subsection{Derivative Definition and Notation}
+
 \begin{definition}
-The derivative of a function \( f \) at a point \( a \) is defined as \(\lim_{h \to 0} \frac{f(a+h) - f(a)}{h}\), if this limit exists.
+The derivative of a function \( f \) at a point \( a \) is defined as \(\lim_{h \to 0} \frac{f(a+h) - f(a)}{h}\), if this limit exists. This derivative is denoted as \( f'(a) \) or \( \frac{df}{dx}(a) \).
 \end{definition}
+
+The derivative of a function at a point is a fundamental concept in calculus. It represents the rate at which the function's value changes at that point. Geometrically, the derivative corresponds to the slope of the tangent line to the function's graph at that point.
+
+\begin{example}[Graphical Representation of Derivative]
+Consider the function \( f(x) = x^2 \) and the point \( a = 2 \). The derivative at this point is the slope of the tangent line to the graph of \( f \) at \( x = 2 \).
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = center,
+        xlabel = \( x \),
+        ylabel = \( y \),
+        xmin = 0, xmax = 4,
+        ymin = 0, ymax = 5,
+        legend style={at={(0.95,0.95)}, anchor=north east}
+    ]
+    % Plot function
+    \addplot [
+        domain=0:4,
+        samples=100,
+        color=blue,
+    ] 
+    {x^2};
+    \addlegendentry{\( f(x) = x^2 \)}
+
+    % Tangent line at x = 2
+    \addplot [
+        domain=1:3,
+        samples=2,
+        color=red,
+    ] 
+    {4*x - 4}; % Tangent line equation
+    \addlegendentry{Tangent at \( x = 2 \)}
+
+    % Point at x = 2
+    \addplot [holdot] coordinates {(2,4)};
+    \node[label={above:\( (2, f(2)) \)},circle,fill,inner sep=2pt] at (axis cs:2,4) {};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+In this case, the slope of the tangent line (the derivative) at \( x = 2 \) can be calculated as:
+\[ f'(2) = \lim_{h \to 0} \frac{f(2+h) - f(2)}{h} = \lim_{h \to 0} \frac{(2+h)^2 - 4}{h} = 4. \]
+Thus, the derivative of \( f(x) = x^2 \) at \( x = 2 \) is 4.
+\end{example}
+
+The concept of the derivative is widely used in various fields of mathematics, physics, engineering, and beyond. It provides a powerful tool for analyzing and understanding how functions behave and change.
+
+\subsubsection*{Exercises on Derivatives}
+
+The following exercises will help solidify your understanding of calculating derivatives. Try to solve them and then check your answers against the provided solutions.
+
+\begin{exercise}
+Find the derivative of the function \( f(x) = 3x^3 - 2x^2 + 5x - 7 \) at \( x = 1 \).
+\end{exercise}
+
+\begin{solution}
+Using the definition of the derivative,
+\[ f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h} \]
+for \( f(x) = 3x^3 - 2x^2 + 5x - 7 \), we find
+\[ f'(1) = \lim_{h \to 0} \frac{3(1+h)^3 - 2(1+h)^2 + 5(1+h) - 7 - (3 - 2 + 5 - 7)}{h}. \]
+Simplifying and evaluating this limit gives the derivative at \( x = 1 \).
+\end{solution}
+
+\begin{exercise}
+Determine the slope of the tangent line to the curve \( g(x) = \sqrt{x} \) at \( x = 4 \).
+\end{exercise}
+
+\begin{solution}
+The slope of the tangent line is given by the derivative of \( g(x) \) at \( x = 4 \). The derivative is
+\[ g'(x) = \frac{1}{2\sqrt{x}}. \]
+Therefore, the slope at \( x = 4 \) is \( g'(4) = \frac{1}{2\sqrt{4}} = \frac{1}{4}. \)
+\end{solution}
+
+\begin{exercise}
+Calculate the derivative of \( h(x) = \frac{1}{x^2} \) at any point \( x \).
+\end{exercise}
+
+\begin{solution}
+The derivative of \( h(x) = \frac{1}{x^2} \) is
+\[ h'(x) = \lim_{h \to 0} \frac{\frac{1}{(x+h)^2} - \frac{1}{x^2}}{h}. \]
+Simplifying this expression will give the general formula for the derivative of \( h(x) \).
+\end{solution}
+
+\begin{exercise}
+What is the derivative of the constant function \( k(x) = 17 \)?
+\end{exercise}
+
+\begin{solution}
+For any constant function \( k(x) = c \), where \( c \) is a constant, the derivative is zero. Hence, \( k'(x) = 0 \).
+\end{solution}
+
+These exercises cover a range of fundamental concepts in differentiation. By working through these problems, you'll gain a better understanding of how to compute derivatives and interpret their geometric meaning.
+
+\subsubsection*{Solutions to Exercises on Derivatives}
+
+Here are the detailed solutions and explanations for the exercises on derivatives.
+
+\begin{solution}[to Exercise 1]
+To find the derivative of the function \( f(x) = 3x^3 - 2x^2 + 5x - 7 \) at \( x = 1 \), we first calculate the derivative of \( f(x) \) and then evaluate it at \( x = 1 \).
+
+The derivative \( f'(x) \) is calculated using standard differentiation rules:
+\[ f'(x) = \frac{d}{dx}(3x^3) - \frac{d}{dx}(2x^2) + \frac{d}{dx}(5x) - \frac{d}{dx}(7) = 9x^2 - 4x + 5. \]
+
+Evaluating this at \( x = 1 \) gives:
+\[ f'(1) = 9(1)^2 - 4(1) + 5 = 9 - 4 + 5 = 10. \]
+
+Therefore, the derivative of \( f(x) \) at \( x = 1 \) is \( 10 \).
+\end{solution}
+
+\begin{solution}[to Exercise 2]
+The slope of the tangent line to the curve \( g(x) = \sqrt{x} \) at \( x = 4 \) is given by \( g'(4) \).
+
+First, find the derivative \( g'(x) \):
+\[ g'(x) = \frac{d}{dx}(\sqrt{x}) = \frac{1}{2\sqrt{x}}. \]
+
+Now, evaluate \( g'(x) \) at \( x = 4 \):
+\[ g'(4) = \frac{1}{2\sqrt{4}} = \frac{1}{4}. \]
+
+The slope of the tangent line at \( x = 4 \) is \( \frac{1}{4} \).
+\end{solution}
+
+\begin{solution}[to Exercise 3]
+To calculate the derivative of \( h(x) = \frac{1}{x^2} \) at any point \( x \), we use the power rule for differentiation:
+
+\[ h'(x) = \frac{d}{dx}\left(\frac{1}{x^2}\right) = \frac{d}{dx}(x^{-2}) = -2x^{-3} = -\frac{2}{x^3}. \]
+
+So, the derivative of \( h(x) \) is \( -\frac{2}{x^3} \).
+\end{solution}
+
+\begin{solution}[to Exercise 4]
+The derivative of a constant function \( k(x) = 17 \) is zero. This is because the rate of change of a constant function is always zero. Hence, \( k'(x) = 0 \).
+\end{solution}
+
+These solutions provide a step-by-step approach to understanding and solving basic derivative problems. They demonstrate the application of differentiation rules and the interpretation of derivatives in various contexts.
+
+% HERE
 
 \subsection{Interpreting Derivatives}
 \begin{discussion}
