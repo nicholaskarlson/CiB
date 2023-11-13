@@ -1,4 +1,4 @@
-# Calculus in Brief (CiB) with GitHub and LaTeX
+# Calculus in Brief with Python, Colab, GitHub, and LaTeX
 
 **Version**: 0.41
 
