@@ -527,7 +527,7 @@ For the function \( g(x) = \cos(x) \), evaluate \( g(\pi/2) \) and \( g(\pi) \).
 
 % You can add instructions for submitting solutions or further exploration activities here
 
-\section{Solutions to Exercises}
+\subsection{Solutions to Exercises}
 
 \begin{solution}[1]
 To graph \( f(x) = 3x - 2 \), we note that the slope (m) is 3 and the y-intercept (b) is -2. The graph is a straight line with these characteristics.
@@ -612,7 +612,7 @@ For \( f(x) = -x^2 + 4x - 3 \), the function is increasing where its derivative 
 For \( g(x) = \cos(x) \), we have \( g(\pi/2) = \cos(\pi/2) = 0 \) and \( g(\pi) = \cos(\pi) = -1 \).
 \end{solution}
 
-\subsection{Domain and Range}
+\section{Domain and Range}
 \begin{definition}
 The domain of a function is the set of all possible inputs, while the range is the set of all possible outputs.
 \end{definition}
@@ -783,8 +783,8 @@ The cubic function \( s(x) = x^3 - 3x \) has a domain of all real numbers. The r
 \end{solution}
 
 
-\subsection{Types of Functions}
-\subsubsection{Linear Functions}
+\section{Types of Functions}
+\subsection{Linear Functions}
 \begin{definition}
 A linear function has the form \( f(x) = mx + b \), where \( m \) is the slope of the line and \( b \) is the y-intercept.
 \end{definition}
@@ -926,24 +926,158 @@ Let \( P = mn + b \). Using given points, form equations: \( 4000 = 500m + b \) 
 \end{solution}
 
 
-% HERE
-
-\subsubsection{Polynomial Functions}
+\subsection{Polynomial Functions}
 \begin{definition}
-A polynomial function is of the form \( f(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_0 \), where \( n \) is a non-negative integer.
+A polynomial function is of the form \( f(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_0 \), where \( n \) is a non-negative integer, and \( a_n, a_{n-1}, \ldots, a_0 \) are constants.
 \end{definition}
 
-\subsubsection{Rational Functions}
+Polynomial functions are fundamental in calculus and algebra. They can range from simple linear functions to complex equations with high degrees. The highest power of \( x \) in the function (the degree of the polynomial) greatly influences the shape and behavior of its graph.
+
+\paragraph{Characteristics of Polynomial Functions:}
+\begin{itemize}
+    \item The degree of the polynomial determines its basic shape and the number of roots.
+    \item Polynomials are continuous and smooth functions.
+    \item The leading coefficient \( a_n \) affects the end behavior of the polynomial.
+\end{itemize}
+
+\paragraph{Graphing Polynomial Functions:}
+Consider the quadratic function \( f(x) = x^2 - 4x + 3 \). Its graph can be plotted as follows:
+
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel=\(x\),
+    ylabel=\(f(x)\),
+    xmin=-1, xmax=5,
+    ymin=-2, ymax=5,
+    samples=100,
+    grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    minor tick num=1,
+    enlargelimits={abs=0.5},
+    axis line style={latex-latex},
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+]
+% Plotting the polynomial
+\addplot[domain=-1:5, smooth, thick, blue]{x^2 - 4*x + 3};
+\node[anchor=west] at (axis cs: 4,3) {\(f(x) = x^2 - 4x + 3\)};
+\end{axis}
+\end{tikzpicture}
+
+This graph represents a parabola opening upwards with its vertex and intercepts easily identifiable.
+
+\paragraph{Real-World Applications:}
+Polynomial functions model numerous real-world phenomena, including projectile motion, profit and loss calculations, population growth, and much more.
+
+\begin{exercise}
+Sketch the graph of the cubic function \( g(x) = x^3 - 6x^2 + 11x - 6 \). Identify its roots and turning points.
+\end{exercise}
+
+\begin{exercise}
+Find a polynomial of degree 3 that has roots at \( x = 1, 2, \) and \( 3 \).
+\end{exercise}
+
+\subsubsection*{Exercises on Polynomial Functions}
+
+\begin{exercise}
+Sketch the graph of the cubic function \( g(x) = x^3 - 6x^2 + 11x - 6 \). Identify its roots and turning points.
+\end{exercise}
+
+\begin{exercise}
+Find a polynomial of degree 3 that has roots at \( x = 1, 2, \) and \( 3 \).
+\end{exercise}
+
+\begin{exercise}
+Determine the degree and leading coefficient of the polynomial \( h(x) = 4x^4 - 3x^3 + 2x^2 - x + 7 \).
+\end{exercise}
+
+\begin{exercise}
+For the quadratic function \( f(x) = 2x^2 - 8x + 6 \), find the vertex and axis of symmetry. Also, determine whether it opens upwards or downwards.
+\end{exercise}
+
+\begin{exercise}
+Write the polynomial function \( p(x) = x^3 - 4x \) in factored form and identify its zeros.
+\end{exercise}
+
+\begin{exercise}
+A polynomial function has zeros at \( x = -2, 0, \) and \( 4 \) with a leading coefficient of 1. Write the equation of this polynomial.
+\end{exercise}
+
+\begin{exercise}
+Given the polynomial \( q(x) = x^4 - 10x^2 + 9 \), find the y-intercept and x-intercepts (if any).
+\end{exercise}
+
+\begin{exercise}
+Graph the polynomial \( r(x) = -x^3 + 3x^2 - 2x \) and determine the intervals where the function is increasing and decreasing.
+\end{exercise}
+
+\begin{exercise}
+For the polynomial function \( s(x) = 3x^3 - 5x^2 + x - 2 \), use synthetic division to determine whether \( x = 1 \) is a zero of \( s \).
+\end{exercise}
+
+\begin{exercise}
+Consider the polynomial \( t(x) = x^4 - 2x^2 - 3 \). Find all the real zeros of \( t \) and sketch the graph of the function.
+\end{exercise}
+
+\subsubsection*{Solutions to Exercises on Polynomial Functions}
+
+\begin{solution}[1]
+For \( g(x) = x^3 - 6x^2 + 11x - 6 \), the roots are found by solving \( g(x) = 0 \). The roots are \( x = 1, 2, 3 \). Turning points occur where the derivative changes sign. Calculating \( g'(x) = 3x^2 - 12x + 11 \) and finding its roots gives the turning points at approximately \( x \approx 1.57 \) and \( x \approx 2.43 \).
+\end{solution}
+
+\begin{solution}[2]
+A polynomial of degree 3 with roots at \( x = 1, 2, 3 \) can be written as \( f(x) = (x - 1)(x - 2)(x - 3) \).
+\end{solution}
+
+\begin{solution}[3]
+The degree of the polynomial \( h(x) = 4x^4 - 3x^3 + 2x^2 - x + 7 \) is 4, and the leading coefficient is 4.
+\end{solution}
+
+\begin{solution}[4]
+For \( f(x) = 2x^2 - 8x + 6 \), the vertex form is \( f(x) = 2(x - 2)^2 + 2 \). The vertex is at (2, 2), and the axis of symmetry is \( x = 2 \). The parabola opens upwards since the coefficient of \( x^2 \) is positive.
+\end{solution}
+
+\begin{solution}[5]
+The polynomial \( p(x) = x^3 - 4x \) can be factored as \( p(x) = x(x^2 - 4) = x(x - 2)(x + 2) \). The zeros are at \( x = 0, 2, -2 \).
+\end{solution}
+
+\begin{solution}[6]
+A polynomial with zeros at \( x = -2, 0, \) and \( 4 \) and a leading coefficient of 1 is \( f(x) = (x + 2)x(x - 4) = x^3 - 4x^2 - 2x \).
+\end{solution}
+
+\begin{solution}[7]
+For \( q(x) = x^4 - 10x^2 + 9 \), the y-intercept is \( q(0) = 9 \). To find the x-intercepts, solve \( x^4 - 10x^2 + 9 = 0 \), which gives \( x \approx \pm 3.16, \pm 0.84 \).
+\end{solution}
+
+\begin{solution}[8]
+Graphing \( r(x) = -x^3 + 3x^2 - 2x \), the function increases where \( r'(x) > 0 \) and decreases where \( r'(x) < 0 \). Calculating \( r'(x) = -3x^2 + 6x - 2 \) and finding its roots gives the intervals of increase and decrease.
+\end{solution}
+
+\begin{solution}[9]
+Using synthetic division to divide \( 3x^3 - 5x^2 + x - 2 \) by \( x - 1 \), we find that the remainder is not zero. Hence, \( x = 1 \) is not a zero of \( s(x) \).
+\end{solution}
+
+\begin{solution}[10]
+To find the real zeros of \( t(x) = x^4 - 2x^2 - 3 \), solve \( x^4 - 2x^2 - 3 = 0 \). The real zeros are approximately \( x \approx \pm 1.73, \pm 1.00 \). Graphing \( t(x) \) would show a polynomial crossing the x-axis at these points.
+\end{solution}
+
+
+% HERE
+
+\subsection{Rational Functions}
 \begin{definition}
 A rational function is the ratio of two polynomial functions.
 \end{definition}
 
-\subsubsection{Trigonometric Functions}
+\subsection{Trigonometric Functions}
 \begin{definition}
 Trigonometric functions include \( \sin(x) \), \( \cos(x) \), and \( \tan(x) \), relating angles to ratios of sides in right triangles.
 \end{definition}
 
-\subsubsection{Exponential and Logarithmic Functions}
+\subsection{Exponential and Logarithmic Functions}
 \begin{definition}
 Exponential functions have the form \( f(x) = a^x \) and logarithmic functions are their inverses.
 \end{definition}
