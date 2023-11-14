@@ -5181,6 +5181,167 @@ For \( h(x) = x^4 - 4x^3 + 6x^2 - 4x + 1 \):
 
 These exercises provide a comprehensive range of functions to practice differentiating, helping students to deepen their understanding of higher-order derivatives and their applications in various contexts.
 
+\subsection{L'Hôpital's Rule for Indeterminate Forms}
+\label{subsec:lhospitals_rule}
+
+\begin{theorem}[L'Hôpital's Rule]
+If the functions \( f(x) \) and \( g(x) \) are differentiable and \( \lim_{x \to c} f(x) = \lim_{x \to c} g(x) = 0 \) or \( \pm \infty \), and if \( \lim_{x \to c} \frac{f'(x)}{g'(x)} \) exists or equals \( \pm \infty \), then
+\[ \lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)}. \]
+\end{theorem}
+
+\subsubsection*{Graphical Illustration}
+To understand L'Hôpital's Rule, let's consider the indeterminate form \(\frac{0}{0}\). Suppose \( f(x) \) and \( g(x) \) approach 0 as \( x \) approaches \( c \), making \( \frac{f(x)}{g(x)} \) indeterminate at \( x = c \). 
+
+% Graphical illustration using tikz
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    xlabel = \(x\),
+    ylabel = {\(y\)},
+    xmin=-2, xmax=2,
+    ymin=-2, ymax=2,
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+% Plot f(x) and g(x)
+\addplot[domain=-1.9:1.9, samples=200, blue] {x^2};
+\addlegendentry{\(f(x) = x^2\)}
+
+\addplot[domain=-1.9:1.9, samples=200, red] {x};
+\addlegendentry{\(g(x) = x\)}
+
+\draw[dashed] (axis cs:0,0) -- (axis cs:1,1);
+\node[anchor=south west] at (axis cs:1,1) {Tangent at \(c\)};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Graphical interpretation of L'Hôpital's Rule}
+\end{figure}
+
+\subsubsection*{Applications}
+L'Hôpital's Rule is particularly useful in calculus for resolving limits that result in indeterminate forms like \( \frac{0}{0} \) or \( \frac{\infty}{\infty} \). It simplifies complex limit evaluations, especially when direct substitution in the limit leads to an indeterminate form.
+
+\subsubsection*{Examples}
+\begin{example}
+Evaluate \( \lim_{x \to 0} \frac{\sin(x)}{x} \).
+
+\textbf{Solution:}
+Direct substitution gives \(\frac{0}{0}\), an indeterminate form. Applying L'Hôpital's Rule:
+\[ \lim_{x \to 0} \frac{\sin(x)}{x} = \lim_{x \to 0} \frac{\cos(x)}{1} = \cos(0) = 1. \]
+\end{example}
+
+\begin{example}
+Find \( \lim_{x \to \infty} \frac{e^x}{x^2} \).
+
+\textbf{Solution:}
+Both numerator and denominator approach infinity as \( x \to \infty \). Applying L'Hôpital's Rule twice:
+\[ \lim_{x \to \infty} \frac{e^x}{x^2} = \lim_{x \to \infty} \frac{e^x}{2x} = \lim_{x \to \infty} \frac{e^x}{2} = \infty. \]
+\end{example}
+
+\subsubsection*{Conclusion}
+L'Hôpital's Rule streamlines the process of evaluating limits that lead to indeterminate forms, which are common in calculus. Its application requires understanding of derivatives and their properties.
+
+\subsubsection*{Practice Problems}
+To further strengthen your understanding of L'Hôpital's Rule, try solving the following problems:
+
+\begin{problem}
+Evaluate the limit: \( \lim_{x \to 0} \frac{e^x - 1}{x} \).
+\end{problem}
+
+\begin{problem}
+Find the limit: \( \lim_{x \to \infty} \frac{\ln(x)}{x} \).
+\end{problem}
+
+\begin{problem}
+Determine \( \lim_{x \to 0} \frac{\sin(2x)}{3x} \).
+\end{problem}
+
+\begin{problem}
+Compute the limit: \( \lim_{x \to 0^+} x \ln(x) \).
+\end{problem}
+
+\begin{problem}
+Evaluate \( \lim_{x \to 0} \frac{1 - \cos(x)}{x^2} \).
+\end{problem}
+
+\subsubsection*{Hints}
+\begin{itemize}
+  \item For problems that result in the \(\frac{0}{0}\) indeterminate form, apply L'Hôpital's Rule by differentiating the numerator and denominator separately.
+  \item If the indeterminate form persists after the first application of the rule, you may need to apply L'Hôpital's Rule multiple times.
+  \item Remember that understanding the behavior of functions as they approach a point is key to correctly applying L'Hôpital's Rule.
+\end{itemize}
+
+These problems are designed to cover various scenarios where L'Hôpital's Rule can be applied. They will help you develop a deeper understanding of how to deal with indeterminate forms in calculus.
+
+\subsubsection*{Solutions to Practice Problems}
+
+\begin{solution}[to Problem 1]
+Evaluate \( \lim_{x \to 0} \frac{e^x - 1}{x} \).
+
+\textit{Solution:}
+Applying L'Hôpital's Rule, we differentiate the numerator and denominator:
+
+\[
+\lim_{x \to 0} \frac{e^x - 1}{x} = \lim_{x \to 0} \frac{e^x}{1} = e^0 = 1.
+\]
+\end{solution}
+
+\begin{solution}[to Problem 2]
+Find \( \lim_{x \to \infty} \frac{\ln(x)}{x} \).
+
+\textit{Solution:}
+Using L'Hôpital's Rule:
+
+\[
+\lim_{x \to \infty} \frac{\ln(x)}{x} = \lim_{x \to \infty} \frac{1/x}{1} = 0.
+\]
+\end{solution}
+
+\begin{solution}[to Problem 3]
+Determine \( \lim_{x \to 0} \frac{\sin(2x)}{3x} \).
+
+\textit{Solution:}
+Applying L'Hôpital's Rule:
+
+\[
+\lim_{x \to 0} \frac{\sin(2x)}{3x} = \lim_{x \to 0} \frac{2\cos(2x)}{3} = \frac{2}{3}.
+\]
+\end{solution}
+
+\begin{solution}[to Problem 4]
+Compute \( \lim_{x \to 0^+} x \ln(x) \).
+
+\textit{Solution:}
+This is an indeterminate form of type \( 0 \cdot (-\infty) \). Rewriting the expression:
+
+\[
+\lim_{x \to 0^+} x \ln(x) = \lim_{x \to 0^+} \frac{\ln(x)}{1/x}.
+\]
+
+Now applying L'Hôpital's Rule:
+
+\[
+\lim_{x \to 0^+} \frac{\ln(x)}{1/x} = \lim_{x \to 0^+} \frac{1/x}{-1/x^2} = \lim_{x \to 0^+} -x = 0.
+\]
+\end{solution}
+
+\begin{solution}[to Problem 5]
+Evaluate \( \lim_{x \to 0} \frac{1 - \cos(x)}{x^2} \).
+
+\textit{Solution:}
+Using L'Hôpital's Rule:
+
+\[
+\lim_{x \to 0} \frac{1 - \cos(x)}{x^2} = \lim_{x \to 0} \frac{\sin(x)}{2x} = \lim_{x \to 0} \frac{\cos(x)}{2} = \frac{1}{2}.
+\]
+\end{solution}
+
+These solutions provide step-by-step application of L'Hôpital's Rule to solve the given limits. They illustrate the procedure of differentiating the numerator and denominator to resolve indeterminate forms.
+
 \subsection{Implicit Differentiation}
 
 \begin{method}
@@ -5441,12 +5602,138 @@ For the circle \( x^2 + y^2 = 25 \), implicit differentiation gives \( 2x + 2yy'
 These solutions demonstrate the application of derivatives to find equations of tangent and normal lines. They involve direct computation of derivatives, using implicit differentiation, and understanding the relationship between slopes of tangent and normal lines.
 \end{discussion}
 
-% HERE
-
 \subsection{Increasing and Decreasing Functions}
 \begin{theorem}
-A function \( f \) is increasing (decreasing) on an interval if its derivative \( f' \) is positive (negative) on that interval.
+A function \( f \) is increasing on an interval if, for any two numbers \( x_1 \) and \( x_2 \) in the interval with \( x_1 < x_2 \), we have \( f(x_1) \leq f(x_2) \). Similarly, \( f \) is decreasing on an interval if \( f(x_1) \geq f(x_2) \) for \( x_1 < x_2 \) in the interval. This can often be determined by analyzing the sign of its derivative \( f' \).
 \end{theorem}
+
+\begin{example}
+Consider the function \( f(x) = x^3 - 3x^2 + 2 \). To determine where the function is increasing or decreasing, we first find its derivative: \( f'(x) = 3x^2 - 6x \). Setting \( f'(x) = 0 \), we find critical points at \( x = 0 \) and \( x = 2 \).
+
+We then test intervals around these critical points to determine the sign of \( f'(x) \):
+\begin{itemize}
+    \item For \( x < 0 \), take \( x = -1 \): \( f'(-1) = -3 - 6 = -9 \) (negative, so \( f \) is decreasing).
+    \item For \( 0 < x < 2 \), take \( x = 1 \): \( f'(1) = 3 - 6 = -3 \) (negative, so \( f \) is still decreasing).
+    \item For \( x > 2 \), take \( x = 3 \): \( f'(3) = 27 - 18 = 9 \) (positive, so \( f \) is increasing).
+\end{itemize}
+
+Thus, \( f(x) \) is decreasing on \((- \infty, 2]\) and increasing on \([2, +\infty)\).
+\end{example}
+
+% Graph of the function
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    xlabel = \(x\),
+    ylabel = {\(f(x)\)},
+    ymin = -5, ymax = 5,
+    xmin = -2, xmax = 4,
+    legend pos=north west
+]
+\addplot [
+    domain=-2:4, 
+    samples=100, 
+    color=blue,
+    ]
+    {x^3 - 3*x^2 + 2};
+\addlegendentry{\(f(x) = x^3 - 3x^2 + 2\)}
+
+% Adding dashed lines for critical points
+\draw [dashed, red] (axis cs:0,0) -- (axis cs:0,-5);
+\draw [dashed, red] (axis cs:2,0) -- (axis cs:2,-5);
+\addlegendimage{dashed, red}
+\addlegendentry{Critical Points}
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{discussion}
+This example illustrates how to find intervals where a function is increasing or decreasing. By examining the derivative, we can identify critical points and the behavior of the function around these points. The graph visually confirms these findings.
+\end{discussion}
+
+\subsubsection*{Practice Problems on Increasing and Decreasing Functions}
+\begin{problem}
+Determine the intervals where the function \( f(x) = x^2 - 4x + 3 \) is increasing and decreasing.
+\end{problem}
+
+\begin{problem}
+Given the function \( g(x) = \frac{1}{x} \), find the intervals where the function is increasing and where it is decreasing.
+\end{problem}
+
+\begin{problem}
+For the function \( h(x) = e^{-x} \), identify the intervals of increase and decrease.
+\end{problem}
+
+\begin{problem}
+Consider the function \( p(x) = x^3 - 9x^2 + 24x - 15 \). Analyze the function's increasing and decreasing behavior.
+\end{problem}
+
+\begin{problem}
+Let \( q(x) = \sin(x) \) on the interval \( [0, 2\pi] \). Determine where the function is increasing and decreasing.
+\end{problem}
+
+\begin{discussion}
+These problems involve different types of functions, including polynomial, rational, exponential, and trigonometric functions. Students should first find the derivative of the function, determine critical points, and then analyze the sign of the derivative on intervals around these points to conclude where the function is increasing or decreasing.
+\end{discussion}
+
+\subsubsection*{Solutions to Practice Problems}
+
+\begin{solution}[Problem 1]
+To find where \( f(x) = x^2 - 4x + 3 \) is increasing and decreasing, we first find its derivative:
+\[ f'(x) = 2x - 4. \]
+Setting \( f'(x) = 0 \), we find the critical point at \( x = 2 \). 
+
+Examining the sign of \( f'(x) \) around this point:
+\begin{itemize}
+    \item For \( x < 2 \), say \( x = 1 \), \( f'(1) = -2 \), so \( f(x) \) is decreasing.
+    \item For \( x > 2 \), say \( x = 3 \), \( f'(3) = 2 \), so \( f(x) \) is increasing.
+\end{itemize}
+Thus, \( f(x) \) is decreasing on \((- \infty, 2)\) and increasing on \((2, \infty)\).
+\end{solution}
+
+\begin{solution}[Problem 2]
+For \( g(x) = \frac{1}{x} \), the derivative is
+\[ g'(x) = -\frac{1}{x^2}. \]
+Since \( g'(x) \) is always negative for \( x \neq 0 \), \( g(x) \) is always decreasing on its domain.
+\end{solution}
+
+\begin{solution}[Problem 3]
+For \( h(x) = e^{-x} \), the derivative is
+\[ h'(x) = -e^{-x}. \]
+Since \( h'(x) < 0 \) for all \( x \), \( h(x) \) is always decreasing.
+\end{solution}
+
+\begin{solution}[Problem 4]
+Consider \( p(x) = x^3 - 9x^2 + 24x - 15 \). The derivative is
+\[ p'(x) = 3x^2 - 18x + 24. \]
+Setting \( p'(x) = 0 \) yields \( x = 2 \) and \( x = 4 \) as critical points.
+
+Checking intervals around these points:
+\begin{itemize}
+    \item For \( x < 2 \), \( p'(x) > 0 \), so \( p(x) \) is increasing.
+    \item For \( 2 < x < 4 \), \( p'(x) < 0 \), so \( p(x) \) is decreasing.
+    \item For \( x > 4 \), \( p'(x) > 0 \), so \( p(x) \) is increasing.
+\end{itemize}
+Therefore, \( p(x) \) is increasing on \((- \infty, 2) \cup (4, \infty)\) and decreasing on \((2, 4)\).
+\end{solution}
+
+\begin{solution}[Problem 5]
+For \( q(x) = \sin(x) \) on \( [0, 2\pi] \), the derivative is
+\[ q'(x) = \cos(x). \]
+We find critical points where \( \cos(x) = 0 \), which are \( x = \frac{\pi}{2} \) and \( x = \frac{3\pi}{2} \).
+
+Examining the sign of \( q'(x) \):
+\begin{itemize}
+    \item For \( 0 < x < \frac{\pi}{2} \), \( q'(x) > 0 \), so \( q(x) \) is increasing.
+    \item For \( \frac{\pi}{2} < x < \frac{3\pi}{2} \), \( q'(x) < 0 \), so \( q(x) \) is decreasing.
+    \item For \( \frac{3\pi}{2} < x < 2\pi \), \( q'(x) > 0 \), so \( q(x) \) is increasing.
+\end{itemize}
+Thus, \( q(x) \) is increasing on \((0, \frac{\pi}{2}) \cup (\frac{3\pi}{2}, 2\pi)\) and decreasing on \((\frac{\pi}{2}, \frac{3\pi}{2})\).
+\end{solution}
+
+% HERE
 
 \subsection{Maxima and Minima}
 \begin{method}
