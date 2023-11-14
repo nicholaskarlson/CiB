@@ -4799,18 +4799,261 @@ The derivative of \( f(x) = e^x \) is \( f'(x) = e^x \), which is the same as \(
 
 These exercises and solutions provide a practical application of the concept of the derivative as a function, enhancing understanding through specific examples.
 
-% HERE
-
 \section{Techniques of Differentiation}
 \subsection{Product Rule and Quotient Rule}
 \begin{theorem}
-The product rule states that \( (fg)' = f'g + fg' \) and the quotient rule states that \( \left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2} \), where \( f \) and \( g \) are functions of \( x \).
+The Product Rule states that for two differentiable functions \( f \) and \( g \), the derivative of their product \( fg \) is given by \( (fg)' = f'g + fg' \). The Quotient Rule states that for two differentiable functions \( f \) and \( g \) (with \( g \) not equal to zero), the derivative of their quotient \( \frac{f}{g} \) is given by \( \left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2} \).
 \end{theorem}
 
+\subsection{Graphical Representation of the Product Rule}
+Consider two functions \( f(x) \) and \( g(x) \). The graph below illustrates the product rule by showing \( f(x) \), \( g(x) \), and their product \( f(x)g(x) \) along with their derivatives.
+
+% Example functions
+\example{Let \( f(x) = x^2 \) and \( g(x) = e^x \).}
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = \(x\),
+        ylabel = \(y\),
+        xmin = -1, xmax = 2,
+        ymin = 0, ymax = 8,
+        legend style={at={(0.95,0.95)}, anchor=north east}
+    ]
+    % f(x) = x^2
+    \addplot [
+        domain=-1:2,
+        samples=100,
+        color=blue,
+    ] 
+    {x^2};
+    \addlegendentry{\(f(x) = x^2\)}
+
+    % g(x) = e^x
+    \addplot [
+        domain=-1:2,
+        samples=100,
+        color=red,
+    ] 
+    {exp(x)};
+    \addlegendentry{\(g(x) = e^x\)}
+
+    % Product f(x)g(x)
+    \addplot [
+        domain=-1:2,
+        samples=100,
+        color=green,
+    ] 
+    {exp(x)*x^2};
+    \addlegendentry{\(f(x)g(x)\)}
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsection{Graphical Representation of the Quotient Rule}
+Similarly, for the quotient rule, consider functions \( f(x) \) and \( g(x) \). The graph below illustrates the quotient rule by showing \( f(x) \), \( g(x) \), and their quotient \( \frac{f(x)}{g(x)} \) along with their derivatives.
+
+% Example functions for Quotient Rule
+\example{Let \( f(x) = x^3 \) and \( g(x) = x + 1 \).}
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = \(x\),
+        ylabel = \(y\),
+        xmin = -2, xmax = 2,
+        ymin = -10, ymax = 10,
+        legend style={at={(0.95,0.95)}, anchor=north east}
+    ]
+    % f(x) = x^3
+    \addplot [
+        domain=-2:2,
+        samples=100,
+        color=blue,
+    ] 
+    {x^3};
+    \addlegendentry{\(f(x) = x^3\)}
+
+    % g(x) = x + 1
+    \addplot [
+        domain=-2:2,
+        samples=100,
+        color=red,
+    ] 
+    {x + 1};
+    \addlegendentry{\(g(x) = x + 1\)}
+
+    % Quotient f(x)/g(x)
+    \addplot [
+        domain=-1.9:1.9, % Avoid division by zero
+        samples=100,
+        color=green,
+    ] 
+    {x^3/(x + 1)};
+    \addlegendentry{\(\frac{f(x)}{g(x)}\)}
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+These graphical representations help in visualizing how the derivatives of the product and quotient of two functions are related to the derivatives of the individual functions. They also highlight the importance of understanding these rules for effective differentiation of more complex functions.
+
+\subsubsection*{Exercises on Product Rule and Quotient Rule}
+
+The following exercises aim to help you practice and understand the Product Rule and Quotient Rule for differentiation.
+
+\begin{exercise}
+Using the Product Rule, find the derivative of \( h(x) = (x^3 + 2x)(\sin x) \).
+\end{exercise}
+
+\begin{exercise}
+Apply the Quotient Rule to differentiate \( f(x) = \frac{x^2 - 1}{x + 2} \).
+\end{exercise}
+
+\begin{exercise}
+Given \( g(x) = e^x \cdot \ln x \), use the Product Rule to find \( g'(x) \).
+\end{exercise}
+
+\begin{exercise}
+Differentiate the function \( k(x) = \frac{\tan x}{x^2 + 1} \) using the Quotient Rule.
+\end{exercise}
+
+\subsubsection*{Solutions to Exercises on Product Rule and Quotient Rule}
+
+\begin{solution}[to Exercise 1]
+For \( h(x) = (x^3 + 2x)(\sin x) \), we apply the Product Rule:
+\[ h'(x) = (x^3 + 2x)' \sin x + (x^3 + 2x) (\sin x)' = (3x^2 + 2)\sin x + (x^3 + 2x)\cos x. \]
+\end{solution}
+
+\begin{solution}[to Exercise 2]
+For \( f(x) = \frac{x^2 - 1}{x + 2} \), apply the Quotient Rule:
+\[ f'(x) = \frac{(x^2 - 1)'(x + 2) - (x^2 - 1)(x + 2)'}{(x + 2)^2} = \frac{2x(x + 2) - (x^2 - 1)}{(x + 2)^2}. \]
+\end{solution}
+
+\begin{solution}[to Exercise 3]
+For \( g(x) = e^x \cdot \ln x \), the Product Rule gives:
+\[ g'(x) = (e^x)' \ln x + e^x (\ln x)' = e^x \ln x + \frac{e^x}{x}. \]
+\end{solution}
+
+\begin{solution}[to Exercise 4]
+For \( k(x) = \frac{\tan x}{x^2 + 1} \), use the Quotient Rule:
+\[ k'(x) = \frac{(\tan x)'(x^2 + 1) - \tan x (x^2 + 1)'}{(x^2 + 1)^2} = \frac{\sec^2 x (x^2 + 1) - 2x \tan x}{(x^2 + 1)^2}. \]
+\end{solution}
+
+These exercises provide a practical application of the Product Rule and Quotient Rule in different scenarios, enhancing the understanding of these fundamental differentiation techniques.
+
 \subsection{Chain Rule}
+
 \begin{theorem}
-If a function \( y \) is a function of \( u \) which is a function of \( x \), then the derivative of \( y \) with respect to \( x \) is given by \( \frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx} \).
+If a function \( y \) is a function of \( u \), which is in turn a function of \( x \), then the derivative of \( y \) with respect to \( x \) is given by the product of the derivatives of \( y \) with respect to \( u \) and \( u \) with respect to \( x \), that is, \( \frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx} \).
 \end{theorem}
+
+\subsubsection*{Application of the Chain Rule}
+The Chain Rule is particularly useful when dealing with composite functions, where one function is nested within another.
+
+\example{Consider \( y = \sin(u) \) and \( u = x^2 + 1 \). We want to find \( \frac{dy}{dx} \).}
+
+Applying the Chain Rule, we have:
+\[ \frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx} = \cos(u) \cdot 2x = \cos(x^2 + 1) \cdot 2x. \]
+
+\subsection{Chain Rule Graphical Representation}
+To visualize the Chain Rule, we can plot both the inner function \( u(x) = x^2 + 1 \) and the composite function \( y(x) = \sin(x^2 + 1) \), along with their derivatives.
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = \(x\),
+        ylabel = \(y\),
+        xmin = -2, xmax = 2,
+        ymin = -2, ymax = 2,
+        legend style={at={(0.95,0.95)}, anchor=north east}
+    ]
+    % u(x) = x^2 + 1
+    \addplot [
+        domain=-2:2,
+        samples=100,
+        color=blue,
+    ] 
+    {x^2 + 1};
+    \addlegendentry{\(u(x) = x^2 + 1\)}
+
+    % y(x) = sin(u(x))
+    \addplot [
+        domain=-2:2,
+        samples=100,
+        color=red,
+    ] 
+    {sin(deg(x^2 + 1))};
+    \addlegendentry{\(y(x) = \sin(x^2 + 1)\)}
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+This graph shows how the Chain Rule applies to the composition of functions, allowing us to differentiate complex functions by breaking them down into simpler parts.
+
+\subsubsection*{Examples and Exercises}
+The following examples and exercises provide practice in applying the Chain Rule to different types of functions.
+
+\begin{exercise}
+Find the derivative of \( f(x) = e^{3x^2 + 2x} \) using the Chain Rule.
+\end{exercise}
+
+\begin{exercise}
+If \( g(x) = \sqrt{1 + \sin x} \), compute \( g'(x) \) using the Chain Rule.
+\end{exercise}
+
+These exercises are designed to enhance understanding and proficiency in applying the Chain Rule to a variety of functions.
+
+\subsubsection*{Additional Exercises on the Chain Rule}
+
+The following exercises aim to help students practice the application of the Chain Rule in differentiating composite functions.
+
+\begin{exercise}
+Differentiate \( h(x) = \cos(2x^3 - 5x) \).
+\end{exercise}
+
+\begin{exercise}
+Find the derivative of the function \( f(x) = \ln(x^2 + 3x + 1) \).
+\end{exercise}
+
+\begin{exercise}
+Compute the derivative of \( g(x) = \sqrt{e^{x^2}} \).
+\end{exercise}
+
+\begin{exercise}
+Determine \( \frac{d}{dx} \left( \tan(\sqrt{x + 1}) \right) \).
+\end{exercise}
+
+\subsubsection*{Solutions to Additional Exercises on the Chain Rule}
+
+\begin{solution}[to Exercise 1]
+For \( h(x) = \cos(2x^3 - 5x) \), we have:
+\[ h'(x) = -\sin(2x^3 - 5x) \cdot \frac{d}{dx}(2x^3 - 5x) = -\sin(2x^3 - 5x) \cdot (6x^2 - 5). \]
+\end{solution}
+
+\begin{solution}[to Exercise 2]
+For \( f(x) = \ln(x^2 + 3x + 1) \), apply the Chain Rule:
+\[ f'(x) = \frac{1}{x^2 + 3x + 1} \cdot \frac{d}{dx}(x^2 + 3x + 1) = \frac{2x + 3}{x^2 + 3x + 1}. \]
+\end{solution}
+
+\begin{solution}[to Exercise 3]
+For \( g(x) = \sqrt{e^{x^2}} \), we find:
+\[ g'(x) = \frac{1}{2\sqrt{e^{x^2}}} \cdot \frac{d}{dx}(e^{x^2}) = \frac{e^{x^2} \cdot 2x}{2\sqrt{e^{x^2}}} = x \sqrt{e^{x^2}}. \]
+\end{solution}
+
+\begin{solution}[to Exercise 4]
+For \( \frac{d}{dx} \left( \tan(\sqrt{x + 1}) \right) \), use the Chain Rule:
+\[ \frac{d}{dx} \left( \tan(\sqrt{x + 1}) \right) = \sec^2(\sqrt{x + 1}) \cdot \frac{1}{2\sqrt{x + 1}}. \]
+\end{solution}
+
+These exercises cover a range of functions, providing students with the opportunity to practice the Chain Rule in various contexts and enhance their understanding of its application in calculus.
+
+% HERE
 
 \subsection{Higher-Order Derivatives}
 \begin{definition}
