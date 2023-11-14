@@ -1,6 +1,6 @@
 # Calculus in Brief with Python, Colab, GitHub, and LaTeX
 
-**Version**: 0.44
+**Version**: 0.45
 
 ## About
 

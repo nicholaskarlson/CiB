@@ -74,7 +74,7 @@
         
         % Title and additional info
         \node at (current page.center) [font=\Huge, text width=0.8\textwidth, align=center] 
-            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.44}};
+            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.45}};
             
         \node[align=center, font=\large] at (current page.center) 
             [yshift=-2.5cm] {\today}; % <- This is the compilation date
@@ -5852,7 +5852,7 @@ To understand this concept visually, let's consider some examples.
 
 \begin{example}
 Consider the function $f(x) = x^3 - 3x^2 + 2x + 1$. To find its critical points, we need to find where $f'(x) = 0$ or $f'(x)$ does not exist.
-
+\begin{comment}
 \begin{tikzpicture}
 \begin{axis}[
     axis lines = middle,
@@ -5864,16 +5864,31 @@ Consider the function $f(x) = x^3 - 3x^2 + 2x + 1$. To find its critical points,
     ytick = {-1,1,2,3},
 ]
 \addplot[domain=-1.5:3.5, samples=100, blue, thick] {x^3 - 3*x^2 + 2*x + 1};
+% Critical points where the first derivative is zero
 \draw[dashed] (1,0) -- (1,2);
 \draw[dashed] (2,0) -- (2,3);
 \addplot[holdot] coordinates {(1,2)};
 \addplot[holdot] coordinates {(2,3)};
 \node[label={45:{Critical Points}},circle,fill,inner sep=2pt] at (axis cs:1,2) {};
 \node[label={45:{Critical Points}},circle,fill,inner sep=2pt] at (axis cs:2,3) {};
+
+% Inflection points calculation (if applicable)
+% The inflection points are where the second derivative changes sign.
+% For this function, calculate the second derivative and find its roots.
+
+% Uncomment and modify the following lines if inflection points are determined:
+% \draw[dashed] (x_coord_inflection,0) -- (x_coord_inflection,y_coord_inflection);
+% \addplot[holdot] coordinates {(x_coord_inflection,y_coord_inflection)};
+% \node[label={45:{Inflection Point}},circle,fill,inner sep=2pt] at (axis cs:x_coord_inflection,y_coord_inflection) {};
+
 \end{axis}
 \end{tikzpicture}
 
-The graph of $f(x)$ is shown above. To find the critical points, we first find $f'(x)$:
+\end{comment}
+
+% The graph of $f(x)$ is shown above. 
+
+To find the critical points, we first find $f'(x)$:
 
 \[
 f'(x) = 3x^2 - 6x + 2
@@ -5894,8 +5909,7 @@ Therefore, the critical points of the function $f(x)$ are $x = 1$ and $x = 2$, w
 To determine whether these points correspond to maxima or minima, we can use the second derivative test or analyze the behavior of the function around these points.
 \end{example}
 
-In this example, we illustrated how to find critical points using the derivative of a function and visually represented them on a graph. These critical points are essential for identifying potential local maxima or minima, which are crucial in optimization and real-world problem-solving.
-
+In this example, we discuss how to find critical points using the derivative of a function. These critical points are essential for identifying potential local maxima or minima, which are crucial in optimization and real-world problem-solving.
 
 \begin{solution}
 In calculus, finding the maximum and minimum values of a function is a fundamental concept. Critical points play a crucial role in identifying these extrema. Critical points are points on the graph of a function where either the derivative is zero or the derivative does not exist.
@@ -6408,15 +6422,247 @@ In summary, understanding the concavity and inflection points of cost and revenu
 \end{solution}
 
 \subsection{Optimization Problems}
+
+Optimization problems are a fundamental part of mathematics and are widely applicable in various fields such as physics, engineering, economics, and more. These problems involve finding the maximum or minimum values of a function while considering certain constraints. The concepts of derivatives and critical points play a significant role in solving optimization problems.
+
 \begin{application}
 Optimization involves finding the maximum or minimum values of a function subject to certain constraints, often using derivatives.
 \end{application}
 
+\subsection{Unconstrained Optimization}
+
+In unconstrained optimization, you aim to find the maximum or minimum value of a function without any constraints. Consider a real-valued function \(f(x)\) defined on a certain interval. To find the extreme values of \(f(x)\), you typically follow these steps:
+
+\begin{enumerate}
+  \item Find the critical points of \(f(x)\) by setting \(f'(x) = 0\).
+  \item Use the second derivative test to determine whether each critical point corresponds to a local maximum, a local minimum, or neither.
+  \item If necessary, check the endpoints of the interval to ensure you've found the global maximum or minimum.
+\end{enumerate}
+
+Let's illustrate this with an example:
+
+\begin{problem}
+Consider the function \(f(x) = x^3 - 6x^2 + 9x + 2\) on the interval \([-1, 4]\). Find the values of \(x\) that maximize and minimize \(f(x)\) within this interval.
+\end{problem}
+
+\begin{solution}
+To find the extreme values of \(f(x)\), we follow the steps outlined earlier.
+
+1. Find the critical points by setting \(f'(x) = 0\):
+
+\[
+f'(x) = 3x^2 - 12x + 9 = 3(x - 1)^2
+\]
+
+Setting \(3(x - 1)^2 = 0\), we find \(x = 1\) as the only critical point.
+
+2. Use the second derivative test to determine the nature of the critical point:
+
+\[
+f''(x) = 6x - 12
+\]
+
+At \(x = 1\), \(f''(1) = 6 - 12 = -6\), which means it's a local maximum.
+
+3. Check the endpoints of the interval:
+
+\[
+f(-1) = (-1)^3 - 6(-1)^2 + 9(-1) + 2 = -1 + 6 - 9 + 2 = -2
+\]
+\[
+f(4) = 4^3 - 6(4)^2 + 9(4) + 2 = 64 - 96 + 36 + 2 = 6
+\]
+
+So, the maximum value of \(f(x)\) is 6 at \(x = 4\), and the minimum value is -2 at \(x = -1\).
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    xlabel = $x$,
+    ylabel = $f(x)$,
+    xmin = -2, xmax = 5,
+    ymin = -5, ymax = 8,
+    xtick = {-1, 1, 4},
+    ytick = {-2, 6},
+]
+\addplot[domain=-2:5, samples=100, blue, thick] {x^3 - 6*x^2 + 9*x + 2};
+\node[label={90:{Max}},circle,fill,inner sep=2pt] at (axis cs:4,6) {};
+\node[label={-90:{Min}},circle,fill,inner sep=2pt] at (axis cs:-1,-2) {};
+\draw[dotted] (axis cs:1,-5) -- (axis cs:1,8);
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+In this example, we found the maximum value of 6 at \(x = 4\) and the minimum value of -2 at \(x = -1\) within the interval \([-1, 4]\).
+\end{solution}
+
+\subsection{Constrained Optimization}
+
+Constrained optimization involves finding the maximum or minimum values of a function while subject to certain constraints. These constraints are typically expressed as equations or inequalities. The method of Lagrange multipliers is often used to solve such problems.
+
+Let's illustrate this with an example:
+
+\begin{problem}
+You have a rectangular piece of cardboard with a length of 10 inches and a width of 4 inches. You want to cut squares of equal size from each corner and fold the cardboard to create an open-top box. What should be the size of the squares to maximize the volume of the box?
+\end{problem}
+
+\begin{solution}
+Let \(x\) be the side length of the squares cut from each corner. The volume \(V\) of the box is given by:
+
+\[
+V(x) = x(10 - 2x)(4 - 2x)
+\]
+
+To maximize \(V(x)\), we need to find the maximum of this function while considering the constraint \(0 \leq x \leq 2\) (since the squares cannot be larger than half the length or width of the cardboard).
+
+First, find the critical points of \(V(x)\) by setting \(V'(x) = 0\):
+
+\[
+V'(x) = 10x^2 - 28x + 16
+\]
+
+Setting \(V'(x) = 0\) and solving for \(x\):
+
+\[
+10x^2 - 28x + 16 = 0 \quad \text{(quadratic equation)}
+\]
+
+Solving this equation yields two critical points: \(x = 1\) and \(x = \frac{8}{5}\). However, \(x = \frac{8}{5}\) is outside the constraint \(0 \leq x \leq 2\), so we consider only \(x = 1\) as a critical point.
+
+To determine whether \(x = 1\) corresponds to a maximum, minimum, or neither, we use the second derivative test. Calculate \(V''(x)\):
+
+\[
+V''(x) = 20x - 28
+\]
+
+At \(x = 1\), \(V''(1) = 20 - 28 = -8\), which means it's a local maximum.
+
+So, the size of the squares that maximizes the volume of the box is \(x = 1\) inch.
+
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) rectangle (10,4);
+\draw[fill=gray!30] (1,1) rectangle (9,3);
+\draw[dashed] (1,1) -- (9,1) -- (9,3) -- (1,3) -- (1,1);
+\node[anchor=east] at (0,2) {4};
+\node[anchor=west] at (10,2) {4};
+\node[anchor=north] at (5,0) {10};
+\node[anchor=south] at (5,4) {10};
+\node[anchor=south] at (5,1) {1};
+\node[anchor=west] at (9,2) {x};
+\node[anchor=south] at (5,3) {x};
+\node[anchor=north] at (1,0) {x};
+\node[anchor=east] at (1,2) {x};
+\end{tikzpicture}
+\end{center}
+
+Cutting 1-inch squares from each corner will maximize the volume of the open-top box.
+\end{solution}
+
+Optimization problems are an essential part of mathematical modeling and have broad applications in real-world scenarios. Whether unconstrained or subject to constraints, these problems often involve the use of derivatives and critical points to find optimal solutions.
+
 \subsection{Related Rates}
+
+Related rates problems are a category of calculus problems that involve finding the rate at which one quantity changes with respect to another. These problems typically require the application of the chain rule and involve multiple variables and rates of change.
+
 \begin{method}
 Related rates problems involve finding the rate at which one quantity changes with respect to another using the chain rule.
 \end{method}
 
+\subsection{Related Rates Basic Concepts}
+
+In related rates problems, there are usually multiple variables involved, and the rates of change of these variables are related. To solve such problems, follow these steps:
+
+\begin{enumerate}
+  \item Identify the variables involved and their relationships. Often, you'll have geometric shapes or situations involving similar triangles.
+  \item Write down the given information, including the values of the variables and the rates at which they are changing.
+  \item Determine the rate you need to find, usually by differentiating the equation that relates the variables.
+  \item Apply the chain rule to express the rates of change in terms of the given values and the rate you want to find.
+  \item Solve for the desired rate.
+\end{enumerate}
+
+\subsubsection*{Example Problem: Changing Triangle Dimensions}
+
+Let's consider a simple example involving the change in dimensions of a right triangle:
+
+\begin{problem}
+A right triangle has a base of length \(3\) units and a height of length \(4\) units. If the base is increasing at a rate of \(2\) units per second and the height is decreasing at a rate of \(1\) unit per second, find the rate at which the hypotenuse is changing when the base is \(3\) units and the height is \(4\) units.
+\end{problem}
+
+\begin{solution}
+We are given:
+
+\begin{align*}
+\text{Base } (b) &= 3 \text{ units} \quad \text{and} \\
+\text{Height } (h) &= 4 \text{ units}
+\end{align*}
+
+We need to find:
+
+\[
+\frac{dh}{dt} \quad \text{(the rate of change of the hypotenuse)}
+\]
+
+We have the relationship between the variables:
+
+\[
+b^2 + h^2 = c^2
+\]
+
+Differentiating both sides with respect to time \(t\):
+
+\[
+2b\frac{db}{dt} + 2h\frac{dh}{dt} = 2c\frac{dc}{dt}
+\]
+
+Now, we plug in the given values and rates:
+
+\[
+2(3)(2) + 2(4)(-1) = 2c\frac{dc}{dt}
+\]
+
+Solving for \(\frac{dc}{dt}\), we get:
+
+\[
+\frac{dc}{dt} = \frac{6 - 8}{2c} = \frac{-2}{2c} = \frac{-1}{c}
+\]
+
+Substituting \(b = 3\) and \(h = 4\) into the Pythagorean theorem, we find:
+
+\[
+c^2 = 3^2 + 4^2 = 9 + 16 = 25 \implies c = 5 \text{ units}
+\]
+
+So, when the base is \(3\) units and the height is \(4\) units, the hypotenuse is \(5\) units. Now, we can find \(\frac{dc}{dt}\):
+
+\[
+\frac{dc}{dt} = \frac{-1}{5} \text{ units per second}
+\]
+
+Therefore, the rate at which the hypotenuse is changing when the base is \(3\) units and the height is \(4\) units is \(-\frac{1}{5}\) units per second.
+\end{solution}
+
+\subsubsection{Graphical Representation}
+
+Let's visualize this problem with a right triangle:
+
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) -- (3,0) -- (3,4) -- cycle;
+\draw[dashed] (3,0) -- (3,4);
+\node[anchor=east] at (0,0) {A};
+\node[anchor=west] at (3,0) {B};
+\node[anchor=south] at (3,4) {C};
+\node[anchor=north] at (1.5,0) {3};
+\node[anchor=west] at (3,2) {4};
+\node[anchor=south] at (1.5,2) {5};
+\draw[<->] (0,-0.5) -- (3,-0.5) node[midway,below] {$3$ units/sec};
+\draw[<->] (3.5,0) -- (3.5,4) node[midway,right] {$4$ units/sec};
+\end{tikzpicture}
+\end{center}
+
+As the base (\(AB\)) increases at \(3\) units per second and the height (\(BC\)) decreases at \(4\) units per second, the hypotenuse (\(AC\)) changes at a rate of \(-\frac{1}{5}\) units per second.
 
 \section{Rolle's, Mean Value, and Extreme Value Theorems}
 \subsection{Rolle's Theorem}
@@ -6587,7 +6833,7 @@ where \( h'(x) = -\frac{1}{x^2} \). Solving this will give the value of \( c \).
 These exercises and solutions provide practical applications of Rolle's Theorem, Mean Value Theorem, and Extreme Value Theorem, reinforcing their concepts through specific examples.
 
 
-
+% HERE
 
 
 \chapter{Integration}
