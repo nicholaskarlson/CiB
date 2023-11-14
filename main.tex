@@ -5053,23 +5053,395 @@ For \( \frac{d}{dx} \left( \tan(\sqrt{x + 1}) \right) \), use the Chain Rule:
 
 These exercises cover a range of functions, providing students with the opportunity to practice the Chain Rule in various contexts and enhance their understanding of its application in calculus.
 
-% HERE
-
 \subsection{Higher-Order Derivatives}
+
 \begin{definition}
-The \( n \)-th order derivative of \( f \), denoted \( f^{(n)} \), is the derivative of \( f^{(n-1)} \).
+The \( n \)-th order derivative of a function \( f \), denoted \( f^{(n)} \), is the derivative of \( f^{(n-1)} \). It represents the rate of change of the \( (n-1) \)-th derivative of \( f \).
 \end{definition}
 
+\subsection{Understanding Higher-Order Derivatives}
+Higher-order derivatives can be seen as successive rates of change. The second derivative, \( f''(x) \), often represents the curvature or concavity of the function \( f(x) \). Higher-order derivatives have applications in physics, engineering, and other fields.
+
+\example{Consider the function \( f(x) = x^3 - 3x^2 + 2x \). Find the first, second, and third derivatives.}
+
+\begin{solution}
+The first derivative \( f'(x) \) represents the rate of change of \( f \) with respect to \( x \):
+\[ f'(x) = 3x^2 - 6x + 2. \]
+
+The second derivative \( f''(x) \) shows how the slope of \( f(x) \) changes:
+\[ f''(x) = 6x - 6. \]
+
+The third derivative \( f'''(x) \) gives the rate of change of the curvature of \( f(x) \):
+\[ f'''(x) = 6. \]
+\end{solution}
+
+\subsection{Graphical Illustration of Higher-Order Derivatives}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    xlabel = \(x\),
+    ylabel = {\(y\)},
+    xmin=-2, xmax=3,
+    ymin=-5, ymax=5,
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+% Original function f(x)
+\addplot [
+    domain=-1:3,
+    samples=100,
+    color=blue,
+    smooth,
+] {x^3 - 3*x^2 + 2*x};
+\addlegendentry{\(f(x)\)}
+
+% First derivative f'(x)
+\addplot [
+    domain=-1:3,
+    samples=100,
+    color=red,
+    smooth,
+] {3*x^2 - 6*x + 2};
+\addlegendentry{\(f'(x)\)}
+
+% Second derivative f''(x)
+\addplot [
+    domain=-1:3,
+    samples=100,
+    color=green,
+    smooth,
+] {6*x - 6};
+\addlegendentry{\(f''(x)\)}
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+This graph illustrates the original function \( f(x) \) and its first and second derivatives, providing a visual representation of how each successive derivative relates to the original function.
+
+\subsubsection*{Exercises on Higher-Order Derivatives}
+
+\begin{exercise}
+Find the first four derivatives of the function \( g(x) = \sin(x) \).
+\end{exercise}
+
+\begin{exercise}
+If \( h(x) = e^{2x} \), compute \( h'''(x) \).
+\end{exercise}
+
+These exercises allow students to practice calculating higher-order derivatives, which is a crucial skill in advanced calculus and its applications.
+
+\subsubsection*{Additional Exercises on Higher-Order Derivatives}
+
+The following exercises aim to further reinforce the concept of higher-order derivatives through practical applications.
+
+\begin{exercise}
+Find the first three derivatives of the function \( p(t) = \ln(t^2 + 1) \).
+\end{exercise}
+
+\begin{exercise}
+Given \( f(x) = \frac{1}{x^2 + 1} \), compute \( f''(x) \) and \( f'''(x) \).
+\end{exercise}
+
+\begin{exercise}
+For the function \( g(x) = e^{-x} \cos(x) \), determine \( g'(x) \), \( g''(x) \), and \( g'''(x) \).
+\end{exercise}
+
+\begin{exercise}
+Calculate the fourth derivative of \( h(x) = x^4 - 4x^3 + 6x^2 - 4x + 1 \).
+\end{exercise}
+
+\subsubsection*{Solutions to Additional Exercises on Higher-Order Derivatives}
+
+\begin{solution}[to Exercise 1]
+For \( p(t) = \ln(t^2 + 1) \), we find:
+\[ p'(t) = \frac{2t}{t^2 + 1}, \quad p''(t) = \frac{2 - 2t^2}{(t^2 + 1)^2}, \quad p'''(t) = \frac{-8t(t^2 - 3)}{(t^2 + 1)^3}. \]
+\end{solution}
+
+\begin{solution}[to Exercise 2]
+For \( f(x) = \frac{1}{x^2 + 1} \), we calculate:
+\[ f''(x) = \frac{6x^2 - 2}{(x^2 + 1)^3}, \quad f'''(x) = \frac{-24x(x^2 - 1)}{(x^2 + 1)^4}. \]
+\end{solution}
+
+\begin{solution}[to Exercise 3]
+For \( g(x) = e^{-x} \cos(x) \):
+\[ g'(x) = -e^{-x} (\cos(x) + \sin(x)), \]
+\[ g''(x) = e^{-x} (2\sin(x)), \]
+\[ g'''(x) = e^{-x} (2\cos(x) - 2\sin(x)). \]
+\end{solution}
+
+\begin{solution}[to Exercise 4]
+For \( h(x) = x^4 - 4x^3 + 6x^2 - 4x + 1 \):
+\[ h''''(x) = 24. \]
+\end{solution}
+
+These exercises provide a comprehensive range of functions to practice differentiating, helping students to deepen their understanding of higher-order derivatives and their applications in various contexts.
+
 \subsection{Implicit Differentiation}
+
 \begin{method}
-Implicit differentiation is used when a function is given in an implicit form \( F(x, y) = 0 \) rather than the explicit form \( y = f(x) \).
+Implicit differentiation is used when a function is given in an implicit form \( F(x, y) = 0 \) rather than the explicit form \( y = f(x) \). It involves differentiating both sides of the equation with respect to \( x \) and solving for \( \frac{dy}{dx} \).
 \end{method}
+
+\subsection{Principle of Implicit Differentiation}
+In implicit differentiation, each term involving \( y \) is differentiated using the chain rule, as \( y \) is a function of \( x \).
+
+\example{Differentiate the equation \( x^2 + y^2 = 25 \) implicitly.}
+
+\begin{solution}
+Differentiating both sides with respect to \( x \):
+\[ \frac{d}{dx}(x^2 + y^2) = \frac{d}{dx}(25), \]
+\[ 2x + 2y \frac{dy}{dx} = 0. \]
+Solving for \( \frac{dy}{dx} \):
+\[ \frac{dy}{dx} = -\frac{x}{y}. \]
+\end{solution}
+
+\subsection{Graphical Representation of Implicit Functions}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    xlabel = \(x\),
+    ylabel = \(y\),
+    xmin=-6, xmax=6,
+    ymin=-6, ymax=6,
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+% Implicit function x^2 + y^2 = 25
+\addplot [
+    data cs=polar,
+    domain=0:360,
+    samples=200,
+    color=blue,
+    thick,
+] ({25^(0.5) * cos(x)}, {25^(0.5) * sin(x)});
+\addlegendentry{\(x^2 + y^2 = 25\)}
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+This graph shows the circle defined by the equation \( x^2 + y^2 = 25 \). Implicit differentiation helps find the slope of the tangent at any point on this curve.
+
+\subsection{Practical Engineering Example: Pressure and Volume in Thermodynamics}
+
+\begin{example}
+In thermodynamics, the relationship between the pressure \( P \), volume \( V \), and temperature \( T \) of a gas is often described by the equation \( PV = nRT \), where \( n \) is the number of moles of the gas and \( R \) is the universal gas constant. If the temperature is held constant, find the rate at which pressure changes with respect to volume.
+\end{example}
+
+\begin{solution}
+Given the equation \( PV = nRT \) with constant \( T \), we differentiate implicitly with respect to \( V \):
+\[ P\frac{dV}{dV} + V\frac{dP}{dV} = 0, \]
+\[ P + V\frac{dP}{dV} = 0, \]
+\[ \frac{dP}{dV} = -\frac{P}{V}. \]
+This result indicates that the rate at which pressure changes with respect to volume is inversely proportional to the volume itself, assuming temperature remains constant. This principle is crucial in understanding how gases behave under compression or expansion in various engineering applications.
+\end{solution}
+
+\begin{discussion}
+This example demonstrates the application of implicit differentiation in the field of thermodynamics, specifically in understanding how the properties of gases change under different conditions. Such principles are fundamental in engineering disciplines, especially in mechanical and chemical engineering.
+\end{discussion}
+
+\subsubsection*{Exercises on Implicit Differentiation}
+
+\begin{exercise}
+Use implicit differentiation to find \( \frac{dy}{dx} \) for the curve \( x^3 + y^3 - 3xy = 0 \).
+\end{exercise}
+
+\begin{exercise}
+Find the slope of the tangent line to the ellipse \( 4x^2 + 9y^2 = 36 \) at the point \( (2, \sqrt{2}) \).
+\end{exercise}
+
+These exercises aim to provide hands-on experience with implicit differentiation, enhancing the understanding of this essential calculus technique.
+
+\subsubsection*{More Exercises on Implicit Differentiation}
+
+\begin{exercise}
+Find \( \frac{dy}{dx} \) for the curve given by the equation \( \sin(xy) = x + y \).
+\end{exercise}
+
+\begin{exercise}
+Differentiate implicitly to find the slope of the curve \( e^{x+y} = x^2 + y^2 \) at any point.
+\end{exercise}
+
+\begin{exercise}
+For the curve defined by \( \ln(x) + \ln(y) = 1 \), find \( \frac{d^2y}{dx^2} \).
+\end{exercise}
+
+\begin{exercise}
+Use implicit differentiation to find the slope of the tangent line to the curve \( x^4 + y^4 = 16 \) at the point \( (1, \sqrt[4]{15}) \).
+\end{exercise}
+
+\begin{exercise}
+Find \( \frac{dy}{dx} \) for the ellipse \( 4x^2 + y^2 = 16 \) using implicit differentiation.
+\end{exercise}
+
+\subsubsection*{Solutions to More Exercises on Implicit Differentiation}
+
+\begin{solution}[to Exercise 1]
+Differentiating \( \sin(xy) = x + y \) implicitly:
+\[ \cos(xy)(y + x\frac{dy}{dx}) = 1 + \frac{dy}{dx}, \]
+\[ \frac{dy}{dx}(x\cos(xy) - 1) = 1 - y\cos(xy), \]
+\[ \frac{dy}{dx} = \frac{1 - y\cos(xy)}{x\cos(xy) - 1}. \]
+\end{solution}
+
+\begin{solution}[to Exercise 2]
+Differentiating \( e^{x+y} = x^2 + y^2 \):
+\[ e^{x+y}(1 + \frac{dy}{dx}) = 2x + 2y\frac{dy}{dx}, \]
+\[ \frac{dy}{dx}(e^{x+y} - 2y) = 2x - e^{x+y}, \]
+\[ \frac{dy}{dx} = \frac{2x - e^{x+y}}{e^{x+y} - 2y}. \]
+\end{solution}
+
+\begin{solution}[to Exercise 3]
+Differentiating \( \ln(x) + \ln(y) = 1 \):
+\[ \frac{1}{x} + \frac{1}{y}\frac{dy}{dx} = 0, \]
+\[ \frac{dy}{dx} = -\frac{y}{x}. \]
+To find \( \frac{d^2y}{dx^2} \), differentiate \( \frac{dy}{dx} \) again:
+\[ \frac{d^2y}{dx^2} = -\frac{x\frac{dy}{dx} - y}{x^2} = -\frac{-y^2/x - y}{x^2} = \frac{y(y + x)}{x^3}. \]
+\end{solution}
+
+\begin{solution}[to Exercise 4]
+For \( x^4 + y^4 = 16 \) at \( (1, \sqrt[4]{15}) \):
+\[ 4x^3 + 4y^3\frac{dy}{dx} = 0, \]
+\[ \frac{dy}{dx} = -\frac{x^3}{y^3} = -\frac{1}{(\sqrt[4]{15})^3}. \]
+\end{solution}
+
+\begin{solution}[to Exercise 5]
+For \( 4x^2 + y^2 = 16 \):
+\[ 8x + 2y\frac{dy}{dx} = 0, \]
+\[ \frac{dy}{dx} = -\frac{8x}{2y} = -\frac{4x}{y}. \]
+\end{solution}
+
+These exercises provide a diverse range of problems to practice implicit differentiation and help students understand its applications in different scenarios.
 
 \section{Applications of Derivatives}
 \subsection{Tangent Lines and Normal Lines}
 \begin{application}
-The equation of the tangent line to a curve \( y = f(x) \) at a point \( (a, f(a)) \) is \( y - f(a) = f'(a)(x - a) \).
+The equation of the tangent line to the curve \( y = f(x) \) at the point \( (a, f(a)) \) is given by \( y - f(a) = f'(a)(x - a) \). The normal line is perpendicular to the tangent line at the point of tangency.
 \end{application}
+
+\begin{example}
+Consider the function \( f(x) = x^2 \). Find the equation of the tangent and normal lines to the curve at the point where \( x = 1 \).
+\end{example}
+
+\begin{solution}
+First, we find the derivative of \( f(x) = x^2 \), which is \( f'(x) = 2x \). At \( x = 1 \), \( f'(1) = 2 \times 1 = 2 \). The equation of the tangent line at \( x = 1 \) is:
+\[ y - 1 = 2(x - 1) \]
+or
+\[ y = 2x - 1. \]
+
+To find the equation of the normal line, we use the fact that the slope of the normal line is the negative reciprocal of the tangent line's slope. Thus, the slope of the normal line is \( -\frac{1}{2} \), and its equation is:
+\[ y - 1 = -\frac{1}{2}(x - 1) \]
+or
+\[ y = -\frac{1}{2}x + \frac{3}{2}. \]
+\end{solution}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = center,
+    xlabel = \(x\),
+    ylabel = {\(y\)},
+    xmin=-1, xmax=3,
+    ymin=-1, ymax=4,
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+% Plotting the function f(x) = x^2
+\addplot[domain=-1:3, samples=100, color=blue]{x^2};
+\addlegendentry{\(y = x^2\)}
+
+% Plotting the tangent line
+\addplot[domain=0:2, samples=100, color=red]{2*x - 1};
+\addlegendentry{Tangent at \(x=1\)}
+
+% Plotting the normal line
+\addplot[domain=0:2, samples=100, color=green]{-0.5*x + 1.5};
+\addlegendentry{Normal at \(x=1\)}
+
+% Point of tangency
+\node[label={above:\((1,1)\)},circle,fill,inner sep=2pt] at (axis cs:1,1) {};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Graph of the function \(y = x^2\) with its tangent and normal lines at \(x = 1\).}
+\end{figure}
+
+\begin{discussion}
+This example illustrates how to determine the equations of tangent and normal lines to a given curve at a specific point. The graphical representation helps in visualizing these concepts, which are fundamental in differential calculus and have various applications in fields such as engineering and physics.
+\end{discussion}
+
+\subsubsection*{Practice Problems on Tangent and Normal Lines}
+
+\begin{problem}
+Find the equations of the tangent and normal lines to the curve \( y = \sqrt{x} \) at the point where \( x = 4 \).
+\end{problem}
+
+\begin{problem}
+Consider the function \( f(x) = \frac{1}{x} \). Determine the equation of the tangent line at the point \( x = 2 \) and the equation of the normal line at the same point.
+\end{problem}
+
+\begin{problem}
+Given the function \( f(x) = 3x^3 - 2x + 1 \), compute the equations of the tangent and normal lines at the point where \( x = -1 \).
+\end{problem}
+
+\begin{problem}
+For the function \( f(x) = \sin(x) \), find the equations of the tangent and normal lines at \( x = \frac{\pi}{4} \).
+\end{problem}
+
+\begin{problem}
+Determine the equations of the tangent and normal lines to the curve given by \( y = \ln(x) \) at the point where \( x = e \) (where \( e \) is the base of the natural logarithm).
+\end{problem}
+
+\begin{problem}
+Consider the curve defined by the equation \( x^2 + y^2 = 25 \). Find the equations of the tangent and normal lines at the point \( (3, 4) \) on the curve.
+\end{problem}
+
+\begin{discussion}
+These problems involve different types of functions, including polynomial, trigonometric, logarithmic, and even a circle equation. Solving these problems will give students practice in applying the concepts of derivatives to find tangent and normal lines in various contexts.
+\end{discussion}
+
+\subsubsection*{Solutions to Practice Problems on Tangent and Normal Lines}
+
+\begin{solution}[to Problem 1]
+The function is \( y = \sqrt{x} \). Its derivative is \( \frac{1}{2\sqrt{x}} \). At \( x = 4 \), the slope of the tangent line is \( \frac{1}{2\sqrt{4}} = \frac{1}{4} \). The equation of the tangent line is given by \( y - f(a) = f'(a)(x - a) \), which simplifies to \( y - 2 = \frac{1}{4}(x - 4) \). The normal line is perpendicular to the tangent line, so its slope is the negative reciprocal, \( -4 \). The equation of the normal line is \( y - 2 = -4(x - 4) \).
+\end{solution}
+
+\begin{solution}[to Problem 2]
+For \( f(x) = \frac{1}{x} \), \( f'(x) = -\frac{1}{x^2} \). At \( x = 2 \), \( f'(2) = -\frac{1}{4} \), so the tangent line is \( y - \frac{1}{2} = -\frac{1}{4}(x - 2) \). The slope of the normal line is \( 4 \), so its equation is \( y - \frac{1}{2} = 4(x - 2) \).
+\end{solution}
+
+\begin{solution}[to Problem 3]
+The derivative of \( f(x) = 3x^3 - 2x + 1 \) is \( f'(x) = 9x^2 - 2 \). At \( x = -1 \), \( f'(-1) = 7 \). The equation of the tangent line is \( y - 2 = 7(x + 1) \). The normal line has a slope of \( -\frac{1}{7} \), so its equation is \( y - 2 = -\frac{1}{7}(x + 1) \).
+\end{solution}
+
+\begin{solution}[to Problem 4]
+For \( f(x) = \sin(x) \), \( f'(x) = \cos(x) \). At \( x = \frac{\pi}{4} \), \( f'\left(\frac{\pi}{4}\right) = \frac{\sqrt{2}}{2} \). The tangent line equation is \( y - \frac{\sqrt{2}}{2} = \frac{\sqrt{2}}{2}\left(x - \frac{\pi}{4}\right) \). The normal line has a slope of \( -\frac{\sqrt{2}}{2} \), with its equation being \( y - \frac{\sqrt{2}}{2} = -\frac{\sqrt{2}}{2}\left(x - \frac{\pi}{4}\right) \).
+\end{solution}
+
+\begin{solution}[to Problem 5]
+For \( y = \ln(x) \), \( \frac{dy}{dx} = \frac{1}{x} \). At \( x = e \), the derivative is \( \frac{1}{e} \). The tangent line equation is \( y - 1 = \frac{1}{e}(x - e) \). The normal line's slope is \( -e \), so its equation is \( y - 1 = -e(x - e) \).
+\end{solution}
+
+\begin{solution}[to Problem 6]
+For the circle \( x^2 + y^2 = 25 \), implicit differentiation gives \( 2x + 2yy' = 0 \). At \( (3, 4) \), \( y' = -\frac{3}{4} \). The equation of the tangent line is \( y - 4 = -\frac{3}{4}(x - 3) \). The normal line, with a slope of \( \frac{4}{3} \), has the equation \( y - 4 = \frac{4}{3}(x - 3) \).
+\end{solution}
+
+\begin{discussion}
+These solutions demonstrate the application of derivatives to find equations of tangent and normal lines. They involve direct computation of derivatives, using implicit differentiation, and understanding the relationship between slopes of tangent and normal lines.
+\end{discussion}
+
+% HERE
 
 \subsection{Increasing and Decreasing Functions}
 \begin{theorem}
