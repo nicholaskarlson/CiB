@@ -74,7 +74,7 @@
         
         % Title and additional info
         \node at (current page.center) [font=\Huge, text width=0.8\textwidth, align=center] 
-            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.45}};
+            {\textbf{Calculus in Brief with Python, Colab, GitHub, and \LaTeX  \\ CiB - Version 0.46}};
             
         \node[align=center, font=\large] at (current page.center) 
             [yshift=-2.5cm] {\today}; % <- This is the compilation date
@@ -4503,6 +4503,106 @@ Thus, the derivative of \( f(x) = x^2 \) at \( x = 2 \) is 4.
 
 The concept of the derivative is widely used in various fields of mathematics, physics, engineering, and beyond. It provides a powerful tool for analyzing and understanding how functions behave and change.
 
+
+
+% update p 0.1 01Dec2023
+
+\section*{Trigonometric Identities in Calculus}
+Trigonometric identities are foundational elements in the study of calculus. They facilitate the simplification, integration, and differentiation of trigonometric functions, which are pervasive in various calculus problems. This essay outlines the most common uses of trigonometric identities in calculus, illustrating their importance through practical examples.
+
+\section{Simplification of Expressions}
+One of the primary uses of trigonometric identities in calculus is to simplify complex expressions, making them more tractable for further operations like integration or differentiation.
+
+\subsection*{Example}
+Consider the identity $\sin^2 x + \cos^2 x = 1$. This identity is crucial in simplifying expressions. For instance, to integrate $\int (\sin^2 x + \cos^2 x) \, dx$, we can use this identity to simplify the integrand to $1$, making the integral trivial.
+
+\section{Integration and Differentiation}
+Trigonometric identities are indispensable tools in solving integrals and derivatives involving trigonometric functions.
+
+\subsection*{Example: Integration}
+To integrate $\int \sin x \cos x \, dx$, we can use the identity $\sin 2x = 2 \sin x \cos x$. This simplifies the integral to $\frac{1}{2} \int \sin 2x \, dx$, which is straightforward to solve.
+
+\subsection*{Example: Differentiation}
+When differentiating a function like $\tan x$, knowing that $\tan x = \frac{\sin x}{\cos x}$ helps. The derivative, using the quotient rule, becomes $\sec^2 x$.
+
+\section{Solving Trigonometric Equations}
+Trigonometric identities are crucial in solving trigonometric equations, which is a common problem in calculus.
+
+\subsection*{Example}
+Consider solving $\tan x = \frac{\sin x}{\cos x} = 1$. Knowing the trigonometric identities helps to understand that this equation is true when $x = \frac{\pi}{4} + n\pi$, where $n$ is an integer.
+
+\section{Substitution in Integrals}
+Trigonometric identities are often used for substitution in integrals, particularly in cases involving square roots or other complex expressions.
+
+\subsection*{Example}
+In the integral $\int \sqrt{1 - x^2} \, dx$, a common approach is to use a trigonometric substitution such as $x = \sin \theta$, then applying the identity $\cos^2 \theta = 1 - \sin^2 \theta$ to simplify the integrand.
+
+\section{Conclusion - Trigonometric Identities in Calculus}
+Trigonometric identities are not just mathematical curiosities; they are essential tools in calculus. They streamline the process of integration and differentiation, simplify complex expressions, and enable the solving of challenging trigonometric equations. Their utility in various calculus problems underscores the interconnectedness of different branches of mathematics and highlights the elegance and efficiency of mathematical concepts in problem-solving.
+
+\section*{Answer Key with Explanations for Trigonometric Examples in Calculus}
+This answer key provides detailed solutions and explanations for the example problems presented in the previous essay on the use of trigonometric identities in calculus.
+
+\section{Simplification of Expressions}
+
+\textbf{Example:} Simplify and integrate $\int (\sin^2 x + \cos^2 x) \, dx$.
+
+\textbf{Solution:}
+Using the trigonometric identity $\sin^2 x + \cos^2 x = 1$, the integral simplifies to $\int 1 \, dx$. The solution is then:
+\begin{align*}
+\int 1 \, dx = x + C,
+\end{align*}
+where $C$ is the constant of integration.
+
+\section{Integration and Differentiation}
+
+\subsection{Integration}
+
+\textbf{Example:} Integrate $\int \sin x \cos x \, dx$.
+
+\textbf{Solution:}
+Utilizing the identity $\sin 2x = 2 \sin x \cos x$, we can rewrite the integral as $\frac{1}{2} \int \sin 2x \, dx$. Integrating $\sin 2x$ gives us:
+\begin{align*}
+\frac{1}{2} \int \sin 2x \, dx &= -\frac{1}{4} \cos 2x + C.
+\end{align*}
+
+\subsection{Differentiation}
+
+\textbf{Example:} Differentiate $\tan x$.
+
+\textbf{Solution:}
+Knowing that $\tan x = \frac{\sin x}{\cos x}$, we apply the quotient rule for differentiation:
+\begin{align*}
+\frac{d}{dx} \tan x &= \frac{d}{dx} \left( \frac{\sin x}{\cos x} \right) \\
+&= \frac{\cos x \cos x - \sin x (-\sin x)}{\cos^2 x} \\
+&= \frac{\cos^2 x + \sin^2 x}{\cos^2 x} \\
+&= \frac{1}{\cos^2 x} = \sec^2 x.
+\end{align*}
+
+\section{Solving Trigonometric Equations}
+
+\textbf{Example:} Solve $\tan x = 1$.
+
+\textbf{Solution:}
+The equation $\tan x = \frac{\sin x}{\cos x} = 1$ implies that $\sin x = \cos x$. This is true when $x = \frac{\pi}{4} + n\pi$, where $n$ is an integer.
+
+\section{Substitution in Integrals}
+
+\textbf{Example:} Solve $\int \sqrt{1 - x^2} \, dx$ using trigonometric substitution.
+
+\textbf{Solution:}
+Using the substitution $x = \sin \theta$, we have $dx = \cos \theta \, d\theta$. The integral becomes:
+\begin{align*}
+\int \sqrt{1 - \sin^2 \theta} \cos \theta \, d\theta &= \int \cos^2 \theta \, d\theta \\
+&= \int \frac{1 + \cos 2\theta}{2} \, d\theta \\
+&= \frac{\theta}{2} + \frac{\sin 2\theta}{4} + C \\
+&= \frac{\arcsin x}{2} + \frac{x \sqrt{1 - x^2}}{4} + C.
+\end{align*}
+
+\section*{Conclusion - Explanations for Trig Examples}
+These solutions demonstrate the application of trigonometric identities in various calculus problems, emphasizing the importance of understanding and utilizing these identities in solving integrals, derivatives, and trigonometric equations.
+
+
 \subsubsection*{Exercises on Derivatives}
 
 The following exercises will help solidify your understanding of calculating derivatives. Try to solve them and then check your answers against the provided solutions.
@@ -6664,6 +6764,262 @@ Let's visualize this problem with a right triangle:
 
 As the base (\(AB\)) increases at \(3\) units per second and the height (\(BC\)) decreases at \(4\) units per second, the hypotenuse (\(AC\)) changes at a rate of \(-\frac{1}{5}\) units per second.
 
+
+
+
+% Update - More trig, probably a better place for it than here (move later)
+
+
+
+% Update p 0.2 Trig
+
+\section{More Trig Identity Examples}
+Trigonometric identities play a crucial role in simplifying and solving differentiation problems in calculus. This document provides a series of examples that illustrate the common uses of these identities in the differentiation of trigonometric functions.
+
+\section{Example 1: Differentiating $\sin^2 x$}
+\textbf{Problem:} Differentiate $f(x) = \sin^2 x$.
+
+\textbf{Solution:}
+Using the identity $\sin^2 x = \frac{1 - \cos 2x}{2}$, we can rewrite $f(x)$ as $f(x) = \frac{1 - \cos 2x}{2}$. Then, differentiate using the chain rule:
+\begin{align*}
+f'(x) &= \frac{d}{dx} \left( \frac{1 - \cos 2x}{2} \right) \\
+&= \frac{-1}{2} \cdot \frac{d}{dx} (\cos 2x) \\
+&= \frac{-1}{2} \cdot (-2 \sin 2x) \\
+&= \sin 2x.
+\end{align*}
+
+\section{Example 2: Differentiating $\cos(2x)$}
+\textbf{Problem:} Find the derivative of $g(x) = \cos(2x)$.
+
+\textbf{Solution:}
+Apply the chain rule directly:
+\begin{align*}
+g'(x) &= \frac{d}{dx} \cos(2x) \\
+&= -\sin(2x) \cdot \frac{d}{dx}(2x) \\
+&= -2\sin(2x).
+\end{align*}
+
+\section{Example 3: Differentiating $\tan x$}
+\textbf{Problem:} Differentiate $h(x) = \tan x$.
+
+\textbf{Solution:}
+Using the quotient rule and the identity $\tan x = \frac{\sin x}{\cos x}$, we have:
+\begin{align*}
+h'(x) &= \frac{d}{dx} \left( \frac{\sin x}{\cos x} \right) \\
+&= \frac{\cos x \cdot \cos x - \sin x \cdot (-\sin x)}{\cos^2 x} \\
+&= \frac{\cos^2 x + \sin^2 x}{\cos^2 x} \\
+&= \frac{1}{\cos^2 x} \\
+&= \sec^2 x.
+\end{align*}
+
+\section{Example 4: Differentiating $\sec x$}
+\textbf{Problem:} Differentiate $i(x) = \sec x$.
+
+\textbf{Solution:}
+Recall that $\sec x = \frac{1}{\cos x}$ and use the quotient rule:
+\begin{align*}
+i'(x) &= \frac{d}{dx} \left( \frac{1}{\cos x} \right) \\
+&= \frac{0 \cdot \cos x - 1 \cdot (-\sin x)}{\cos^2 x} \\
+&= \frac{\sin x}{\cos^2 x} \\
+&= \sec x \tan x.
+\end{align*}
+
+
+% NEXT
+
+
+\section{Example 5: Differentiating $\sin(x)\cos(x)$}
+\textbf{Problem:} Differentiate $f(x) = \sin(x)\cos(x)$.
+
+\textbf{Solution:}
+Using the identity $\sin(2x) = 2\sin(x)\cos(x)$, we can express $f(x)$ as $f(x) = \frac{1}{2}\sin(2x)$. Then, differentiate using the chain rule:
+\begin{align*}
+f'(x) &= \frac{1}{2} \cdot \frac{d}{dx} \sin(2x) \\
+&= \frac{1}{2} \cdot 2\cos(2x) \\
+&= \cos(2x).
+\end{align*}
+
+\section*{Example 6: Differentiating $\csc x$}
+\textbf{Problem:} Find the derivative of $g(x) = \csc x$.
+
+\textbf{Solution:}
+Recall that $\csc x = \frac{1}{\sin x}$ and use the quotient rule:
+\begin{align*}
+g'(x) &= \frac{d}{dx} \left( \frac{1}{\sin x} \right) \\
+&= \frac{0 \cdot \sin x - 1 \cdot \cos x}{\sin^2 x} \\
+&= -\frac{\cos x}{\sin^2 x} \\
+&= -\csc x \cot x.
+\end{align*}
+
+\section*{Example 7: Differentiating $\cot x$}
+\textbf{Problem:} Differentiate $h(x) = \cot x$.
+
+\textbf{Solution:}
+Using the identity $\cot x = \frac{\cos x}{\sin x}$, apply the quotient rule:
+\begin{align*}
+h'(x) &= \frac{d}{dx} \left( \frac{\cos x}{\sin x} \right) \\
+&= \frac{-\sin x \cdot \sin x - \cos x \cdot \cos x}{\sin^2 x} \\
+&= -\frac{1}{\sin^2 x} \\
+&= -\csc^2 x.
+\end{align*}
+
+\section*{Example 8: Differentiating $\sin^2(x)\cos^2(x)$}
+\textbf{Problem:} Differentiate $i(x) = \sin^2(x)\cos^2(x)$.
+
+\textbf{Solution:}
+Using the identities $\sin^2 x = \frac{1 - \cos 2x}{2}$ and $\cos^2 x = \frac{1 + \cos 2x}{2}$, express $i(x)$ as $i(x) = \frac{(1 - \cos 2x)(1 + \cos 2x)}{4}$. Simplify and then differentiate:
+\begin{align*}
+i(x) &= \frac{1 - \cos^2 2x}{4}, \\
+i'(x) &= -\frac{1}{2} \cdot \sin(2x) \cdot 2\cos(2x) \\
+&= -\sin(2x)\cos(2x).
+\end{align*}
+
+
+% NEXT
+
+\section*{Example 9: Differentiating $\sin(x)\tan(x)$}
+\textbf{Problem:} Differentiate $f(x) = \sin(x)\tan(x)$.
+
+\textbf{Solution:}
+Using the identity $\tan x = \frac{\sin x}{\cos x}$, rewrite $f(x)$ as $f(x) = \sin(x) \cdot \frac{\sin x}{\cos x}$. Then, apply the product rule:
+\begin{align*}
+f'(x) &= \cos x \cdot \frac{\sin x}{\cos x} + \sin x \cdot \frac{\cos x \cos x - \sin x (-\sin x)}{\cos^2 x} \\
+&= \sin x + \frac{\sin^3 x + \sin x \cos^2 x}{\cos^2 x} \\
+&= \sin x + \sin x \sec^2 x.
+\end{align*}
+
+\section*{Example 10: Differentiating $\cos^3 x$}
+\textbf{Problem:} Find the derivative of $g(x) = \cos^3 x$.
+
+\textbf{Solution:}
+Apply the chain rule:
+\begin{align*}
+g'(x) &= 3\cos^2 x \cdot (-\sin x) \\
+&= -3\cos^2 x \sin x.
+\end{align*}
+
+\section*{Example 11: Differentiating $1 + \cot^2 x$}
+\textbf{Problem:} Differentiate $h(x) = 1 + \cot^2 x$.
+
+\textbf{Solution:}
+Using the identity $\cot^2 x = \csc^2 x - 1$, we have $h(x) = \csc^2 x$. Differentiating gives:
+\begin{align*}
+h'(x) &= \frac{d}{dx} \csc^2 x \\
+&= -2\csc x \cdot (-\cot x) \\
+&= 2\csc x \cot x.
+\end{align*}
+
+\section*{Example 12: Differentiating $\sec x \tan x$}
+\textbf{Problem:} Differentiate $i(x) = \sec x \tan x$.
+
+\textbf{Solution:}
+Apply the product rule:
+\begin{align*}
+i'(x) &= \sec x \cdot \sec^2 x + \tan x \cdot \sec x \tan x \\
+&= \sec^3 x + \sec x \tan^2 x.
+\end{align*}
+
+
+% NEXT
+
+\section*{Example 13: Differentiating $\sin^3(x)\cos^3(x)$}
+\textbf{Problem:} Differentiate $f(x) = \sin^3(x)\cos^3(x)$.
+
+\textbf{Solution:}
+Apply the product rule and chain rule:
+\begin{align*}
+f'(x) &= 3\sin^2(x)\cos^3(x) \cdot \cos(x) - 3\sin^3(x)\cos^2(x) \cdot \sin(x) \\
+&= 3\sin^2(x)\cos^4(x) - 3\sin^4(x)\cos^2(x).
+\end{align*}
+
+\section*{Example 14: Differentiating $\csc(x)\cot(x)$}
+\textbf{Problem:} Find the derivative of $g(x) = \csc(x)\cot(x)$.
+
+\textbf{Solution:}
+Use the product rule:
+\begin{align*}
+g'(x) &= -\csc(x)\csc(x)\cot(x) - \csc(x)\csc^2(x) \\
+&= -\csc^2(x)\cot(x) - \csc^3(x).
+\end{align*}
+
+\section*{Example 15: Differentiating $\sec(x) + \tan(x)$}
+\textbf{Problem:} Differentiate $h(x) = \sec(x) + \tan(x)$.
+
+\textbf{Solution:}
+Differentiate each term separately:
+\begin{align*}
+h'(x) &= \sec(x)\tan(x) + \sec^2(x).
+\end{align*}
+
+\section*{Example 16: Differentiating $\sin(x)\sec(x)$}
+\textbf{Problem:} Differentiate $i(x) = \sin(x)\sec(x)$.
+
+\textbf{Solution:}
+Apply the product rule:
+\begin{align*}
+i'(x) &= \cos(x)\sec(x) + \sin(x)\sec(x)\tan(x) \\
+&= \cos(x)\sec(x) + \sin(x)\sec^2(x).
+\end{align*}
+
+% NEXT
+
+\section*{Example 17: Differentiating $\cos^2(x)\sin(x)$}
+\textbf{Problem:} Differentiate $f(x) = \cos^2(x)\sin(x)$.
+
+\textbf{Solution:}
+Apply the product rule:
+\begin{align*}
+f'(x) &= 2\cos(x)(-\sin(x))\sin(x) + \cos^2(x)\cos(x) \\
+&= -2\sin^2(x)\cos(x) + \cos^3(x).
+\end{align*}
+
+\section*{Example 18: Differentiating $\frac{\tan(x)}{\sec(x)}$}
+\textbf{Problem:} Find the derivative of $g(x) = \frac{\tan(x)}{\sec(x)}$.
+
+\textbf{Solution:}
+Using the identities $\tan x = \sin x / \cos x$ and $\sec x = 1 / \cos x$, rewrite and differentiate:
+\begin{align*}
+g(x) &= \frac{\sin x}{\cos x} \cdot \cos x \\
+&= \sin x, \\
+g'(x) &= \cos x.
+\end{align*}
+
+\section{Example 19: Differentiating $\sin^2(x)\tan(x)$}
+\textbf{Problem:} Differentiate $h(x) = \sin^2(x)\tan(x)$.
+
+\textbf{Solution:}
+Apply the product rule:
+\begin{align*}
+h'(x) &= 2\sin(x)\cos(x)\tan(x) + \sin^2(x)\sec^2(x) \\
+&= 2\sin(x)\sin(x) + \sin^2(x)\sec^2(x).
+\end{align*}
+
+\section*{Example 20: Differentiating $\frac{\cos(x)}{1 + \sin(x)}$}
+\textbf{Problem:} Differentiate $i(x) = \frac{\cos(x)}{1 + \sin(x)}$.
+
+\textbf{Solution:}
+Apply the quotient rule:
+\begin{align*}
+i'(x) &= \frac{-\sin(x)(1 + \sin(x)) - \cos(x)\cos(x)}{(1 + \sin(x))^2} \\
+&= \frac{-\sin(x) - \sin^2(x) - \cos^2(x)}{(1 + \sin(x))^2} \\
+&= \frac{-1 - \sin(x)}{(1 + \sin(x))^2}.
+\end{align*}
+
+\section*{Conclusion - Trig Identity Examples}
+This ends the trig identity examples for now. This topic may also occur in other places in the book.
+
+
+
+
+% update end, 01Dec2023
+
+
+
+
+
+
+
+
 \section{Rolle's, Mean Value, and Extreme Value Theorems}
 \subsection{Rolle's Theorem}
 \begin{theorem}[Rolle's Theorem]
@@ -6935,6 +7291,88 @@ Multiple integrals involve integration over more than one variable, such as doub
 \begin{discussion}
 Vector calculus involves differentiation and integration of vector fields, including topics like gradient, divergence, and curl.
 \end{discussion}
+
+
+% Update p1 01Dec2023
+
+\section*{The Uses of Trigonometric Functions in Calculus for Scientists and Engineers}
+Trigonometric functions play a crucial role in both pure mathematics and various applied fields, particularly in science and engineering. Understanding these functions is essential for solving a wide range of problems in calculus. This essay explores the primary uses of the major trigonometric functions: sine, cosine, tangent, secant, cosecant, and cotangent.
+
+\section{Sine Function (sin)}
+\subsection*{Pure Mathematics}
+The sine function, which relates an angle to the ratio of the opposite side to the hypotenuse in a right triangle, is fundamental in the study of periodic phenomena and wave functions in mathematics.
+
+\subsection*{Applied Perspective}
+In applied sciences, the sine function models oscillatory phenomena such as sound and light waves, and alternating currents in electrical circuits.
+
+\section{Cosine Function (cos)}
+\subsection*{Pure Mathematics}
+Cosine, like sine, relates an angle to the length of the adjacent side over the hypotenuse. It's crucial in the analysis of Fourier series and in describing the behavior of periodic functions.
+
+\subsection*{Applied Perspective}
+In engineering, cosine is used to model phase shifts in waveforms and to determine vector components in mechanics and electromagnetism.
+
+\section{Tangent Function (tan)}
+\subsection*{Pure Mathematics}
+The tangent function, defined as the ratio of sine to cosine, is vital in studying rates of change and solving trigonometric integrals and derivatives in calculus.
+
+\subsection*{Applied Perspective}
+Tangent is extensively used in fields like surveying, navigation, and engineering for calculating slopes, angles, and analyzing forces.
+
+\section{Secant Function (sec)}
+\subsection*{Pure Mathematics}
+Secant, the reciprocal of cosine, is used in higher-level calculus for solving certain integrals and understanding wave function behaviors.
+
+\subsection*{Applied Perspective}
+In optics and acoustics, secant aids in modeling wave propagation and reflection in different mediums.
+
+\section{Cosecant Function (csc)}
+\subsection*{Pure Mathematics}
+Cosecant, the reciprocal of sine, finds its use in solving trigonometric equations and in certain trigonometric identities in mathematics.
+
+\subsection*{Applied Perspective}
+Its applications in applied sciences, such as structural engineering and hydrodynamics, involve modeling wave behavior and fluid dynamics.
+
+\section{Cotangent Function (cot)}
+\subsection*{Pure Mathematics}
+Cotangent, the reciprocal of tangent, is used in solving trigonometric equations, in advanced calculus for series expansions, and in Fourier transformations.
+
+\subsection*{Applied Perspective}
+In engineering, cotangent functions are important in designing gear systems and analyzing mechanical forces. It is also used in computer graphics for 3D modeling.
+
+\section*{Conclusion - Uses of Trigonometric Functions}
+Trigonometric functions are indispensable in both pure and applied mathematics, providing a framework for understanding and analyzing phenomena in science and engineering. Their diverse applications range from analyzing periodic functions in pure mathematics to modeling physical phenomena in engineering and physics, demonstrating their broad utility and significance in various fields.
+
+
+% Update p2 01Dec2023
+
+\section*{Exploring the Uses of Inverse Trigonometric Functions in Pure and Applied Mathematics}
+Inverse trigonometric functions, including arcsine (arcsin), arccosine (arccos), and arctangent (arctan), play significant roles in both pure and applied mathematics. These functions are essential for solving problems involving angles and their corresponding ratios in trigonometric functions. This essay explores the uses of these functions from both a theoretical and practical standpoint.
+
+\section{Arcsine (arcsin)}
+\subsection*{Pure Mathematics Perspective}
+In pure mathematics, arcsin is the inverse of the sine function. It is used to determine the angle whose sine is a given number, proving essential in solving trigonometric equations and analyzing periodic functions.
+
+\subsection*{Applied Perspective}
+From an applied perspective, arcsin is vital in calculating angles in real-world scenarios, such as in navigation for determining latitude and in physics for analyzing projectile motion.
+
+\section{Arccosine (arccos)}
+\subsection*{Pure Mathematics Perspective}
+Arccos is the inverse of the cosine function. In pure mathematics, it's used to find the angle whose cosine is a known value. This is particularly useful in complex analysis and in solving trigonometric identities.
+
+\subsection*{Applied Perspective}
+In applied fields, arccos is employed in engineering to determine angles in structures and mechanical systems. It is also used in computer graphics for 3D modeling and animation.
+
+\section{Arctangent (arctan)}
+\subsection*{Pure Mathematics Perspective}
+Arctan, the inverse of the tangent function, is widely used in pure mathematics for solving equations involving tangents. It is also a fundamental function in calculus, particularly in integration techniques involving trigonometric substitution.
+
+\subsection*{Applied Perspective}
+In applied mathematics, arctan is crucial in fields like engineering for calculating the angles of slopes and inclines. It also finds applications in navigation and robotics for directional calculations.
+
+\section{Conclusion - Uses of Inverse Trigonometric Functions}
+The inverse trigonometric functions are indispensable tools in both pure and applied mathematics. They bridge the gap between theoretical mathematics and practical applications, enabling the solution of complex problems in various fields, including engineering, physics, and computer science. Understanding these functions is crucial for students and professionals alike, as they provide a deeper insight into the relationship between angles and ratios in the trigonometric context.
+
 
 \section{Differential Equations}
 \subsection{First Order Differential Equations}
