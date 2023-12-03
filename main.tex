@@ -7006,7 +7006,229 @@ i'(x) &= \frac{-\sin(x)(1 + \sin(x)) - \cos(x)\cos(x)}{(1 + \sin(x))^2} \\
 \end{align*}
 
 \section*{Conclusion - Trig Identity Examples}
-This ends the trig identity examples for now. This topic may also occur in other places in the book.
+Next, yet more examples!
+
+\section{Introduction - Law of Cosines in Differentiation}
+This series of examples demonstrates the use of the Law of Cosines, $c^2 = a^2 + b^2 - 2ab \cos(x)$, in differentiating various functions in calculus. The Law of Cosines is particularly useful in problems involving triangular relationships and angles.
+
+\section*{Example 1: Differentiating a Function Involving Sides of a Triangle}
+\textbf{Problem:} Let $f(x) = c^2$, where $c$ is a side of a triangle with fixed sides $a$ and $b$, and $x$ is the angle between them. Differentiate $f(x)$ with respect to $x$.
+
+\textbf{Solution:}
+Using the Law of Cosines, $f(x) = a^2 + b^2 - 2ab \cos(x)$. Differentiate with respect to $x$:
+\begin{align*}
+f'(x) &= \frac{d}{dx}(a^2 + b^2 - 2ab \cos(x)) \\
+&= 2ab \sin(x).
+\end{align*}
+
+\section*{Example 2: Rate of Change of Angle}
+\textbf{Problem:} Given $a$, $b$, and $c$ as sides of a triangle with $c$ changing over time, find the rate of change of the angle $x$ with respect to time when $c$ has a certain value.
+
+\textbf{Solution:}
+From the Law of Cosines, $c^2 = a^2 + b^2 - 2ab \cos(x)$. Differentiate with respect to time $t$:
+\begin{align*}
+2c \frac{dc}{dt} &= 2ab \sin(x) \frac{dx}{dt}, \\
+\frac{dx}{dt} &= \frac{c}{ab \sin(x)} \frac{dc}{dt}.
+\end{align*}
+Note: $\frac{dx}{dt}$ is evaluated at the specified value of $c$.
+
+\section*{Example 3: Maximizing the Area of a Triangle}
+\textbf{Problem:} For a triangle with fixed sides $a$ and $b$, and varying angle $x$, find the rate at which the area of the triangle is changing with respect to $x$.
+
+\textbf{Solution:}
+The area of the triangle is given by $\frac{1}{2}ab\sin(x)$. Differentiate with respect to $x$:
+\begin{align*}
+\frac{d}{dx}\left(\frac{1}{2}ab\sin(x)\right) &= \frac{1}{2}ab\cos(x).
+\end{align*}
+
+\section*{Law of Cosines - Continued}
+Continuing from the previous examples, this document provides more scenarios where the Law of Cosines is applied in differential calculus. Each example highlights a unique application or problem-solving approach.
+
+\section*{Example 4: Differentiating a Function Involving Variable Side Length}
+\textbf{Problem:} Consider a triangle with sides $a$, $b$, and $c$, where $c$ is a function of $x$ and $x$ is the angle between $a$ and $b$. Differentiate $c(x)$ with respect to $x$ using the Law of Cosines.
+
+\textbf{Solution:}
+From the Law of Cosines, $c^2 = a^2 + b^2 - 2ab \cos(x)$. Differentiate with respect to $x$:
+\begin{align*}
+2c \frac{dc}{dx} &= 2ab \sin(x), \\
+\frac{dc}{dx} &= \frac{ab \sin(x)}{c}.
+\end{align*}
+
+\section*{Example 5: Rate of Change of Side Length}
+\textbf{Problem:} In a triangle with fixed sides $a$ and $b$, if the angle $x$ between them increases at a constant rate, find the rate at which side $c$ is changing when $x$ is $\frac{\pi}{3}$.
+
+\textbf{Solution:}
+From the Law of Cosines, $c^2 = a^2 + b^2 - 2ab \cos(x)$. Differentiate with respect to time $t$:
+\begin{align*}
+2c \frac{dc}{dt} &= 2ab \sin(x) \frac{dx}{dt}, \\
+\frac{dc}{dt} &= \frac{ab \sin\left(\frac{\pi}{3}\right) \frac{dx}{dt}}{c}.
+\end{align*}
+
+\section*{Example 6: Differentiating with Respect to Side Length}
+\textbf{Problem:} Given a triangle with sides $a$, $b$, and variable side $c$, differentiate the angle $x$ between $a$ and $b$ with respect to $c$.
+
+\textbf{Solution:}
+Using the Law of Cosines, $c^2 = a^2 + b^2 - 2ab \cos(x)$. Differentiate with respect to $c$:
+\begin{align*}
+2c &= 2ab \frac{d}{dc}(-\cos(x)), \\
+\frac{dx}{dc} &= \frac{-1}{ab \sin(x)} \cdot c.
+\end{align*}
+
+\section*{Example 7: Application in Mechanics}
+\textbf{Problem:} In a mechanical system, a rod of length $a$ is connected to a rod of length $b$ at an angle $x$. If $x$ changes at a known rate, find the rate at which the distance $c$ between the other ends of the rods is changing.
+
+\textbf{Solution:}
+Apply the Law of Cosines: $c^2 = a^2 + b^2 - 2ab \cos(x)$. Differentiate with respect to time $t$:
+\begin{align*}
+2c \frac{dc}{dt} &= 2ab \sin(x) \frac{dx}{dt}, \\
+\frac{dc}{dt} &= \frac{ab \sin(x) \frac{dx}{dt}}{c}.
+\end{align*}
+
+\section*{Law of Cosines - Continued}
+These examples demonstrate the versatility of the Law of Cosines in solving a variety of differentiation problems in calculus. Understanding and applying this law is crucial in scenarios involving geometric and kinematic relationships in triangles.
+
+\section*{More Examples}
+This section further extends the exploration of using the Law of Cosines in differential calculus, providing more examples that demonstrate its application in diverse mathematical situations.
+
+\section*{Example 8: Differentiating a Function Involving an Obtuse Angle}
+\textbf{Problem:} In a triangle with sides $a$, $b$, and $c$, where $c$ depends on the obtuse angle $x$ between $a$ and $b$, differentiate $c$ with respect to $x$.
+
+\textbf{Solution:}
+From the Law of Cosines, $c^2 = a^2 + b^2 - 2ab \cos(x)$. Differentiate with respect to $x$:
+\begin{align*}
+2c \frac{dc}{dx} &= 2ab \sin(x), \\
+\frac{dc}{dx} &= \frac{ab \sin(x)}{c}.
+\end{align*}
+
+\section*{Example 9: Velocity of a Point Moving Along a Triangle Side}
+\textbf{Problem:} A point moves along side $c$ of a triangle with fixed sides $a$ and $b$. If the angle $x$ between $a$ and $b$ changes at a known rate, find the velocity of the point when $x$ is $\frac{\pi}{4}$.
+
+\textbf{Solution:}
+Using the Law of Cosines, differentiate with respect to time $t$:
+\begin{align*}
+2c \frac{dc}{dt} &= 2ab \sin(x) \frac{dx}{dt}, \\
+\frac{dc}{dt} &= \frac{ab \sin\left(\frac{\pi}{4}\right) \frac{dx}{dt}}{c}.
+\end{align*}
+
+\section*{Example 10: Differentiating Relative to Side Length in a Non-Right Triangle}
+\textbf{Problem:} For a non-right triangle with sides $a$, $b$, and variable side $c$, find the rate of change of the angle $x$ between $a$ and $b$ with respect to $c$.
+
+\textbf{Solution:}
+From the Law of Cosines, $c^2 = a^2 + b^2 - 2ab \cos(x)$. Differentiate with respect to $c$:
+\begin{align*}
+2c &= 2ab \frac{d}{dc}(-\cos(x)), \\
+\frac{dx}{dc} &= \frac{-1}{ab \sin(x)} \cdot c.
+\end{align*}
+
+\section*{Example 11: Changing Angle in a Scalene Triangle}
+\textbf{Problem:} In a scalene triangle with sides $a$, $b$, and $c$, where $c$ changes over time, determine the rate at which angle $x$ between $a$ and $b$ changes when $c$ is at a specific length.
+
+\textbf{Solution:}
+From the Law of Cosines, differentiate with respect to time $t$:
+\begin{align*}
+2c \frac{dc}{dt} &= 2ab \sin(x) \frac{dx}{dt}, \\
+\frac{dx}{dt} &= \frac{c \frac{dc}{dt}}{ab \sin(x)}.
+\end{align*}
+
+\section*{Additional Thoughts}
+These examples further exhibit the application of the Law of Cosines in solving differentiation problems in calculus, highlighting its importance in understanding the relationship between angles and sides in triangles and their rate of change.
+
+\section*{Additional Examples}
+In this continued exploration, we delve into more examples demonstrating the use of the Law of Cosines in differentiation. Each example is unique, showcasing different applications in calculus.
+
+\section{Example 12: Differentiating in the Context of a Variable Angle}
+\textbf{Problem:} In a triangle with fixed sides $a$ and $b$, and a variable angle $x$, find the rate of change of the third side $c$ as $x$ approaches $\pi/2$.
+
+\textbf{Solution:}
+Using the Law of Cosines, differentiate with respect to $x$:
+\begin{align*}
+2c \frac{dc}{dx} &= 2ab \sin(x), \\
+\frac{dc}{dx} &= \frac{ab \sin(x)}{c}.
+\end{align*}
+Evaluate this derivative as $x$ approaches $\pi/2$.
+
+\section*{Example 13: Kinematics in a Triangle}
+\textbf{Problem:} In a triangle with constant sides $a$ and $b$, if the angle $x$ increases at a constant rate $k$, determine how quickly the length of side $c$ is changing when $x = \pi/6$.
+
+\textbf{Solution:}
+Apply the Law of Cosines and differentiate with respect to time $t$:
+\begin{align*}
+2c \frac{dc}{dt} &= 2ab \sin(x) \cdot k, \\
+\frac{dc}{dt} &= \frac{abk \sin(\pi/6)}{c}.
+\end{align*}
+
+\section*{Example 14: Angle Change in a Dynamic Triangle}
+\textbf{Problem:} Given a dynamic triangle where sides $a$ and $b$ remain constant, but side $c$ varies with time, find the rate of change of the angle $x$ between $a$ and $b$ when $c$ is at its maximum.
+
+\textbf{Solution:}
+From the Law of Cosines, differentiate $x$ with respect to time $t$:
+\begin{align*}
+2c \frac{dc}{dt} &= 2ab \sin(x) \frac{dx}{dt}, \\
+\frac{dx}{dt} &= \frac{c \frac{dc}{dt}}{ab \sin(x)}.
+\end{align*}
+At the maximum of $c$, $\frac{dc}{dt} = 0$, thus $\frac{dx}{dt} = 0$.
+
+\section*{Example 15: Velocity of the Apex Angle in a Varying Triangle}
+\textbf{Problem:} In a triangle with a fixed base $b$ and varying sides $a$ and $c$, if $a$ increases at a rate $v_a$, find the rate of change of the apex angle $x$ opposite to $b$.
+
+\textbf{Solution:}
+Using the Law of Cosines, $b^2 = a^2 + c^2 - 2ac \cos(x)$. Differentiate with respect to time $t$:
+\begin{align*}
+0 &= 2a \frac{da}{dt} + 2c \frac{dc}{dt} - 2 \left( c \frac{da}{dt} + a \frac{dc}{dt} \right) \cos(x) - 2ac \sin(x) \frac{dx}{dt}, \\
+\frac{dx}{dt} &= \frac{a \frac{da}{dt} + c \frac{dc}{dt} - \left( c \frac{da}{dt} + a \frac{dc}{dt} \right) \cos(x)}{ac \sin(x)}.
+\end{align*}
+Substitute $\frac{da}{dt} = v_a$ and solve for $\frac{dx}{dt}$.
+
+\section*{Additional Thoughts}
+These examples illustrate the broad range of applications for the Law of Cosines in differential calculus, from kinematics in triangles to dynamic geometrical situations. Mastery of these techniques offers deeper insight into the behavior of varying systems in mathematical and physical contexts.
+
+\section*{Additional Advanced Examples}
+This document presents further advanced examples of using the Law of Cosines in differentiation, exploring new scenarios and challenges in calculus.
+
+\section*{Example 16: Rate of Change of the Side in a Growing Triangle}
+\textbf{Problem:} In a triangle with sides $a$, $b$, and $c$, where $a$ is increasing at a constant rate and $b$ and $c$ are fixed, find how quickly the angle $x$ opposite to $c$ is changing.
+
+\textbf{Solution:}
+Using the Law of Cosines, differentiate $x$ with respect to time $t$:
+\begin{align*}
+c^2 &= a^2 + b^2 - 2ab \cos(x), \\
+0 &= 2a \frac{da}{dt} - 2b \frac{da}{dt} \cos(x) - ab \sin(x) \frac{dx}{dt}, \\
+\frac{dx}{dt} &= \frac{2(a - b \cos(x)) \frac{da}{dt}}{ab \sin(x)}.
+\end{align*}
+
+\section*{Example 17: Differentiation in a Triangle with a Moving Side}
+\textbf{Problem:} Consider a triangle where side $c$ is changing over time while sides $a$ and $b$ are constant. If the rate of change of $c$ is known, find the rate of change of angle $x$ between $a$ and $b$.
+
+\textbf{Solution:}
+Apply the Law of Cosines and differentiate with respect to time $t$:
+\begin{align*}
+2c \frac{dc}{dt} &= 2ab \sin(x) \frac{dx}{dt}, \\
+\frac{dx}{dt} &= \frac{c \frac{dc}{dt}}{ab \sin(x)}.
+\end{align*}
+
+\section*{Example 18: Differentiating the Angle Between Two Varying Sides}
+\textbf{Problem:} In a triangle with two sides $a$ and $b$ changing over time, determine the rate of change of the angle $x$ opposite the fixed side $c$.
+
+\textbf{Solution:}
+From the Law of Cosines, differentiate with respect to time $t$:
+\begin{align*}
+0 &= 2a \frac{da}{dt} + 2b \frac{db}{dt} - 2(\frac{da}{dt} b + a \frac{db}{dt})\cos(x) - 2ab\sin(x)\frac{dx}{dt}, \\
+\frac{dx}{dt} &= \frac{a \frac{da}{dt} + b \frac{db}{dt} - (\frac{da}{dt} b + a \frac{db}{dt})\cos(x)}{ab \sin(x)}.
+\end{align*}
+
+\section*{Example 19: Calculating the Rate of Decrease of an Angle}
+\textbf{Problem:} In a decreasing triangle with sides $a$, $b$, and $c$, where $a$ decreases at a known rate, find how quickly the angle $x$ between $b$ and $c$ is decreasing.
+
+\textbf{Solution:}
+Differentiate the angle $x$ with respect to time $t$ using the Law of Cosines:
+\begin{align*}
+c^2 &= a^2 + b^2 - 2ab \cos(x), \\
+0 &= 2a \frac{da}{dt} - 2b \frac{da}{dt} \cos(x) - ab \sin(x) \frac{dx}{dt}, \\
+\frac{dx}{dt} &= \frac{2(a - b \cos(x)) \frac{da}{dt}}{ab \sin(x)}.
+\end{align*}
+
+\section*{Additional Thoughts}
+These advanced examples further illustrate the diverse applications of the Law of Cosines in differentiation, offering insights into complex scenarios involving changing angles and sides in triangles. Mastery of these concepts provides a deeper understanding of dynamic relationships in geometry and their calculus applications.
 
 
 
