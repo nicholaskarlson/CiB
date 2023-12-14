@@ -6743,7 +6743,7 @@ So, when the base is \(3\) units and the height is \(4\) units, the hypotenuse i
 Therefore, the rate at which the hypotenuse is changing when the base is \(3\) units and the height is \(4\) units is \(-\frac{1}{5}\) units per second.
 \end{solution}
 
-\subsubsection{Graphical Representation}
+\subsubsection*{Graphical Representation}
 
 Let's visualize this problem with a right triangle:
 
@@ -6765,6 +6765,73 @@ Let's visualize this problem with a right triangle:
 As the base (\(AB\)) increases at \(3\) units per second and the height (\(BC\)) decreases at \(4\) units per second, the hypotenuse (\(AC\)) changes at a rate of \(-\frac{1}{5}\) units per second.
 
 % Update p1 01Dec2023
+
+
+% Update p1 13Dec2023
+
+\subsubsection*{Example Problem: Draining Conical Tank}
+
+Consider a conical water tank with a radius of 10 units at the top and a height of 15 units. Water is being drained from the tank at a rate of 5 cubic units per second. Find the rate at which the water level is dropping when the water is 6 units deep.
+
+\begin{problem}
+A conical water tank has a radius of \(10\) units and a height of \(15\) units. If water is being drained from the tank at a rate of \(5\) cubic units per second, find the rate at which the water level is dropping when the water is \(6\) units deep.
+\end{problem}
+
+\begin{solution}
+Given:
+
+\begin{align*}
+\text{Radius of the tank } (R) &= 10 \text{ units} \\
+\text{Height of the tank } (H) &= 15 \text{ units} \\
+\text{Rate of water being drained } \left(\frac{dV}{dt}\right) &= -5 \text{ cubic units per second}
+\end{align*}
+
+We need to find the rate at which the water level \(h\) is dropping, \(\frac{dh}{dt}\), when the water level is \(6\) units.
+
+The volume \(V\) of a cone is given by:
+
+\[
+V = \frac{1}{3}\pi r^2 h
+\]
+
+Since \(r\) and \(h\) are related by similar triangles, we have:
+
+\[
+\frac{r}{h} = \frac{R}{H} \implies r = \frac{R}{H} h
+\]
+
+Substituting \(r\) in the volume formula:
+
+\[
+V = \frac{1}{3}\pi \left(\frac{R}{H} h\right)^2 h = \frac{1}{3}\pi \frac{R^2}{H^2} h^3
+\]
+
+Differentiating both sides with respect to time \(t\):
+
+\[
+\frac{dV}{dt} = \pi \frac{R^2}{H^2} h^2 \frac{dh}{dt}
+\]
+
+Substitute the given values:
+
+\[
+-5 = \pi \frac{10^2}{15^2} 6^2 \frac{dh}{dt}
+\]
+
+Solving for \(\frac{dh}{dt}\):
+
+\[
+\frac{dh}{dt} = -5 \left(\frac{15^2}{\pi 10^2 6^2}\right) = -\frac{25}{12\pi} \text{ units per second}
+\]
+
+Therefore, the rate at which the water level is dropping when the water is \(6\) units deep is approximately \(-\frac{25}{12\pi}\) units per second.
+\end{solution}
+
+
+
+% End update p1 13Dec2023
+
+
 
 \section{The Uses of Trigonometric Functions in Calculus for Scientists and Engineers}
 Trigonometric functions play a crucial role in both pure mathematics and various applied fields, particularly in science and engineering. Understanding these functions is essential for solving a wide range of problems in calculus. This essay explores the primary uses of the major trigonometric functions: sine, cosine, tangent, secant, cosecant, and cotangent.
